@@ -1,106 +1,305 @@
-<div id="homepage" v-cloak>
-  <div style="padding-top: 100px; padding-bottom: 25px; color: #14acc2;" class="d-flex flex-column justify-content-center position-relative" purpose="full-page-hero">
-    <div class="container text-center">
-      <div style="width: 220px; height: 170px;" class="mx-auto position-relative">
-        <img style="width: 170px; left: 25px; top: 25px;" class="position-absolute" alt="The sky above the ocean" src="/images/hero-sky.png"/>
-        <img style="width: 80px; top: 55px; left: -40px;" class="position-absolute" purpose="cloud-1" alt="A grayish-blue cloud" src="/images/hero-cloud.png"/>
-        <img style="width: 80px; top: 45px; left: -40px;" class="position-absolute" purpose="cloud-2" alt="Another grayish-blue cloud" src="/images/hero-cloud.png"/>
-        <img style="width: 160px; bottom: 50px; left: 18px;" class="position-absolute" purpose="ship" alt="A ship hovering a few feet over the surface of the water, bearing a flagpole with the Sails.js logo" src="/images/hero-ship.png"/>
-        <img style="width: 170px; bottom: 40px; left: 25px;" class="position-absolute" alt="The shadow of the floating ship on the water" src="/images/hero-water.png"/>
-      </div>
-      <h1 class="display-4 pb-5">A new <strong>Sails</strong> app.</h1>
-      <div>
-        <div style="cursor: pointer; bottom: 25px; left: 0;" class="position-absolute w-100 mt-5" purpose="more-info-text" @click="clickHeroButton()">
-          <div style="letter-spacing: 2px;" class="text-uppercase font-weight-bold">Dive in</div>
-          <div style="font-size: 20px;">&darr;</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div style="background-color: rgba(238, 245, 249, 0.72);" class="text-center py-5" purpose="scroll-destination">
-    <div class="container pt-3 pb-5" purpose="about-section">
-      <h3>This is your freshly-generated project + a few extras.</h3>
-      <p style="max-width: 800px;" class="mx-auto">In our time <a target="_blank" href="https://sailsjs.com/about">building apps for customers</a>, we've found ourselves re-rolling some of the same key features over and over again between projects.  So we picked some of the things that kept popping up, implemented our own opinionated solutions for them, and then included it all in this free and open-source starter app.  We hope it helps you as much as it helps us!</p>
-      <div class="row pt-5">
-        <div class="mb-4 mb-sm-0 col-sm">
-          <div style="color: #fff; background-color: #14acc2; font-size: 35px; line-height: 75px; height: 75px; width: 75px;" class="rounded-circle mx-auto text-center mb-3">
-            <i class="fa fa-envelope"></i>
-          </div>
-          <h4>Emails</h4>
-          <p class="text-muted">Built-in support for internal emails from the <a href="/contact">contact form</a>, as well as transactional emails for users.</p>
-        </div>
-        <div class="pt-4 pt-sm-0 mb-4 mb-sm-0 col-sm">
-          <div style="color: #fff; background-color: #14acc2; font-size: 35px; line-height: 75px; height: 75px; width: 75px;" class="rounded-circle mx-auto text-center mb-3">
-            <i class="fa fa-lock"></i>
-          </div>
-          <h4>Authentication</h4>
-          <p class="text-muted">Ready-to-go, customizable <a href="/signup">sign up</a>, <a href="/login">login</a>, and <a href="/password/forgot">password recovery</a> flows for your users.</p>
-        </div>
-        <div class="pt-4 pt-sm-0 col-sm">
-          <div style="color: #fff; background-color: #14acc2; font-size: 35px; line-height: 75px; height: 75px; width: 75px;" class="rounded-circle mx-auto text-center mb-3">
-            <i class="fa fa-credit-card"></i>
-          </div>
-          <h4>Billing</h4>
-          <p class="text-muted">Hook up to your Stripe account for managing customers and payment sources.</p>
-        </div>
-      </div>
-      <a class="btn btn-outline-info mt-3" href="/faq">Learn more</a>
-    </div>
-  </div>
-  <div class="container pt-5">
-    <div class="pt-5" purpose="setup-section">
-      <h3 class="text-center">How to get started:</h3>
-      <div class="position-relative my-5" purpose="setup-step">
-        <div style="left: 0; top: 0; width: 140px;" class="position-absolute d-none d-lg-block">
-          <img alt="computer with email symbol on screen" src="/images/setup-email.png" class="w-100"/>
-        </div>
-        <h5>Set up your branding and content</h5>
-        <p>This starter app includes several different page templates (including the one you're reading right now) that you can change as much or as little as you like.  If there are any pages you won't need, just remove them.</p>
-        <p>To get started, do a global find/replace in this project for occurrences of <code>NEW_APP_NAME</code> and replace them all with the actual name of your app or platform (e.g. "Facebag").  Then do the same thing again to replace <code>NEW_APP_COMPANY_NAME</code> with the actual name of your organization (e.g. "Facebag Corporation").</p>
-        <blockquote><small>This app also includes a default <a href="/legal/terms">Terms of Use</a> and <a href="/legal/privacy">Privacy Policy</a>.  We want to make it easier for apps to be transparent about their users' rights and privacy.  But we are developers, not lawyers; and this is <em>definitely not legal advice</em>.  Before going live, be sure to replace these example documents with your own company's policies, and <a href="https://en.wikipedia.org/wiki/Counsel" target="_blank">seek counsel</a> for assistance if you need to design new terms from scratch.</small></blockquote>
-      </div>
-      <div class="position-relative my-5" purpose="setup-step">
-        <div style="left: 0; top: 0; width: 140px;" class="position-absolute d-none d-lg-block">
-          <img alt="computer with credit card icon on screen" src="/images/setup-payment.png" class="w-100"/>
-        </div>
-        <h5>Configure integrations</h5>
-        <p>In order for this app to send automated emails, you'll need to create a <a target="_blank" href="https://sendgrid.com/">Sendgrid</a> account.  Then, in <code>config/custom.js</code>, configure the following:</p>
-        <div class="card bg-light mb-4">
-          <div class="card-body"><pre><code><span class="text-muted">// Recipient of contact form messages</span>
-internalEmailAddress: my.email@example.com,
 
-<span class="text-muted">// For outgoing emails</span>
-fromEmailAddress: 'noreply@example.com',
-fromName: 'The NEW_APP_NAME Team',
+<!--sould be deletet before launch only there to have bootstrap autocomplete support> </!-->
+<link href="assets/dependencies/bootstrap-4/bootstrap-4.css" rel="stylesheet">
 
-<span class="text-muted">// Sendgrid settings</span>
-sendgridSecret: 'SG.fake.3e0Bn0qSQVnwb1E4qNPz9JZP5vLZYqjh7sn8S93oSHU'</code></pre>
-          </div>
-        </div>
-        <p>To enable support for billing features, you'll need to make a <a target="_blank" href="https://stripe.com">Stripe</a> account, then include your test credentials like so:</p>
-        <div class="card bg-light mb-4">
-          <div class="card-body"><pre><code><span class="text-muted">// Stripe credentials</span>
-stripePublishableKey: 'pk_test_Zzd814nldl91104qor5911gjald',
-stripeSecret: 'sk_test_Zzd814nldl91104qor5911gjald'</code></pre>
-          </div>
-        </div>
-        <blockquote><small>If your app doesn't need payment processing, it will still work without Stripe configuration. In this case, all references to billing will just be omitted from the UI.</small></blockquote>
-      </div>
-      <div class="position-relative my-5" purpose="setup-step">
-        <div style="left: 0; top: 0; width: 140px;" class="position-absolute d-none d-lg-block">
-          <img alt="computer with sails logo on screen" src="/images/setup-customize.png" class="w-100"/>
-        </div>
-        <h5>Customize</h5>
-        <p>Once the initial configuration is done, you're ready to start building out the rest of your app.</p>
-        <p>We worked hard to make this starter app's structure consistent and its files are as bare-bones as possible, so it's easy to add new pages and business logic following the conventions we set up. If you run into trouble, have a look at <a href="/faq">your new FAQ page</a>, which covers the tools we used and how to customize.  For a deeper dive, check out the Sails <a href="https://courses.platzi.com/courses/sails-js/">walkthrough</a>, <a href="https://sailsjs.com/documentation">reference documentation</a> and <a href="https://sailsjs.com/support">support</a> pages.</p>
-      </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+  const tokenPricesURL = 'https://ocean.defichain.com/v0/mainnet/prices?size=150';
+
+  $.get(tokenPricesURL, (response) => {
+    createOrUpdateTokens(response.data);
+  });
+
+  async function createOrUpdateTokens(tokens) {
+
+    tokens = filterPriceData(tokens);
+
+    //TODO create action with findOrReplace https://sailsjs.com/documentation/reference/waterline-orm/models/find-or-create
+
+    for (const token of tokens) {
+      if ( await tokenIsInDB (token.symbol) ) {
+        updateToken(token);
+      } else {
+        insertToken(token);
+      }
+    }
+  }
+
+  function filterPriceData (tokens) {
+
+    let filteredTokenData = [];
+
+    tokens.forEach ( (token) => {
+
+      token.id = token.id.replaceAll('.', '-');
+
+
+      filteredTokenData.push(
+              {
+                symbol: token.id,
+                name: token.price.token,
+                currency: token.price.currency,
+                price: Math.round(token.price.aggregated.amount * 100 )/ 100});
+    });
+    console.log(filteredTokenData);
+
+    return filteredTokenData;
+  }
+
+  async function updateToken(token) {
+
+
+    $.post(`token/update-price`, {
+      symbol: token.symbol,
+      price: token.price,
+    }, (data, status) => {
+
+      console.log( 'Update: '+ token.symbol + ' Status: ' + status);
+    });
+  }
+
+  async function tokenIsInDB(tokensymbol) {
+
+    let promise = await $.get(`/token/${tokensymbol}`);
+
+    return  (promise.symbol) !== undefined;
+  }
+
+  function insertToken(token) {
+    $.post('/token',
+            {
+              name: token.name,
+              //type: token.type,
+              symbol: token.symbol,
+              currency: token.currency,
+              price: token.price
+            },
+            (data, status) => {
+              console.log('Insert: '+ token.symbol +' Status: ' + status);
+            });
+  }
+
+</script>
+
+<main>
+  <div class="container">
+    <div class="row mb-2 ">
+      <img src="/images/Logo.png" class="mx-auto img-fluid d-block" style="max-height: 60%">
     </div>
-    <hr/>
-    <div class="text-center py-5" purpose="pep-talk">
-      <h3>Let's get to work.</h3>
-      <p style="max-width: 800px;" class="mx-auto">We think this project is a pretty convenient starting point, but of course there's no one-size-fits-all solution. The good news is, this app is in your hands now, so you can jump into the files and adapt it to your needs. Change some code around. Break stuff.  Fix it. And above all: <strong>make something people want to use</strong>.</p>
-      <p class="mb-5"><span class="text-muted">&hearts;</span> <a href="https://sailsjs.com/about" class="border-0">The Sails Team</a></p>
+    <div class="row">
+      <p class="text-center display-5">Easy Tracking</p>
+    </div>
+    <div class="row my-5">
+      <p class="text-center">The simplest and easiest way to keep track of your DeFiChain portfolio, your
+        performance and DeFiChain token infos (Leaderboard?)</p>
+    </div>
+
+    <div class="text-center">
+      <div class="row my-3">
+        <div class="col d-none d-md-block">
+          <a class = "text-white text-decoration-none btn btn-sm " id = "defi-button" href="/portfolio">PORTFOLIO</a>
+        </div>
+        <div class="col d-md-none d-sx-block">
+          <a class = "text-white text-decoration-none btn " id = "defi-button-mobile" href="/portfolio">PORTFOLIO</a>
+        </div>
+
+        <div class="col d-none d-md-block">
+          <a class = "text-white text-decoration-none btn btn-sm " id = "defi-button-Token-DT" href="/livePrices">TOKEN</a>
+        </div>
+        <div class="col d-md-none d-sx-block">
+          <a class = "text-white text-decoration-none btn " id = "defi-button-Token" href="/livePrices">TOKEN</a>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+  <div class="container-fluid">
+    <div class="row mt-5">
+      <div id="myCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
+                  aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"
+                  aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2"
+                  aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item actives">
+            <div class="carousel-caption">
+              <div class="mb-5">
+                <h3>React quickly and make portfolio changes</h3>
+                <h3>Asses your investment skills</h3>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item active">
+            <div class="carousel-caption">
+              <div class="mb-5">
+                <h3>Be a better investor</h3>
+                <h3>Smarter investment decisions</h3>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item active">
+            <div class="carousel-caption">
+              <div class="mb-5">
+                <h3>More free time</h3>
+                <h3>Smarter investment decisions</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <style>
+    .cards {
+      margin-bottom: 100px;
+    }
+  </style>
+
+  <div class="cards container">
+    <!-- Card-Group for Handy -->
+    <div>
+      <div class="card-group d-sm-none mx-2">
+
+        <div class="card bg-dark text-center border border-white border-3 p-3">
+          <h5 class="card-title text-white mb-3">Live Token Data</h5>
+          <i class="bi-align-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
+                 class="bi bi-graph-up my-3" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                    d="M0 0h1v15h15v1H0V0Zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07Z"/>
+            </svg>
+          </i>
+          <div class="card-body bg-dark">
+            <p class="card-text">See live prices of all tokens on the DeFiChain</p>
+            <div>
+              <a class="btn text-white border-white" data-bs-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false"
+                 aria-controls="collapseExample1">
+                Read More
+              </a>
+              <div class="collapse " id="collapseExample1">
+                <div class="card card-body bg-dark" role="button">
+                  get live token prices, stock splits and search for token by type (Crypto, Stock, ETF, Commodity, Fiat... ) or name. You can also create cutom watchlists to always track your favourite tokens and  buy them on the DeFiChain when you like the price.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card bg-dark text-center border border-white border-3 p-3">
+          <h5 class="card-title text-white mb-3">Portfolio Tracking</h5>
+          <i class="bi-align-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="white"
+                 class="bi bi-pie-chart-fill my-3" viewBox="0 0 16 16">
+              <path d="M15.985 8.5H8.207l-5.5 5.5a8 8 0 0 0 13.277-5.5zM2 13.292A8 8 0 0 1 7.5.015v7.778l-5.5 5.5zM8.5.015V7.5h7.485A8.001 8.001 0 0 0 8.5.015z"/>
+            </svg>
+          </i>
+          <div class="card-body bg-dark">
+            <p class="card-text">Check your portfolio at every time</p>
+            <div>
+              <a class="btn text-white border-white" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false"
+                 aria-controls="collapseExample2">
+                Read More
+              </a>
+              <div class="collapse " id="collapseExample2">
+                <div class="card card-body bg-dark" role="button">
+                  With the DeFiChain Portfolio Tracker you are always up to date. Whether its about stock prices recent market fluctuations or just the performance of your portfolio. It allows you to easily see and update any changes of your investments.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card bg-dark text-center border border-white border-3 p-3">
+          <h5 class="card-title text-white mb-3">Leaderboard</h5>
+          <i class="bi-align-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
+                 class="bi bi-list-ol my-3" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                    d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z"/>
+              <path d="M1.713 11.865v-.474H2c.217 0 .363-.137.363-.317 0-.185-.158-.31-.361-.31-.223 0-.367.152-.373.31h-.59c.016-.467.373-.787.986-.787.588-.002.954.291.957.703a.595.595 0 0 1-.492.594v.033a.615.615 0 0 1 .569.631c.003.533-.502.8-1.051.8-.656 0-1-.37-1.008-.794h.582c.008.178.186.306.422.309.254 0 .424-.145.422-.35-.002-.195-.155-.348-.414-.348h-.3zm-.004-4.699h-.604v-.035c0-.408.295-.844.958-.844.583 0 .96.326.96.756 0 .389-.257.617-.476.848l-.537.572v.03h1.054V9H1.143v-.395l.957-.99c.138-.142.293-.304.293-.508 0-.18-.147-.32-.342-.32a.33.33 0 0 0-.342.338v.041zM2.564 5h-.635V2.924h-.031l-.598.42v-.567l.629-.443h.635V5z"/>
+            </svg>
+          </i>
+          <div class="card-body bg-dark">
+            <p class="card-text">See the best performing portfolios and rebuild them</p>
+            <div>
+              <a class="btn text-white border-white" data-bs-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false"
+                 aria-controls="collapseExample3">
+                Read More
+              </a>
+              <div class="collapse " id="collapseExample3">
+                <div class="card card-body bg-dark" role="button">
+                  Get the latest facts, market news or even personal portfolio movements via email. Sign into our Email-Service and never miss any kind of important information’s.
+                  Get personalized notification for example when a token in you portfolio rises qickly or just your daily portfolio value
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card bg-dark text-center border border-white border-3 p-3">
+          <h5 class="card-title text-white mb-3">Live Messages</h5>
+          <i class="bi-align-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
+                 class="bi bi-chat-left-text my-3" viewBox="0 0 16 16">
+              <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+              <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+          </i>
+          <div class="card-body bg-dark">
+            <p class="card-text">Never miss any news or updates</p>
+            <div>
+              <a class="btn text-white border-white" data-bs-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false"
+                 aria-controls="collapseExample4">
+                Read More
+              </a>
+              <div class="collapse " id="collapseExample4">
+                <div class="card card-body bg-dark" role="button">
+                  Anonymously check how your investment performs agains other portfolios and look up the best performing portfolios
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- Card-Group for Desktop + Ipad  -->
+    <div class="d-none d-sm-block">
+      <%- include('cardGroupLg.ejs') -%>
+    </div>
+  </div>
+  </div>
+
+  <div class="container" style="margin-bottom: 120px">
+    <div class="row my-10  text-center">
+      <div class="col-12">
+        <a class = "text-white text-decoration-none btn" id = "defi-button-mobile" href="/login">CREATE ACCOUNT</a>
+      </div>
+    </div>
+    <div class="row my-"></div>
+  </div>
+
+  </div>
+
+
+
+</main>
+
+
+
+
+
+
+
+
 <%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
+
