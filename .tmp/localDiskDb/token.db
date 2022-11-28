@@ -1,0 +1,6 @@
+{"$$indexCreated":{"fieldName":"id","unique":true,"sparse":false}}
+{"createdAt":1669648479559,"updatedAt":1669648479559,"id":1,"type":"","name":"TSLA","symbol":"TSLA-USD","currency":"USD","price":50,"_id":1}
+{"createdAt":1669648479559,"updatedAt":1669648625875,"id":1,"type":"","name":"TSLA","symbol":"TSLA-USD","currency":"USD","price":50,"_id":1}
+{"createdAt":1669648479559,"updatedAt":1669648631948,"id":1,"type":"","name":"TSLA","symbol":"TSLA-USD","currency":"USD","price":50,"_id":1}
+{"createdAt":1669648479559,"updatedAt":1669648638518,"id":1,"type":"","name":"TSLA","symbol":"TSLA-USD","currency":"USD","price":50,"_id":1}
+{"symbol":"TSLA-USDA","name":"TSLA","currency":"USD","price":50,"createdAt":1669648644345,"updatedAt":1669648644345,"id":2,"type":"","_id":2}

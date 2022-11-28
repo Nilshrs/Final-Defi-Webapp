@@ -7,16 +7,21 @@ $.get(tokenPricesURL, (response) => {
 async function createOrUpdateTokens(tokens) {
 
     tokens = filterPriceData(tokens);
+    
+    tokens.forEach( async (token) => {
 
-    //TODO create action with findOrReplace https://sailsjs.com/documentation/reference/waterline-orm/models/find-or-create
-
-    for (const token of tokens) {
-        if ( await tokenIsInDB (token.symbol) ) {
-            updateToken(token);
-        } else {
-            insertToken(token);
-        }
-    }
+        await $.post('/token',
+            {
+                name: token.name,
+                //type: token.type,
+                symbol: token.symbol,
+                currency: token.currency,
+                price: token.price
+            },
+            (data, status) => {
+                console.log('Created or updates: '+ token.symbol +' Status: ' + status);
+            });
+    } )
 }
 
 function filterPriceData (tokens) {
@@ -27,7 +32,6 @@ function filterPriceData (tokens) {
 
         token.id = token.id.replaceAll('.', '-');
 
-
         filteredTokenData.push(
             {
                 symbol: token.id,
@@ -35,40 +39,6 @@ function filterPriceData (tokens) {
                 currency: token.price.currency,
                 price: Math.round(token.price.aggregated.amount * 100 )/ 100});
     });
-    console.log(filteredTokenData);
 
     return filteredTokenData;
-}
-
-async function updateToken(token) {
-
-
-    $.post(`token/update-price`, {
-        symbol: token.symbol,
-        price: token.price,
-    }, (data, status) => {
-
-        console.log( 'Update: '+ token.symbol + ' Status: ' + status);
-    });
-}
-
-async function tokenIsInDB(tokensymbol) {
-
-    let promise = await $.get(`/token/${tokensymbol}`);
-
-    return  (promise.symbol) !== undefined;
-}
-
-function insertToken(token) {
-    $.post('/token',
-        {
-            name: token.name,
-            //type: token.type,
-            symbol: token.symbol,
-            currency: token.currency,
-            price: token.price
-        },
-        (data, status) => {
-            console.log('Insert: '+ token.symbol +' Status: ' + status);
-        });
 }
