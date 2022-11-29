@@ -9,7 +9,7 @@ module.exports = {
 
   inputs: {
     
-    token: { type: 'number', required: true }
+    token: { type: 'number', required: true },
     value: { type: 'number', required: true }
 
   },
