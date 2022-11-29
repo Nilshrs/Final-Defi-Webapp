@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5f4c228d-8a7e-42ea-a661-9c2a9ff4c54e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/portfolio-transaction/create.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/portfolio-transaction/create.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/portfolio/display.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/portfolio/display.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +124,7 @@
       <workItem from="1669644179844" duration="2183000" />
       <workItem from="1669646378706" duration="3000" />
       <workItem from="1669646625587" duration="13386000" />
-      <workItem from="1669718917933" duration="22000" />
+      <workItem from="1669718917933" duration="328000" />
     </task>
     <task id="LOCAL-00001" summary="feat: migrated homepage.ejs and Token.js and createOrUpdateToken.js">
       <created>1669415125327</created>
@@ -146,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669670792780</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fix: added missing , and changed naming of Portfolio-Transaction.js to PortfolioTransaction.js">
+      <created>1669719204787</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1669719204787</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,7 +176,8 @@
     <MESSAGE value="feat: migrated homepage.ejs and Token.js and createOrUpdateToken.js" />
     <MESSAGE value="feat: added a few pages and created token/update-or-create" />
     <MESSAGE value="feat: added logo,&#10;&#10;added Models and actions for Portfolio and Portfolio-Transaction,&#10;&#10;refactured createOrUpdateToken.js&#10;and added pieChart.js&#10;&#10;started with layout/homepage.ejs&#10;&#10;IMPORTANT changes csrf to false needs to be changes back later" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: added logo,&#10;&#10;added Models and actions for Portfolio and Portfolio-Transaction,&#10;&#10;refactured createOrUpdateToken.js&#10;and added pieChart.js&#10;&#10;started with layout/homepage.ejs&#10;&#10;IMPORTANT changes csrf to false needs to be changes back later" />
+    <MESSAGE value="fix: added missing , and changed naming of Portfolio-Transaction.js to PortfolioTransaction.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: added missing , and changed naming of Portfolio-Transaction.js to PortfolioTransaction.js" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

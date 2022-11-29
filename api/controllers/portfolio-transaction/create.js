@@ -29,7 +29,7 @@ module.exports = {
 
     let userId = this.req.session.userId;
     
-    await Portfolio-Transaction.create( { owner: userId, token, value } )
+    await PortfolioTransaction.create( { owner: userId, token, value } )
     
     return;
 
