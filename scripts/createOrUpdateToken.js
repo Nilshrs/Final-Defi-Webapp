@@ -10,6 +10,7 @@ async function createOrUpdateTokens(tokens) {
     
     tokens.forEach( async (token) => {
 
+        //TODO add route
         await $.post('/token',
             {
                 name: token.name,
