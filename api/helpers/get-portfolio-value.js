@@ -23,15 +23,15 @@ module.exports = {
   },
 
 
-  fn: async function (inputs) {
+  fn: async function ( { transactions }) {
 
     // Get portfolio value.
-    var portfolioValue;
+    let portfolioValue = 0;
 
-    inputs.transactions.forEach( async (transaction) => {
-      let token = await Token.findOne( {  id: token  } )
+    for( const transaction of transactions ) {
+      let token = await Token.findOne( { id: transaction.token } )
       portfolioValue += transaction.amount * token.price
-    })
+    }
     // Send back the result through the success exit.
     return portfolioValue;
   }

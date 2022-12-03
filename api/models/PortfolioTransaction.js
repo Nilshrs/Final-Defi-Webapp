@@ -8,11 +8,12 @@
 module.exports = {
 
   attributes: {
-    
+
     portfolio: { model: 'portfolio' , required: true},
     token: { model: 'token' , required: true},
-    amount : { type: 'number', required: true }
-    
+    amount : { type: 'number', required: true },
+    value:  { type: 'number', required: true}
+
 
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗

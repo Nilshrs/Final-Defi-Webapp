@@ -65,7 +65,13 @@ module.exports.routes = {
 
 
 
-  // Token routes:
-  'POST /token/create-or-update':       { action: 'token/create-or-update' }
+  // UC Transaction routes:
+  //TODO change to be in controller
+  'GET /trans':  { action: 'portfolio-transaction/view-trans-01' },
+  'GET /trans-01/:type':   { action: 'portfolio-transaction/transaction-type-01' },
+
+  'POST /create-or-update-token': { action: 'token/insert-or-update' },
+
+
 
 };

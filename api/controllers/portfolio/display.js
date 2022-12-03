@@ -13,19 +13,22 @@ module.exports = {
 
 
   exits: {
+    success: {
+      viewTemplatePath: 'pages/portfolio/index.ejs'
+    }
 
   },
 
 
-  fn: async function (inputs) {
+  fn: async function () {
 
     const userId = this.req.session.userId;
     const transactions = await PortfolioTransaction.find( { owner: userId } )
-    // retruns a array with objects consisting of token data and the value in the portfolio
-    const token = await sails.helpers.getTokenAndValue.with({ transactions: transactions });
-    const portfolioValue =  await sails.helpers.getPortfolioAmount.with( { transactions: transactions });
+    // returns a array with objects consisting of token data and the value in the portfolio
+    const token = await sails.helpers.getTokenAndValue.with( { transactions } );
+    const portfolioValue =  await sails.helpers.getPortfolioAmount.with( { transactions });
 
-    this.res.view(' pages/portfolio/index.ejs ',  { token, portflioValue: portfolioValue } )
+    return { token, portfolioValue }
 
   }
 

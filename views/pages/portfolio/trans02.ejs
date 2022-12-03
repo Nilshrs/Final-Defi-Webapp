@@ -1,0 +1,38 @@
+
+
+<main>
+
+    <div class="container tbl-container">
+        <div class="row tbl-fixed">
+            <div class="table">
+                <table class="table table-striped">
+                    <thead class="sticky-top">
+                    <tr class="info">
+                        <th>Token</th>
+                        <th>Currency</th>
+                        <th>Price</th>
+                    </tr>
+                    </thead>
+
+                    <tbody >
+                    <% if (tokens) { %>
+                        <% tokens.forEach( token => { %>
+                            <tr>
+                                <td>
+                                    <%= token.name; %>
+                                </td>
+                                <td>
+                                    <%= token.currency; %>
+                                </td>
+                                <td>
+                                    <%= token.price; %>
+                                </td>
+                            </tr>
+                    <% }); }%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</main>

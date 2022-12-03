@@ -9,12 +9,16 @@
     "@sailshq/lodash": "^3.10.3",
     "@sailshq/socket.io-redis": "^5.2.0",
     "bootstrap": "^5.2.3",
+    "got": "^7.1.0",
+    "mysql": "^2.18.1",
+    "request": "^2.88.2",
     "sails": "^1.5.3",
     "sails-hook-apianalytics": "^2.0.3",
     "sails-hook-organics": "^2.0.0",
     "sails-hook-orm": "^4.0.0",
     "sails-hook-sockets": "^2.0.0",
-    "sails-hook-update-or-create": "^0.1.4"
+    "sails-hook-update-or-create": "^0.1.4",
+    "sails-mysql": "^3.0.0"
   },
   "devDependencies": {
     "eslint": "5.16.0",
