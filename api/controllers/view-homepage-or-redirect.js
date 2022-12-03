@@ -1,6 +1,8 @@
 module.exports = {
 
 
+
+
   friendlyName: 'View homepage or redirect',
 
 
@@ -28,7 +30,6 @@ module.exports = {
     if (this.req.me) {
       throw {redirect:'/welcome'};
     }
-
     return {};
 
   }

@@ -30,11 +30,5 @@ module.exports = {
     // get all userdata with this.req.me
 
     await Portfolio.create( { name, owner: userId })
-    
-    // All done.
-    return;
-
   }
-
-
 };
