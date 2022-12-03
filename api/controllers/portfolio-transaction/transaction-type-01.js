@@ -26,7 +26,7 @@ module.exports = {
     this.req.session.type = type;
 
     //return await Token.find( { type: this.session.trans.type } );
-    //TODO change that
+    //TODO change that to view only the token with the categorie
     const tokens = await Token.find(  );
     console.log(tokens)
     return { tokens }

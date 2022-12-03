@@ -16,7 +16,7 @@ module.exports = {
 
   exits: {
     success: {
-      viewTemplatePath: 'pages/portfolio/index.ejs'
+      viewTemplatePath: 'pages/portfolio/trans03.ejs'
     }
 
   },
@@ -27,7 +27,11 @@ module.exports = {
     /*let userId = this.req.session.userId;
     let portfolio = Portfolio.findOne( { owner: userId } )*/
 
-    this.session.trans.token = token;
+    const tokenData = await Token.findOne( {id: token });
+    this.session.trans.token = tokenData;
+
+    return {tokenData}
+
 
 
   }

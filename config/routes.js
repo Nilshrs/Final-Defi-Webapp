@@ -69,6 +69,9 @@ module.exports.routes = {
   //TODO change to be in controller
   'GET /trans':  { action: 'portfolio-transaction/view-trans-01' },
   'GET /trans-01/:type':   { action: 'portfolio-transaction/transaction-type-01' },
+  'GET /trans-02/:token':   { action: 'portfolio-transaction/transaction-token-021' },
+
+
 
   'POST /create-or-update-token': { action: 'token/insert-or-update' },
 
