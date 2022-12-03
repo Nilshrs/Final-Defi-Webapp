@@ -27,7 +27,8 @@ module.exports = {
     const tokenId = trans.tokenData.id
 
     const portfolio = await Portfolio.findOne({owner: session.userId})
-
+    sails.log.debug("Portolfio:" + portfolio)
+    sails.log.debug("UserID:" + session.userId)
     const promise = await PortfolioTransaction.create({
       portfolio: portfolio.id,
       token: tokenId,

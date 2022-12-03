@@ -1,0 +1,18 @@
+.tbl-container{
+  max-height: fit-content;
+  margin-bottom: 10%;
+}
+.tbl-fixed{
+  overflow-y: scroll;
+  height: fit-content;
+  max-height: 90vh;
+
+}
+table {
+  min-width: max-content;
+  border-collapse: separate;
+}
+table th {
+  position: sticky;
+
+}
