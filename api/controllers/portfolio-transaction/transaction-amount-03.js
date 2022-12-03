@@ -1,4 +1,3 @@
-const {error} = require("sails-hook-orm/lib/datastore-method-utils/help-send-native-query");
 module.exports = {
 
 
@@ -15,40 +14,52 @@ module.exports = {
 
   exits: {
 
-    //TODO change to next page
     success: {
       viewTemplatePath: 'pages/portfolio/portfolio-overview.ejs'
     }
 
   },
 
-
   fn: async function ( { amount } ) {
 
     const session = this.req.session;
-    const tokenId = session.token.id
-    const tokenPrice = session.token.price
+    const trans = this.req.session.trans
+    const tokenId = trans.tokenData.id
 
-    const portfolio = Portfolio.findOne({owner: session.userId})
-    const transactions = PortfolioTransaction.find({portfolio: portfolio.id, token: tokenId})
+    const portfolio = await Portfolio.findOne({owner: session.userId})
 
-    let currentAmount = 0;
+    const promise = await PortfolioTransaction.create({
+      portfolio: portfolio.id,
+      token: tokenId,
+      amount: amount,
+      value: trans.tokenData.price * amount
+    }).fetch();
 
-    for (const transaction of transactions) {
-      currentAmount += transaction.amount
+    console.log(promise)
 
-      if (currentAmount - amount < 0) return "is in minus"
-      else {
 
-        const promise = await PortfolioTransaction.create({
-          portfolio: portfolio.id,
-          token: tokenId,
-          amount: amount,
-          price: tokenPrice
-        }).fetch()
+    //TODO check if the selected token value would be negativ and if yes display a warning and let the user retry
+    /*
+       const transactions = await PortfolioTransaction.find({portfolio: portfolio.id, token: tokenId})
+       console.log(transactions)
 
-        if (promise.length === 0) throw error
-      }
-    }
+
+       let currentAmount = 0;
+       for (const transaction of transactions) {
+         currentAmount += transaction.amount
+
+         if (currentAmount - amount < 0) return "is in minus"
+         else {
+           const promise = await PortfolioTransaction.create({
+             portfolio: portfolio.id,
+             token: tokenId,
+             amount: amount,
+             price: tokenPrice
+           }).fetch()
+
+           if (promise.length === 0) throw error
+         }
+       }*/
+
   }
 }

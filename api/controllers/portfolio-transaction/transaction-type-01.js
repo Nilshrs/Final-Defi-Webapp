@@ -23,14 +23,16 @@ module.exports = {
 
   fn: async function ( { type } ) {
 
-    this.req.session.type = type;
+    this.req.session.trans = {type}
 
+    console.log(this.req.session)
+
+    //this.req.session.trans.type = type;
     //return await Token.find( { type: this.session.trans.type } );
-    //TODO change that to view only the token with the categorie
-    const tokens = await Token.find(  );
-    console.log(tokens)
-    return { tokens }
 
+    //TODO change that to view only the token with the categorie
+    const tokens = await Token.find( );
+    return { tokens }
   }
 
 

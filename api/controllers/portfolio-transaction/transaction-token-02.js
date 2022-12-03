@@ -24,13 +24,12 @@ module.exports = {
 
   fn: async function ( { token } ) {
 
-    /*let userId = this.req.session.userId;
-    let portfolio = Portfolio.findOne( { owner: userId } )*/
-
     const tokenData = await Token.findOne( {id: token });
-    this.session.trans.token = tokenData;
+    this.req.session.trans['tokenData'] = tokenData ;
 
-    return {tokenData}
+    console.log(this.req.session)
+
+    return { tokenData }
 
 
 
