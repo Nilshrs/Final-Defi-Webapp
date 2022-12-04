@@ -23,10 +23,10 @@ module.exports = {
   fn: async function () {
 
     const userId = this.req.session.userId;
-    // TODO add esl comment
-    const transactions = await PortfolioTransaction.find( { owner: userId } )
+    // eslint-disable-next-line no-undef
+    const transactions = await PortfolioTransaction.find( { owner: userId } );
     // returns a array with objects consisting of token data and the value in the portfolio
-    const token = await sails.helpers.getTokenAndValue.with( { transactions } );
+    const token = await sails.helpers.getTokenAndAmount.with( { transactions } );
     const portfolioValue =  await sails.helpers.getPortfolioAmount.with( { transactions });
     return { token, portfolioValue }
 
