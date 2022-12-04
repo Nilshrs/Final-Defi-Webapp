@@ -57,17 +57,21 @@
 
 <body class="bg-dark text-white">
 
-<div purpose="page-wrap">
-    <header class="navbar navbar-expand-sm navbar-dark bg-dark flex-column flex-md-row justify-content-between"
-            purpose="page-header">
-        <a style="cursor: pointer;" class="navbar-brand mr-0" href="/"><img style="height: 20px;" class="logo"
-                                                                            alt="NEW_APP_NAME logo"
-                                                                            src="/images/logo.png"/></a>
+
+    <header style="background-image: linear-gradient(deeppink, #292b2c);">
+
+        <style> .navbar-nav {
+                margin-left: auto;
+            } </style>
 
 
-        <div class="navbar-nav flex-row">
-            <nav class="navbar navbar-expand-sm navbar-dark mb-4 ">
+            <nav class="navbar navbar-expand-sm navbar-dark mb-4">
                 <div class="container-fluid justify-content-center text-center">
+
+                    <!-- DFI Logo -->
+                    <!-- TODO fix header and add logo  -->
+                    <!-- <a style="cursor: pointer;" class="navbar-brand mr-0" href="/"><img style="height: 20px;" class="logo" alt="NEW_APP_NAME logo" src="/images/logo.png"/></a> -->
+
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -78,7 +82,7 @@
                                 <a class="nav-link active  border-0" aria-current="page" href="/">Home</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle border-0" href="/" id="navbarDropdown" role="button"
+                                <a class="nav-link dropdown-toggle border-0 text-white" href="/" id="navbarDropdown" role="button"
                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     About
                                 </a>
@@ -87,7 +91,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle  border-0" href="/" id="navbarDropdown" role="button"
+                                <a class="nav-link dropdown-toggle border-0 text-white" href="/" id="navbarDropdown" role="button"
                                    data-bs-toggle="dropdown" aria-expanded="false">
                                     Contact
                                 </a>
@@ -139,7 +143,6 @@
                     </div>
                 </div>
             </nav>
-        </div>
     </header>
 
     <!-- Alert if email has not been confirmed -->
@@ -227,7 +230,7 @@
             </div>
         </div>
     </footer>
-</div>
+
 
 <% /*
       Client-side JavaScript
@@ -555,7 +558,6 @@
 <script src="/dependencies/jquery.min.js"></script>
 <script src="/dependencies/vue.js"></script>
 <script src="/dependencies/vue-router.js"></script>
-<script src="/dependencies/bootstrap-4/bootstrap-4.bundle.js"></script>
 <script src="/dependencies/cloud.js"></script>
 <script src="/dependencies/moment.js"></script>
 <script src="/dependencies/parasails.js"></script>
