@@ -25,7 +25,9 @@ module.exports = {
   fn: async function (inputs) {
 
     // Get token and value.
+    // eslint-disable-next-line no-undef
     const tokenAndAmount = new Map();
+
 
     for ( const transaction of inputs.transactions ) {
       let tokenData = await Token.findOne( { id: transaction.token })
