@@ -15,7 +15,11 @@ module.exports = {
   exits: {
     success: {
       viewTemplatePath: 'pages/portfolio/index.ejs'
-    }
+    },
+    redirect: {
+      responseType: 'redirect',
+      description: 'Requesting user is has no portfolio, so redirect to the create portfolio page'
+    },
 
   },
 

@@ -11,7 +11,11 @@ module.exports = {
 
     success: {
       viewTemplatePath: 'pages/portfolio/portfolio-overview'
-    }
+    },
+    redirect: {
+      responseType: 'redirect',
+      description: 'Requesting user has no portfolio, so redirect to the create portfolio page'
+    },
 
   },
 
@@ -20,11 +24,18 @@ module.exports = {
     // eslint-disable-next-line no-undef
     const portfolio = await Portfolio.findOne({ owner: this.req.session.userId });
     //if this user does not have a portfolio let him create one
-    if(!portfolio){ return this.res.view('pages/portfolio/create-portfolio'); }
+    if(!portfolio){
+      console.log('To create portfolio page');
+      throw {redirect:'/create-portfolio'}; }
+
+    //TODO put this in a helper funktion
     // eslint-disable-next-line no-undef
     const transactions = await PortfolioTransaction.find( { portfolio: portfolio.id } );
     const tokenData = await sails.helpers.getTokenAndAmount.with( { transactions } );
     const portfolioValue =  await sails.helpers.getPortfolioValue.with( { transactions });
+
+    console.log(tokenData);
+    console.log(portfolioValue);
     return { tokenData, portfolioValue };
   }
 };

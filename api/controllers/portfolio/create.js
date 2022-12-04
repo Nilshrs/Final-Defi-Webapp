@@ -18,16 +18,20 @@ module.exports = {
 
     success: {
       description: 'created new portfolio',
-      viewTemplatePath: 'pages/portfolio/index',
-    }
-
+      responseType: 'redirect',
+    },
   },
 
 
   fn: async function ( { name } ) {
     // eslint-disable-next-line no-undef
     const portfolio  = await Portfolio.create( { name, owner: this.req.session.userId });
+    if(portfolio){
+      console.log('Successfully created portfolio=' + portfolio);
+    }else {
+      console.log('SHIT');
+    }
     //return with view
-    return { portfolioName: portfolio.name };
+    return ('/portfolio');
   }
 };

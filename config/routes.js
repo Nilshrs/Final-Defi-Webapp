@@ -12,9 +12,9 @@ module.exports.routes = {
 
   //Routes to Pages
   'GET /livePrices': { action: 'token/find-all' },
-  
-  
-  
+
+
+
   //  ╦ ╦╔═╗╔╗ ╔═╗╔═╗╔═╗╔═╗╔═╗
   //  ║║║║╣ ╠╩╗╠═╝╠═╣║ ╦║╣ ╚═╗
   //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
@@ -71,7 +71,6 @@ module.exports.routes = {
 
 
   // UC Transaction routes:
-  //TODO change to be in controller
   'GET /trans':             { action: 'portfolio-transaction/view-trans-01' },
   'GET /trans-01/:type':    { action: 'portfolio-transaction/transaction-type-01' },
   'GET /trans-02/:token':   { action: 'portfolio-transaction/transaction-token-02' },
@@ -80,6 +79,9 @@ module.exports.routes = {
 
   //Portfolio routes
   'GET /portfolio' :        { action: 'portfolio/view-portfolio-overview' },
+  'GET /create-portfolio':  { action: 'portfolio/view-create-portfolio' },
+  'POST /create-portfolio': { action: 'portfolio/create'},
+
 
 
   //Token routes
