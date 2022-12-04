@@ -12,9 +12,9 @@ module.exports.routes = {
 
   //Routes to Pages
   'GET /livePrices': { action: 'token/find-all' },
-  
-  
-  
+
+
+
   //  ╦ ╦╔═╗╔╗ ╔═╗╔═╗╔═╗╔═╗╔═╗
   //  ║║║║╣ ╠╩╗╠═╝╠═╣║ ╦║╣ ╚═╗
   //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
