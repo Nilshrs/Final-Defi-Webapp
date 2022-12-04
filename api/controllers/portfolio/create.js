@@ -9,7 +9,7 @@ module.exports = {
 
   inputs: {
 
-    name: { type: 'string', allowNull: false, required: true },
+    name: { type: 'string', allowNull: false, required: true }
 
   },
 
@@ -17,18 +17,17 @@ module.exports = {
   exits: {
 
     success: {
-      description: 'created new portfolio'
-      //viewTemplatePath: 'pages/portfolio/index',
+      description: 'created new portfolio',
+      viewTemplatePath: 'pages/portfolio/index',
     }
 
   },
 
 
   fn: async function ( { name } ) {
-
-    let userId = this.req.session.userId
-    // get all userdata with this.req.me
-
-    await Portfolio.create( { name, owner: userId })
+    // eslint-disable-next-line no-undef
+    const portfolio  = await Portfolio.create( { name, owner: this.req.session.userId });
+    //return with view
+    return { portfolioName: portfolio.name };
   }
 };

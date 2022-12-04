@@ -29,8 +29,9 @@ module.exports = {
     let portfolioValue = 0;
 
     for( const transaction of transactions ) {
-      let token = await Token.findOne( { id: transaction.token } )
-      portfolioValue += transaction.amount * token.price
+      // eslint-disable-next-line no-undef
+      let token = await Token.findOne( { id: transaction.token } );
+      portfolioValue += transaction.amount * token.price;
     }
     // Send back the result through the success exit.
     return portfolioValue;
