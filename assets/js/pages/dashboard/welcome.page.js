@@ -14,6 +14,7 @@ parasails.registerPage('welcome', {
     //…
   },
   mounted: async function() {
+    console.log('This is a test');
     //…
   },
 

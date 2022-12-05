@@ -1,6 +1,5 @@
-# final-defi-web-app
+# DeFiChain Portfolio Tracker
 
-a [Sails v1](https://sailsjs.com) application
 
 
 ### Links
