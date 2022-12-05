@@ -1,0 +1,186 @@
+
+/*#defi-button-full {
+  height: auto;
+  border: none;
+  outline: 0;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  color: #ffffff;
+  transition: box-shadow .3s;
+  background: linear-gradient(-60deg,#8700ff 0,#ff009e 100%);
+
+
+}*/
+
+#defi-button {
+  font-weight: bold;
+  letter-spacing: 0.01em;
+  padding: 15px 90px;
+  border: none;
+  outline: none;
+  position: relative;
+  z-index: 1;
+  border-radius: 20px;
+  background: linear-gradient(-60deg,#8700ff 0, #ff1493 100%);
+  cursor: pointer;
+
+}#defi-button::before {
+   content: "";
+   position: absolute;
+   left: 1px;
+   right: 1px;
+   top: 1px;
+   bottom: 1px;
+   border-radius: 20px;
+   background-color: #292b2c ;
+   z-index: -1;
+   transition: 200ms
+ }#defi-button::after {
+    content: attr(data);
+    font-size: 16px;
+    background: linear-gradient(to left, #00FFA3, #DC1FFF);
+    -webkit-background-clip: text;
+    color: transparent;
+    transition: 200ms
+  }#defi-button:hover::before {
+     opacity: 50%;
+     top: 0px;
+     right: 0px;
+     bottom: 0px;
+     left: 0px;
+   }#defi-button:hover::after{
+      color: white;
+    }
+
+#defi-button-mobile{
+  font-weight: bold;
+  letter-spacing: 0.01em;
+  padding: 12px 31px;
+  border: none;
+  outline: none;
+  position: relative;
+  z-index: 1;
+  border-radius: 20px;
+  background: linear-gradient(-60deg,#8700ff 0,#ff009e 100%);
+  cursor: pointer;
+
+}#defi-button-mobile::before {
+   content: "";
+   position: absolute;
+   left: 1px;
+   right: 1px;
+   top: 1px;
+   bottom: 1px;
+   border-radius: 20px;
+   background-color: #292b2c ;
+   z-index: -1;
+   transition: 200ms
+ }#defi-button-mobile::after {
+    content: attr(data);
+    font-size: 16px;
+    background: linear-gradient(to left, #00FFA3, #DC1FFF);
+    -webkit-background-clip: text;
+    color: transparent;
+    transition: 200ms
+  }#defi-button-mobile:hover::before {
+     opacity: 50%;
+     top: 0px;
+     right: 0px;
+     bottom: 0px;
+     left: 0px;
+   }#defi-button:hover::after{
+      color: white;
+    }
+
+
+
+
+#defi-button-Token {
+  font-weight: bold;
+  letter-spacing: 0.01em;
+  padding: 12px 50px;
+  border: none;
+  outline: none;
+  position: relative;
+  z-index: 1;
+  border-radius: 20px;
+  background: linear-gradient(-60deg,#8700ff 0, #ff1493 100%);
+  cursor: pointer;
+
+}#defi-button-Token::before {
+   content: "";
+   position: absolute;
+   left: 1px;
+   right: 1px;
+   top: 1px;
+   bottom: 1px;
+   border-radius: 20px;
+   background-color: #292b2c ;
+   z-index: -1;
+   transition: 200ms
+ }#defi-button-Token::after {
+    content: attr(data);
+    font-size: 16px;
+    background: linear-gradient(to left, #00FFA3, #DC1FFF);
+    -webkit-background-clip: text;
+    color: transparent;
+    transition: 200ms
+  }#defi-button-Token:hover::before {
+     opacity: 50%;
+     top: 0px;
+     right: 0px;
+     bottom: 0px;
+     left: 0px;
+   }#defi-button-Token:hover::after{
+      color: white;
+    }
+
+
+
+#defi-button-Token-DT {
+  font-weight: bold;
+  letter-spacing: 0.01em;
+  padding: 15px 103px;
+  border: none;
+  outline: none;
+  position: relative;
+  z-index: 1;
+  border-radius: 20px;
+  background: linear-gradient(-60deg,#8700ff 0, #ff1493 100%);
+  cursor: pointer;
+
+}#defi-button-Token-DT::before {
+   content: "";
+   position: absolute;
+   left: 1px;
+   right: 1px;
+   top: 1px;
+   bottom: 1px;
+   border-radius: 20px;
+   background-color: #292b2c ;
+   z-index: -1;
+   transition: 200ms
+ }#defi-button-Token-DT::after {
+    content: attr(data);
+    font-size: 16px;
+    background: linear-gradient(to left, #00FFA3, #DC1FFF);
+    -webkit-background-clip: text;
+    color: transparent;
+    transition: 200ms
+  }#defi-button-Token-DT:hover::before {
+     opacity: 50%;
+     top: 0px;
+     right: 0px;
+     bottom: 0px;
+     left: 0px;
+   }#defi-button-Token-DT:hover::after{
+      color: white;
+    }
+
+

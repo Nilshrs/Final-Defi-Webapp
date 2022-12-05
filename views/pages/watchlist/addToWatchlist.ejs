@@ -1,0 +1,51 @@
+
+<div class="container">
+    <div class="row ">
+        <a class =" text-white text-decoration-none" href="/watchlist"> ❮  </a>
+    </div>
+        <h1>Add Token to Watchlist</h1>
+    <form action="/watchlist/SearchToken" method="post">
+        <div class="form-outline">
+            <input name="name" type="search" placeholder="Search" id="form1" class="form-control"/>
+            <label class="form-label" for="form1"></label>
+    </form>
+</div>
+
+<div class="container tbl-container">
+    <div class="row tbl-fixed">
+        <div class="table">
+            <table  class="table table-striped table-dark">
+                <thead class="sticky-top">
+                <tr class="info">
+                    <th>Token</th>
+                    <th>Currency</th>
+                    <th>Price</th>
+                    <th>ADD</th>
+                </tr>
+                </thead>
+        <tbody>
+        <% if (tokenData) { %>
+        <% tokenData.forEach((token) => { %>
+            <tr>
+                <td>
+                    <%= token.name %>
+                </td>
+                <td>
+                    <%= token.currency %>
+                </td>
+                <td>
+                    <%= token.price %>
+                </td>
+                <td>
+                    <a href='/watchlist/add-token/<%= token.id %> ' class="text-decoration-none"> ➕ </a>
+                </td>
+            </tr>
+        <% }); }%>
+        </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
