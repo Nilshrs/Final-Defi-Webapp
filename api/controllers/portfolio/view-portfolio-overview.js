@@ -21,8 +21,10 @@ module.exports = {
 
 
   fn: async function () {
+
+    const userId = this.req.session.userId
     // eslint-disable-next-line no-undef
-    const portfolio = await Portfolio.findOne({ owner: this.req.session.userId });
+    const portfolio = await Portfolio.findOne({ owner: userId});
     //if this user does not have a portfolio let him create one
     if(!portfolio){
       console.log('To create portfolio page');

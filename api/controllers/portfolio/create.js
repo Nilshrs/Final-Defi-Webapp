@@ -24,8 +24,10 @@ module.exports = {
 
 
   fn: async function ( { name } ) {
+
+    const userId = this.req.session.userId
     // eslint-disable-next-line no-undef
-    const portfolio  = await Portfolio.create( { name, owner: this.req.session.userId });
+    const portfolio  = await Portfolio.create( { name, owner: userId});
     if(portfolio){
       console.log('Successfully created portfolio=' + portfolio);
     }else {

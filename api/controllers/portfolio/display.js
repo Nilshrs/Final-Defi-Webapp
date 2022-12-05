@@ -32,7 +32,7 @@ module.exports = {
     // returns a array with objects consisting of token data and the value in the portfolio
     const token = await sails.helpers.getTokenAndAmount.with( { transactions } );
     const portfolioValue =  await sails.helpers.getPortfolioAmount.with( { transactions });
-    return { token, portfolioValue }
+    return { token, portfolioValue };
 
   }
 
