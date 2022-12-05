@@ -1,0 +1,310 @@
+
+<!--sould be deletet before launch only there to have bootstrap autocomplete support> </!-->
+<link href="assets/dependencies/bootstrap-4/bootstrap-4.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles/homepage.css">
+
+<form action="/create-or-update-token" method="post">
+    <button name="updateToken" value="t" class="btn-secondary ">Update token prices</button>
+</form>
+
+<!-- TODO fix CSS styles -->
+
+
+<main>
+    <div class="container">
+        <div class="row mb-2 ">
+            <img src="/images/Logo.png" class="mx-auto img-fluid d-block" style="max-height: 60%">
+        </div>
+        <div class="row">
+            <p class="text-center display-5">Easy Tracking</p>
+        </div>
+        <div class="row my-5">
+            <p class="text-center">The simplest and easiest way to keep track of your DeFiChain portfolio, your
+                performance and DeFiChain token infos (Leaderboard?)</p>
+        </div>
+
+        <div class="text-center">
+            <div class="row my-3">
+                <div class="col d-none d-md-block">
+                    <a class = "text-white text-decoration-none btn btn-sm " id = "defi-button" href="/portfolio">PORTFOLIO</a>
+                </div>
+                <div class="col d-md-none d-sx-block">
+                    <a class = "text-white text-decoration-none btn " id = "defi-button-mobile" href="/portfolio">PORTFOLIO</a>
+                </div>
+
+                <div class="col d-none d-md-block">
+                    <a class = "text-white text-decoration-none btn btn-sm " id = "defi-button-Token-DT" href="/livePrices">TOKEN</a>
+                </div>
+                <div class="col d-md-none d-sx-block">
+                    <a class = "text-white text-decoration-none btn " id = "defi-button-Token" href="/livePrices">TOKEN</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row mt-5">
+            <div id="myCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item actives">
+                        <div class="carousel-caption">
+                            <div class="mb-5">
+                                <h3>React quickly and make portfolio changes</h3>
+                                <h3>Asses your investment skills</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item active">
+                        <div class="carousel-caption">
+                            <div class="mb-5">
+                                <h3>Be a better investor</h3>
+                                <h3>Smarter investment decisions</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item active">
+                        <div class="carousel-caption">
+                            <div class="mb-5">
+                                <h3>More free time</h3>
+                                <h3>Smarter investment decisions</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <style>
+      .cards {
+        margin-bottom: 100px;
+      }
+    </style>
+
+    <div class="cards container">
+        <!-- Card-Group for Handy -->
+        <div>
+            <div class="card-group d-sm-none mx-2">
+
+                <div class="card bg-dark text-center border border-white border-3 p-3">
+                    <h5 class="card-title text-white mb-3">Live Token Data</h5>
+                    <i class="bi-align-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
+                             class="bi bi-graph-up my-3" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="M0 0h1v15h15v1H0V0Zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07Z"/>
+                        </svg>
+                    </i>
+                    <div class="card-body bg-dark">
+                        <p class="card-text">See live prices of all tokens on the DeFiChain</p>
+                        <div>
+                            <a class="btn text-white border-white" data-bs-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false"
+                               aria-controls="collapseExample1">
+                                Read More
+                            </a>
+                            <div class="collapse " id="collapseExample1">
+                                <div class="card card-body bg-dark" role="button">
+                                    get live token prices, stock splits and search for token by type (Crypto, Stock, ETF, Commodity, Fiat... ) or name. You can also create cutom watchlists to always track your favourite tokens and  buy them on the DeFiChain when you like the price.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card bg-dark text-center border border-white border-3 p-3">
+                    <h5 class="card-title text-white mb-3">Portfolio Tracking</h5>
+                    <i class="bi-align-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="white"
+                             class="bi bi-pie-chart-fill my-3" viewBox="0 0 16 16">
+                            <path d="M15.985 8.5H8.207l-5.5 5.5a8 8 0 0 0 13.277-5.5zM2 13.292A8 8 0 0 1 7.5.015v7.778l-5.5 5.5zM8.5.015V7.5h7.485A8.001 8.001 0 0 0 8.5.015z"/>
+                        </svg>
+                    </i>
+                    <div class="card-body bg-dark">
+                        <p class="card-text">Check your portfolio at every time</p>
+                        <div>
+                            <a class="btn text-white border-white" data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false"
+                               aria-controls="collapseExample2">
+                                Read More
+                            </a>
+                            <div class="collapse " id="collapseExample2">
+                                <div class="card card-body bg-dark" role="button">
+                                    With the DeFiChain Portfolio Tracker you are always up to date. Whether its about stock prices recent market fluctuations or just the performance of your portfolio. It allows you to easily see and update any changes of your investments.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card bg-dark text-center border border-white border-3 p-3">
+                    <h5 class="card-title text-white mb-3">Leaderboard</h5>
+                    <i class="bi-align-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
+                             class="bi bi-list-ol my-3" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z"/>
+                            <path d="M1.713 11.865v-.474H2c.217 0 .363-.137.363-.317 0-.185-.158-.31-.361-.31-.223 0-.367.152-.373.31h-.59c.016-.467.373-.787.986-.787.588-.002.954.291.957.703a.595.595 0 0 1-.492.594v.033a.615.615 0 0 1 .569.631c.003.533-.502.8-1.051.8-.656 0-1-.37-1.008-.794h.582c.008.178.186.306.422.309.254 0 .424-.145.422-.35-.002-.195-.155-.348-.414-.348h-.3zm-.004-4.699h-.604v-.035c0-.408.295-.844.958-.844.583 0 .96.326.96.756 0 .389-.257.617-.476.848l-.537.572v.03h1.054V9H1.143v-.395l.957-.99c.138-.142.293-.304.293-.508 0-.18-.147-.32-.342-.32a.33.33 0 0 0-.342.338v.041zM2.564 5h-.635V2.924h-.031l-.598.42v-.567l.629-.443h.635V5z"/>
+                        </svg>
+                    </i>
+                    <div class="card-body bg-dark">
+                        <p class="card-text">See the best performing portfolios and rebuild them</p>
+                        <div>
+                            <a class="btn text-white border-white" data-bs-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false"
+                               aria-controls="collapseExample3">
+                                Read More
+                            </a>
+                            <div class="collapse " id="collapseExample3">
+                                <div class="card card-body bg-dark" role="button">
+                                    Get the latest facts, market news or even personal portfolio movements via email. Sign into our Email-Service and never miss any kind of important information’s.
+                                    Get personalized notification for example when a token in you portfolio rises qickly or just your daily portfolio value
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card bg-dark text-center border border-white border-3 p-3">
+                    <h5 class="card-title text-white mb-3">Live Messages</h5>
+                    <i class="bi-align-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
+                             class="bi bi-chat-left-text my-3" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                            <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                        </svg>
+                    </i>
+                    <div class="card-body bg-dark">
+                        <p class="card-text">Never miss any news or updates</p>
+                        <div>
+                            <a class="btn text-white border-white" data-bs-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false"
+                               aria-controls="collapseExample4">
+                                Read More
+                            </a>
+                            <div class="collapse " id="collapseExample4">
+                                <div class="card card-body bg-dark" role="button">
+                                    Anonymously check how your investment performs agains other portfolios and look up the best performing portfolios
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Card-Group for Desktop + Ipad  -->
+        <div class="d-none d-sm-block">
+            <style>
+              .abc {
+                height: 30rem;
+              }
+            </style>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="abc card mb-5 ">
+                        <div class="card-body bg-dark border border-white border-2 p-3">
+                            <h5 class="card-title text-center">Live Token Data</h5>
+                            <div class="text-center my-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
+                                     class="bi bi-graph-up my-3 text-center" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                          d="M0 0h1v15h15v1H0V0Zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07Z"/>
+                                </svg>
+                            </div>
+                            <p class="card-text text-center">Get live token prices, stock splits and search for token by type (Crypto, Stock, ETF, Commodity, Fiat... ) or name.
+                                You can also create cutom watchlists to always track your favourite tokens and  buy them on the DeFiChain when you like the price..</p>
+                            <div class="text-center">
+                                <button class="btn btn-sm p-1.5 text-white border-1 border-white" onclick="location.href='/LivePrices'" >See More</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="abc card mb-5">
+                        <div class="card-body bg-dark border border-white border-2 p-3">
+                            <h5 class="card-title text-center">Portfolio Tracking</h5>
+                            <div class="text-center my-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="white"
+                                     class="bi bi-pie-chart-fill my-3" viewBox="0 0 16 16">
+                                    <path d="M15.985 8.5H8.207l-5.5 5.5a8 8 0 0 0 13.277-5.5zM2 13.292A8 8 0 0 1 7.5.015v7.778l-5.5 5.5zM8.5.015V7.5h7.485A8.001 8.001 0 0 0 8.5.015z"/>
+                                </svg>
+                            </div>
+                            <p class="card-text text-center">With the DeFiChain Portfolio Tracker you are always up-to-date. Whether its about stock prices recent market fluctuations or just the performance of your portfolio. It allows you to easily see and update any changes of your investments.</p>
+                            <div class="text-center">
+                                <button class="btn btn-sm p-1.5 text-white border-1 border-white" onclick="location.href='/portfolio'" >See More</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="abc card mb-5 ">
+                        <div class="card-body bg-dark border border-white border-2 p-3">
+                            <h5 class="card-title text-center">Leaderboard</h5>
+                            <div class="text-center my-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
+                                     class="bi bi-list-ol my-3" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                          d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z"/>
+                                    <path d="M1.713 11.865v-.474H2c.217 0 .363-.137.363-.317 0-.185-.158-.31-.361-.31-.223 0-.367.152-.373.31h-.59c.016-.467.373-.787.986-.787.588-.002.954.291.957.703a.595.595 0 0 1-.492.594v.033a.615.615 0 0 1 .569.631c.003.533-.502.8-1.051.8-.656 0-1-.37-1.008-.794h.582c.008.178.186.306.422.309.254 0 .424-.145.422-.35-.002-.195-.155-.348-.414-.348h-.3zm-.004-4.699h-.604v-.035c0-.408.295-.844.958-.844.583 0 .96.326.96.756 0 .389-.257.617-.476.848l-.537.572v.03h1.054V9H1.143v-.395l.957-.99c.138-.142.293-.304.293-.508 0-.18-.147-.32-.342-.32a.33.33 0 0 0-.342.338v.041zM2.564 5h-.635V2.924h-.031l-.598.42v-.567l.629-.443h.635V5z"/>
+                                </svg>
+                            </div>
+                            <p class="card-text text-center">Anonymously check how your investment performs against other portfolios and look up the best performing portfolios. Due to current Updates and calculations you will be always up-to-date</p>
+                            <div class="text-center">
+                                <button class="btn btn-sm p-1.5 text-white border-1 border-white" onclick="location.href='/Leaderboard'">See More</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="abc card mb-5">
+                        <div class="card-body bg-dark border border-white border-2 p-3">
+                            <h5 class="card-title text-center">Live Messages</h5>
+                            <div class="text-center my-5">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
+                                     class="bi bi-chat-left-text my-3" viewBox="0 0 16 16">
+                                    <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                    <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                                </svg>
+                            </div>
+                            <p class="card-text text-center">Get the latest facts, market news or even personal portfolio movements via email. Sign in to our Email-Service and never miss any kind of important information’s.
+                                Get personalized notification for example when a token in you portfolio rises qickly or just your daily portfolio value </p>
+                            <div class="text-center">
+                                <button class="btn btn-sm p-1.5 text-white border-1 border-white" onclick="location.href='/liveMessages'">See More</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="container" style="margin-bottom: 120px">
+        <div class="row my-10  text-center">
+            <div class="col-12">
+                <a class = "text-white text-decoration-none btn" id = "defi-button-mobile" href="/login">CREATE ACCOUNT</a>
+            </div>
+        </div>
+        <div class="row my-"></div>
+    </div>
+
+    </div>
+
+</main>
+
+
+
+
+
+
+<%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
+
