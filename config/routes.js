@@ -10,8 +10,9 @@
 
 module.exports.routes = {
 
-  //Routes to Pages
+  //Routes to static pages
   'GET /livePrices': { action: 'token/find-all' },
+  'GET /our-team': { action: 'about/view-our-team' },
 
 
 
