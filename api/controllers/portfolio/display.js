@@ -14,7 +14,7 @@ module.exports = {
 
   exits: {
     success: {
-      viewTemplatePath: 'pages/portfolio/index.ejs'
+      viewTemplatePath: 'pages/portfolio/portfolio-overview',
     },
     redirect: {
       responseType: 'redirect',
@@ -26,16 +26,20 @@ module.exports = {
 
   fn: async function () {
 
+    console.log("i am here")
+
     const userId = this.req.session.userId;
     // eslint-disable-next-line no-undef
     const transactions = await PortfolioTransaction.find( { owner: userId } );
     // returns a array with objects consisting of token data and the value in the portfolio
     const token = await sails.helpers.getTokenAndAmount.with( { transactions } );
     const portfolioValue =  await sails.helpers.getPortfolioAmount.with( { transactions });
-    return { token, portfolioValue }
+    console.log('token'+token);
+    console.log('p value'+portfolioValue);
+
+    return {token, portfolioValue };
 
   }
-
 
 
 };

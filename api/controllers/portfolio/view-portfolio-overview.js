@@ -21,6 +21,7 @@ module.exports = {
 
 
   fn: async function () {
+
     // eslint-disable-next-line no-undef
     const portfolio = await Portfolio.findOne({ owner: this.req.session.userId });
     //if this user does not have a portfolio let him create one
@@ -34,8 +35,6 @@ module.exports = {
     const tokenData = await sails.helpers.getTokenAndAmount.with( { transactions } );
     const portfolioValue =  await sails.helpers.getPortfolioValue.with( { transactions });
 
-    console.log(tokenData);
-    console.log(portfolioValue);
     return { tokenData, portfolioValue };
   }
 };

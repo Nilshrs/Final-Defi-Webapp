@@ -15,20 +15,22 @@ module.exports = {
   exits: {
 
     success: {
-      viewTemplatePath: 'pages/portfolio/portfolio-overview.ejs'
-    }
-
+      responseType: 'redirect',
+      //viewTemplatePath: 'pages/portfolio/portfolio-overview.ejs'
+    },
   },
 
   fn: async function ( { amount } ) {
 
     const session = this.req.session;
-    const trans = this.req.session.trans
-    const tokenId = trans.tokenData.id
+    const trans = this.req.session.trans;
+    const tokenId = trans.tokenData.id;
 
-    const portfolio = await Portfolio.findOne({owner: session.userId})
-    sails.log.debug("Portolfio:" + portfolio)
-    sails.log.debug("UserID:" + session.userId)
+    // eslint-disable-next-line no-undef
+    const portfolio = await Portfolio.findOne({owner: session.userId});
+    sails.log.debug('Portolfio:' + portfolio);
+    sails.log.debug('UserID:' + session.userId);
+    // eslint-disable-next-line no-undef
     const promise = await PortfolioTransaction.create({
       portfolio: portfolio.id,
       token: tokenId,
@@ -36,7 +38,9 @@ module.exports = {
       value: trans.tokenData.price * amount
     }).fetch();
 
-    console.log(promise)
+    console.log(promise);
+
+    return ('/portfolio');
 
 
     //TODO check if the selected token value would be negativ and if yes display a warning and let the user retry
