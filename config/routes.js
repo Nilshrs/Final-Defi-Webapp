@@ -89,6 +89,7 @@ module.exports.routes = {
   'GET /our-team': { action: 'about/view-our-team' },
   'GET /leaderboard': { action: 'leaderboard/view-leaderboard' },
   'GET /live-messages': { action: 'live-messages/view-live-messages' },
+  'GET /pie-chart': { action: 'pie-chart/view-pie-chart' },
 
   //Routes to watchlist
   'GET /watchlist/all': { action: 'watchlist/find-all'},
@@ -97,6 +98,9 @@ module.exports.routes = {
   'GET /watchlist/add-token/:tokenId': { action: 'watchlist/add-token' },
   'GET /watchlist/remove-token/:tokenId' : { action: 'watchlist/remove-token' },
   'POST /watchlist/SearchToken/' : { action: 'watchlist/find-by-name' },
+
+  'GET /watchlist/create': { action: 'watchlist/view-create-favorite-list' },
+
 
   //Routes to static pages
 
