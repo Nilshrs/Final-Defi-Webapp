@@ -3,9 +3,7 @@ module.exports = {
 
   friendlyName: 'Remove token',
 
-
   description: '',
-
 
   inputs: {
 
@@ -15,31 +13,34 @@ module.exports = {
 
 
   exits: {
+    success: {
+      responseType: 'redirect'
+    },
 
     notFound: {
       description: 'No Token with the specified ID was found in the database.',
       responseType: 'notFound'
     }
-
   },
 
 
-  fn: async function (inputs) {
+  fn: async function ( { tokenId } ) {
+    console.log('Trying to delete token from watchlist with id ' + tokenId );
 
-    console.log(inputs);
-    console.log('Trying to delete token from watchlist with id ' + inputs.tokenId );
+    // eslint-disable-next-line no-undef
+    const watchlist = await WatchList.findOne( { owner: this.req.session.userId });
 
-    //const token = await Token.findOne({id: inputs.tokenId});
+    // eslint-disable-next-line no-undef
+    const deletedTokenWatchlistPair =  await WatchList.removeFromCollection(watchlist.id, 'tokens', tokenId );
 
-    //console.log(token);
+    console.log(deletedTokenWatchlistPair)
 
-    const record = await WatchList.destroy( { token: inputs.tokenId } ).fetch();
-
-    if( record.length === 0) {
-      throw { invalid: { error: 'Record does not exist' } };
+    if(deletedTokenWatchlistPair) {
+      console.log('Oh error');
+      console.log(deletedTokenWatchlistPair);
+      throw { notFound: { error: 'Record does not exist' } };
     }
-    this.res.redirect('/watchlist');
+
+    return('/watchlist');
   }
-
-
 };

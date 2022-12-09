@@ -1,5 +1,3 @@
-const got = require('got');
-
 module.exports = {
 
 
@@ -22,13 +20,13 @@ module.exports = {
   fn: async function () {
 
 
-    console.log("Running code from action token/insert-or-update.js ")
+    console.log('Running code from action token/insert-or-update.js ');
 
     // code to insert or update token when visiting homepage
     const tokenPricesURL = 'https://ocean.defichain.com/v0/mainnet/prices?size=150';
 
     //npm install got@7.1.0 use this old version to use require...
-    const got = require('got')
+    const got = require('got');
 
 
 

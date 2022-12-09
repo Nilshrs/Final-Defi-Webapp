@@ -1,10 +1,9 @@
-// eslint-disable-next-line no-undef
 parasails.registerPage('portfolio-overview', {
   //  ╦╔╗╔╦╔╦╗╦╔═╗╦    ╔═╗╔╦╗╔═╗╔╦╗╔═╗
   //  ║║║║║ ║ ║╠═╣║    ╚═╗ ║ ╠═╣ ║ ║╣
   //  ╩╝╚╝╩ ╩ ╩╩ ╩╩═╝  ╚═╝ ╩ ╩ ╩ ╩ ╚═╝
   data: {
-    tokenData: 'y',
+    tokenData: ''
     //portfolioValue: undefined
     //…
   },
@@ -107,7 +106,7 @@ parasails.registerPage('portfolio-overview', {
       //render block
 
       // eslint-disable-next-line no-undef
-       new Chart(
+      new Chart(
         myChart,
         config
       );

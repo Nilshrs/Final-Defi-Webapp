@@ -14,14 +14,6 @@ module.exports = {
 
     owner: { model: 'user' },
 
-    //TODO tyoe float
-    valueInDollar : { type: 'number', allowNull: false, defaultsTo: 0 },
-    
-    
-
-    //tokens : { collection: 'token', via: 'portfolio' }
-
-
   }
 };
 

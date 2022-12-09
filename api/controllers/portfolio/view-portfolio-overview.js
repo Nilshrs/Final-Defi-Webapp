@@ -17,7 +17,7 @@ module.exports = {
       description: 'Requesting user has no portfolio, so redirect to the create portfolio page'
     },
 
-  },
+  },    
 
 
   fn: async function () {

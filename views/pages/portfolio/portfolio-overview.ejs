@@ -1,19 +1,12 @@
-
-
 <div id="portfolio-overview" v-cloak>
-
-
-
-
 
     <div class="container">
         <a class="text-white text-decoration-none " href="/welcome">❮</a>
         <h1>Your Portfolio </h1>
 
-
         <canvas  id="myChart"></canvas>
 
-            <h3 class="text-center mt-5"> <%=portfolioValue%>$</h3>
+        <h3 class="text-center mt-5"> <%- portfolioValue %>$</h3>
     </div>
 
     <div class="container tbl-container">
@@ -53,11 +46,15 @@
         </div>
     </div>
 </div>
-
     <!-- Needs to be there to be queried by function createChart() in portfolio-overview.page-js !-->
     <div id ="token" hidden="hidden" >
         <%= JSON.stringify(tokenData);  %>
     </div>
-
 </div>
 
+
+<script>
+    let a = '<%- JSON.stringify(tokenData) %>'  ;
+    a = JSON.parse(a);
+    console.log(a);
+</script>
