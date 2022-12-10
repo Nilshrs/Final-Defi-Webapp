@@ -13,12 +13,14 @@ module.exports = {
 
 
   exits: {
+    success:{
+      viewTemplatePath: 'pages/dashboard/welcome'
+    }
 
   },
 
 
   fn: async function () {
-
 
     console.log('Running code from action token/insert-or-update.js ');
 
@@ -27,6 +29,7 @@ module.exports = {
 
     //npm install got@7.1.0 use this old version to use require...
     const got = require('got');
+
 
 
 
@@ -62,6 +65,7 @@ module.exports = {
 
         //TODO exeption handling
         await sails.helpers.tokenUpdateOrCreate( criteria, values );
+
 
       }
     }).catch( error => {
