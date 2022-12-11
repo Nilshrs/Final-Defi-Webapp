@@ -27,10 +27,10 @@ module.exports = {
 
     await Token.findOne( criteria ).then( async (result) => {
           if (result) {
-            console.log("Updated Price:" + values.symbol);
+            console.log('Updated Price:' + values.symbol);
             await Token.update(criteria, values);
           } else {
-            console.log("inserted new Token: " + values.symbol);
+            console.log('inserted new Token: ' + values.symbol);
             await Token.create(values);
           }
         }

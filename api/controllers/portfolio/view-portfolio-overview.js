@@ -33,7 +33,8 @@ module.exports = {
     // eslint-disable-next-line no-undef
     const transactions = await PortfolioTransaction.find( { portfolio: portfolio.id } );
     const tokenData = await sails.helpers.getTokenAndAmount.with( { transactions } );
-    const portfolioValue =  await sails.helpers.getPortfolioValue.with( { transactions });
+    let portfolioValue =  await sails.helpers.getPortfolioValue.with( { transactions });
+    portfolioValue = portfolioValue.toFixed(2);
 
     return { tokenData, portfolioValue };
   }

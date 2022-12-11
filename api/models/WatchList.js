@@ -12,6 +12,12 @@ module.exports = {
 
     name: { type: 'string', allowNull: false, required: true },
     token: { model: 'token'},
+    owner: { model: 'user' },
+
+    tokens: {
+      collection: 'token',
+      via: 'watchlists'
+    }
 
 
 

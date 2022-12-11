@@ -31,7 +31,7 @@ module.exports = {
     }else {
       console.log('SHIT');
     }
-    //return with view
+    //return with route
     return ('/portfolio');
   }
 };

@@ -20,10 +20,11 @@
         <cloud-error v-else-if="cloudError"></cloud-error>
         <div class="form-group">
           <ajax-button :syncing="syncing" class="btn-dark btn-lg btn-block">Sign in</ajax-button>
+            <button  class="btn-dark btn-lg btn " onclick="location.href='/signup'">Create Account</button>
+
         </div>
       </ajax-form>
-        <button  class="btn-dark btn-lg btn-block" onclick="location.href='/signup'">Create Account</button>
-        <p class="text-center"><a href="/password/forgot">Forgot your password?</a></p>
+        <p class="text-center"> <a class="text-nowrap noHover " href="/password/forgot">Forgot your password?</a> </p>
     </div>
   </div>
 </div>

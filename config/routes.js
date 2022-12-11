@@ -13,13 +13,13 @@ module.exports.routes = {
   //  ╦ ╦╔═╗╔╗ ╔═╗╔═╗╔═╗╔═╗╔═╗
   //  ║║║║╣ ╠╩╗╠═╝╠═╣║ ╦║╣ ╚═╗
   //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
-  'GET /':                   { action: 'view-homepage-or-redirect' },
+  'GET /':                   { action: 'static-pages/view-homepage-or-redirect' },
   'GET /welcome/:unused?':   { action: 'dashboard/view-welcome' },
 
-  'GET /faq':                { action:   'view-faq' },
-  'GET /legal/terms':        { action:   'legal/view-terms' },
-  'GET /legal/privacy':      { action:   'legal/view-privacy' },
-  'GET /contact':            { action:   'view-contact' },
+  'GET /faq':                { action:  'static-pages/view-faq' },
+  'GET /legal/terms':        { action:  'legal/view-terms' },
+  'GET /legal/privacy':      { action:  'legal/view-privacy' },
+  'GET /contact':            { action:  'static-pages/view-contact' },
 
   'GET /signup':             { action: 'entrance/view-signup' },
   'GET /email/confirm':      { action: 'entrance/confirm-email' },
@@ -86,12 +86,13 @@ module.exports.routes = {
   //Routes to dynamic pages
   // TODO livePrices route not working
   'GET /livePrices': { action: 'token/find-all' },
-  'GET /our-team': { action: 'about/view-our-team' },
   'GET /leaderboard': { action: 'leaderboard/view-leaderboard' },
   'GET /live-messages': { action: 'live-messages/view-live-messages' },
   'GET /pie-chart': { action: 'pie-chart/view-pie-chart' },
 
   //Routes to watchlist
+  'GET /create-watchlist': { action: 'watchlist/view-create-watchlist' },
+  'POST /watchlist/create-watchlist': { action: 'watchlist/create-watchlist'},
   'GET /watchlist/all': { action: 'watchlist/find-all'},
   'GET /watchlist/add' : { action: 'watchlist/display-token-with-add-button'},
   'GET /watchlist': { action: 'watchlist/find-all'},
@@ -103,7 +104,7 @@ module.exports.routes = {
 
 
   //Routes to static pages
-
+  'GET /our-team': { action: 'static-pages/view-our-team' },
 
 
 

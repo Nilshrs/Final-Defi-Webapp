@@ -1,19 +1,12 @@
-
-
 <div id="portfolio-overview" v-cloak>
-
-
-
-
 
     <div class="container">
         <a class="text-white text-decoration-none " href="/welcome">❮</a>
         <h1>Your Portfolio </h1>
 
-
         <canvas  id="myChart"></canvas>
 
-            <h3 class="text-center mt-5"> <%=portfolioValue%>$</h3>
+        <h3 class="text-center mt-5"> <%- portfolioValue %>$</h3>
     </div>
 
     <div class="container tbl-container">
@@ -23,11 +16,14 @@
                     <thead class="sticky-top">
                     <tr class="info">
                         <th>Token</th>
-                        <th>Currency</th>
-                        <th>Price</th>
+                        <th>Amount</th>
+                        <th>Value</th>
+                        <th>Change</th>
+                        <th>%</th>
                         <th></th>
                     </tr>
                     </thead>
+
 
                     <tbody >
                         <% if (tokenData) { %>
@@ -40,7 +36,21 @@
                                         <%= token.amount; %>
                                     </td>
                                     <td>
-                                        <%= token.value; %>
+                                        <%= token.currentValue; %>$
+                                    </td>
+                                    <% if (token.profitInUSD > 0) { %>
+                                        <td style="color: green">
+                                    <% } else { %>
+                                        <td style ="color: red">
+                                    <% } %>
+                                        <%- token.profitInUSD %>$
+                                    </td>
+                                    <% if (token.profitInPercent > 0) { %>
+                                    <td style="color: green">
+                                        <% } else { %>
+                                    <td style ="color: red">
+                                        <% } %>
+                                        <%= token.profitInPercent; %>%
                                     </td>
                                     <td>
                                         <a class="text-nowrap" href="/trans-02/<%=token.id%>">+/-</a>
@@ -53,11 +63,15 @@
         </div>
     </div>
 </div>
-
     <!-- Needs to be there to be queried by function createChart() in portfolio-overview.page-js !-->
     <div id ="token" hidden="hidden" >
         <%= JSON.stringify(tokenData);  %>
     </div>
-
 </div>
 
+
+<script>
+    let a = '<%- JSON.stringify(tokenData) %>'  ;
+    a = JSON.parse(a);
+    console.log(a);
+</script>

@@ -19,6 +19,11 @@ module.exports = {
 
     price: { type: 'number', required: true },
 
+    watchlists: {
+      collection: 'watchlist',
+      via: 'tokens'
+    }
+
     //data: { type: 'json', allowNull: false, required: true },
 
     //watchlists: { model: 'watchlist', via: 'tokens' }

@@ -15,28 +15,24 @@ module.exports = {
 
   exits: {
 
+    success: {
+      responseType: 'redirect'
+    }
+
   },
 
 
-  fn: async function (inputs) {
-
-    //TODO do with name that the user created
-    const record = await  WatchList.create( {
-      token: inputs.tokenId,
-      name: 'Test Watchlist'
-    }).fetch();
-
-    console.log(record);
+  fn: async function ( { tokenId } ) {
 
 
-    if( record.length === 0 ){
-      throw { invalid: { error: ' Failed adding token to watchlist ' } };
-    } else {
-      console.log(' Added token' +  ' to watchlist ');
-    }
+    // eslint-disable-next-line no-undef
+    const watchlist = await WatchList.findOne( { owner: this.req.session.userId } );
 
-    this.res.redirect('/watchlist');
+    // eslint-disable-next-line no-undef
+    const watchlistTokenPair = await WatchList.addToCollection(watchlist.id, 'tokens', tokenId);
 
-    //this.res.view('pages/watchlist/all-Items');
+    console.log(watchlistTokenPair);
+
+    return ('/watchlist');
   }
 };

@@ -21,8 +21,7 @@ module.exports.policies = {
   'legal/view-terms': true,
   'legal/view-privacy': true,
   'deliver-contact-form-message': true,
-  'portfolio/*': true,
-  'about/*': true,
-  'token/*': true,
+  'static-pages/*': true,
+  'token/*': true
 
 };
