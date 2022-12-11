@@ -24,12 +24,13 @@ module.exports = {
 
   fn: async function ( { token } ) {
 
+    // eslint-disable-next-line no-undef
     const tokenData = await Token.findOne( {id: token });
-    this.req.session.trans['tokenData'] = tokenData ;
+    this.req.session.trans['tokenData'] = tokenData;
 
-    console.log(this.req.session)
+    console.log(this.req.session);
 
-    return { tokenData }
+    return { tokenData };
 
 
 

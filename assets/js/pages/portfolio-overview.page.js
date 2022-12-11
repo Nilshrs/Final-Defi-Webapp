@@ -46,7 +46,7 @@ parasails.registerPage('portfolio-overview', {
 
       token.forEach((token) => {
         labels.push(token.symbol);
-        usdValue.push(token.value);
+        usdValue.push(token.currentValue);
         tokenAmount.push(token.amount);
       });
 
