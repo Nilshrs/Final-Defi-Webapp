@@ -100,8 +100,6 @@ module.exports.routes = {
   'GET /watchlist/remove-token/:tokenId' : { action: 'watchlist/remove-token' },
   'POST /watchlist/SearchToken/' : { action: 'watchlist/find-by-name' },
 
-  'GET /watchlist/create': { action: 'watchlist/view-create-favorite-list' },
-
 
   //Routes to static pages
   'GET /our-team': { action: 'static-pages/view-our-team' },
