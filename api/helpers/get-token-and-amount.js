@@ -25,25 +25,27 @@ module.exports = {
   fn: async function ( {transactions} ) {
     // Get token and value.
     // eslint-disable-next-line no-undef
-    const tokenAndAmount = new Map();
+    const amountByTokenSymbol = new Map();
+    const tokenData = [];
 
     for (const transaction of transactions) {
       // eslint-disable-next-line no-undef
-      let tokenData = await Token.findOne({id: transaction.token});
-
-      //TODO do not use all of the token data because price is chaining and then it is not the same key
-      if (!tokenAndAmount.has(tokenData)) {
-        tokenAndAmount.set(tokenData, 0);
+      let token = await Token.findOne({id: transaction.token});
+      if (!amountByTokenSymbol.has(token.symbol)) {
+        amountByTokenSymbol.set(token.symbol, 0);
+        tokenData.push(token);
       }
-      tokenAndAmount.set(tokenData, tokenAndAmount.get(tokenData) + transaction.amount);
+      amountByTokenSymbol.set(token.symbol, amountByTokenSymbol.get(token.symbol) + transaction.amount);
     }
-    // return an Array with Token like this{ symbol: "TSLA-USD, price: 55... , value: 555, amount: 10}
-    return Array
-      .from(tokenAndAmount)
-      .map(([tokenData, amount]) => {
-        // Use Object.assign() to merge the amount and value into the tokenData object
-        return Object.assign({}, tokenData, {amount, value: tokenData.price * amount});
-      });
+    tokenData.forEach( token => {
+      token['amount'] = amountByTokenSymbol.get(token.symbol);
+      token['value'] = amountByTokenSymbol.get(token.symbol) * token.price;
+    } );
+
+
+    console.log(tokenData)
+
+    return ( tokenData );
   }
 };
 

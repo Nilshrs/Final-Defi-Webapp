@@ -14,7 +14,7 @@ module.exports = {
 
   exits: {
     success:{
-      viewTemplatePath: 'pages/dashboard/welcome'
+      viewTemplatePath: 'pages/homepage'
     }
 
   },
