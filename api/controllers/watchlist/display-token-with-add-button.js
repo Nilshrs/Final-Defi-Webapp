@@ -30,6 +30,7 @@ module.exports = {
     // eslint-disable-next-line no-undef
     const watchlist = await WatchList.findOne( { owner: this.req.session.userId} ).populate('tokens');
 
+
     const tokenAlreadyInWatchlist = [];
     watchlist.tokens.forEach( token => {
       tokenAlreadyInWatchlist.push(token.id);

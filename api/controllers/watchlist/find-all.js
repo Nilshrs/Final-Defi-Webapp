@@ -30,14 +30,16 @@ module.exports = {
     // eslint-disable-next-line no-undef
     const watchlist = await WatchList.findOne( { owner: this.req.session.userId} ).populate('tokens');
 
-    console.log(watchlist);
 
     if(!watchlist){
       console.log('User has no watchlist');
       throw { redirect: '/create-watchlist' };
     }
 
-    return({ tokenData: watchlist.tokens } );
+    console.log(watchlist);
+    const name = watchlist.name;
+
+    return({ tokenData: watchlist.tokens, name: name } );
 
     //const watchlistItems = await WatchList.find( {  } );
 
