@@ -37,6 +37,8 @@ parasails.registerPage('portfolio-overview', {
       let tokenDataRaw = document.getElementById('token');
       let token = JSON.parse(tokenDataRaw.innerText);
 
+      const portfolioValue =document.getElementById("pV").innerText;
+
 
       const labels = [];
       const usdValue = [];
@@ -56,60 +58,97 @@ parasails.registerPage('portfolio-overview', {
           label,
           data: usdValue,
           backgroundColor: [
-            'rgba(255,99,132,0.4)',
-            'rgba(54, 162, 235, 0.5)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(216,2,255,0.2)',
-            'rgb(26,139,31)',
-            'rgba(136,42,153,0.2)',
-            'rgba(215,0,255,0.2)',
-            'rgba(255,255,255,0.2)',
+            'rgb(246,82,138,0.5)',
+            'rgb(222,102,173,0.5)',
+            'rgb(239,124,245,0.5)',
+            'rgb(183,102,222,0.5)',
+            'rgb(170,115,250,0.5)',
+            'rgb(121,88,245,0.5)',
+            'rgb(64,69,150,0.5)',
+            'rgb(31,31,94,0.5)',
+            'rgb(28,28,75,0.5)',
 
           ],
           borderColor: [
-            'rgba(255,99,132,1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(215,0,255,0.2)',
-            'rgba(215,0,255,0.2)',
-            'rgba(215,0,255,0.2)',
-            'rgba(215,0,255,0.2)',
-            'rgba(215,0,255,0.2)',
+            'rgb(246,82,138,0.5)',
+            'rgb(222,102,173,0.5)',
+            'rgb(239,124,245,0.5)',
+            'rgb(183,102,222,0.5)',
+            'rgb(170,115,250,0.5)',
+            'rgb(121,88,245,0.5)',
+            'rgb(64,69,150,0.5)',
+            'rgb(31,31,94,0.5)',
+            'rgb(28,28,75,0.5)',
           ],
           borderWidth: 1,
-          responsive: false,
+          responsive: true,
+          cutout: '90%',
+          borderRadius: 0,
+          hoverOffset: 5
         }]
       };
 
+      const centerText = {
+        id: 'centerText',
+        afterDatasetsDraw(chart,args,pluginOptions) {
+          const {ctx, data} = chart;
+
+
+          ctx.save();
+
+          const x = chart.getDatasetMeta(0).data[0].x;
+          const y = chart.getDatasetMeta(0).data[0].y;
+
+          ctx.textAlign = 'center';
+
+          ctx.font = ' 25px sans-serif';
+          ctx.fillStyle = 'white';
+          ctx.fillText(portfolioValue, x, y);
+
+        }
+      };
+
+      /*
       const options = {
 
         plugins: {
           legend: {
-            display: false
+            title: {
+              display: true,
+              text: 'Title'
+            },
+            display: true
           }
         }
       };
+
+       */
+
 
       //config
       const config = {
         type: 'doughnut',
         data,
-        options
-      };
+        options: {
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        },
+        plugins: [centerText]
+        };
 
       // eslint-disable-next-line no-undef
 
-      let myChart =document.getElementById('myChart');
+      let myChart =document.getElementById('myChart').getContext('2d');
 
-      //render block
+      //render blocks
 
       // eslint-disable-next-line no-undef
-      new Chart(
-        myChart,
-        config
-      );
+      // eslint-disable-next-line no-undef
+      let chart =new Chart( myChart, config );
+
 
 
 

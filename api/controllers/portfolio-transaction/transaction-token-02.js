@@ -26,6 +26,9 @@ module.exports = {
 
     // eslint-disable-next-line no-undef
     const tokenData = await Token.findOne( {id: token });
+
+
+
     this.req.session.trans['tokenData'] = tokenData;
 
     console.log(this.req.session);
