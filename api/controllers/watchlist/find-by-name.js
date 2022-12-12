@@ -23,10 +23,11 @@ module.exports = {
 
     console.log('Trying to find token by name ' + inputs.name);
     // All done.
-    const tokens = await Token.find( { name: inputs.name } );
+    // eslint-disable-next-line no-undef
+    const tokens = await Token.find( { name: { startsWith: inputs.name } } );
 
     if(tokens.length === 0){
-      this.res.redirect('/livePrices');
+      this.res.redirect('/watchlist/add');
       return;
     }
 

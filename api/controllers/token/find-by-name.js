@@ -23,7 +23,7 @@ module.exports = {
 
     console.log('Trying to find token by name ' + inputs.name);
     // All done.
-    const tokens = await Token.find( { name: inputs.name } );
+    const tokens = await Token.find( { name: {startsWith: inputs.name }  } );
 
 
     if(tokens.length === 0){
