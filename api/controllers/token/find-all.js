@@ -21,7 +21,7 @@ module.exports = {
     console.log('Trying to find tokens');
 
   //TODO change to load out of DB
-    const tokens = await Token.find( {} );
+    const tokens = await Token.find( { name: { startsWith: 't' } });
 
     if( tokens.length === 0 ) {
       throw { invalid: {error: 'No token found' } };

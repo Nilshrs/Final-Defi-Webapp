@@ -36,7 +36,7 @@ module.exports = {
       // Find the token associated with the current transaction
       // eslint-disable-next-line no-undef
       let token = await Token.findOne({id: transaction.token});
-      console.log(token);
+      //console.log(token);
       // Calculate the current value and buy value for the token
       let currentValue = ( token.price * transaction.amount );
       let buyValue = transaction.value;
@@ -63,14 +63,14 @@ module.exports = {
         tokenData.pop(token);
       }else {
 
-      console.log(tokenMap);
+      //console.log(tokenMap);
       token['amount'] = tokenMap.amount;
       token['currentValue'] = tokenMap.currentValue;
       token['profitInUSD'] = Number((tokenMap.currentValue -tokenMap.buyValue).toFixed(2));
       token['profitInPercent'] =Number( ((tokenMap.currentValue - tokenMap.buyValue) / tokenMap.currentValue * 100).toFixed(2));
     } });
 
-    console.log(tokenData);
+    //console.log(tokenData);
 
     return ( tokenData );
   }

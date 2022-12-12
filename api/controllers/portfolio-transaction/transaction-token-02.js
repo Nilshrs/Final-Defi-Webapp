@@ -26,14 +26,28 @@ module.exports = {
 
     // eslint-disable-next-line no-undef
     const tokenData = await Token.findOne( {id: token });
-
-
-
     this.req.session.trans['tokenData'] = tokenData;
 
-    console.log(this.req.session);
+    const portfolio = await Portfolio.findOne( {owner : this.req.session.userId} );
+    const transactions = await PortfolioTransaction.find( { portfolio: portfolio.id, token} );
+
+    if(transactions){
+      const transData= await sails.helpers.getTokenAndAmount.with( { transactions } );
+      return { transData, tokenData};
+    }
 
     return { tokenData };
+
+
+
+    //let result= portfolioTokenData.filter(obj => obj.id === token);
+
+    //console.log(result.at(0).amount);
+
+
+
+    //console.log(this.req.session);
+
 
 
 
