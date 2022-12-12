@@ -58,6 +58,7 @@ module.exports.datastores = {
     host: '193.196.53.194',
     database: 'defichain_test'
 
+
   },
 
 

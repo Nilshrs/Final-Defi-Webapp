@@ -19,8 +19,7 @@ module.exports = {
 
   fn: async function () {
 
-    const user = await User.findOne({id: this.req.session.userId})
-    console.log(user.fullName)
+    const user = await User.findOne({id: this.req.session.userId});
 
     return { userName: user.fullName};
 
