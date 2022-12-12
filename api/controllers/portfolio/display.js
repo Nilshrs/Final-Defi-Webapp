@@ -26,7 +26,7 @@ module.exports = {
 
   fn: async function () {
 
-    console.log('i am here')
+
 
     // eslint-disable-next-line no-undef
     const transactions = await PortfolioTransaction.find( { owner: this.req.session.userId } );

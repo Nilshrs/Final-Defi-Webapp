@@ -58,12 +58,17 @@ module.exports = {
     // Loop through the tokens and calculate their profit in USD and percent
     tokenData.forEach( token => {
       let tokenMap = dataByTokenSymbol.get(token.symbol);
+
+      if(tokenMap.amount === 0) {
+        tokenData.pop(token);
+      }else {
+
       console.log(tokenMap);
       token['amount'] = tokenMap.amount;
       token['currentValue'] = tokenMap.currentValue;
       token['profitInUSD'] = Number((tokenMap.currentValue -tokenMap.buyValue).toFixed(2));
       token['profitInPercent'] =Number( ((tokenMap.currentValue - tokenMap.buyValue) / tokenMap.currentValue * 100).toFixed(2));
-    } );
+    } });
 
     console.log(tokenData);
 

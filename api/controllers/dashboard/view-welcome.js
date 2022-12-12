@@ -19,7 +19,10 @@ module.exports = {
 
   fn: async function () {
 
-    return {};
+    const user = await User.findOne({id: this.req.session.userId})
+    console.log(user.fullName)
+
+    return { userName: user.fullName};
 
   }
 

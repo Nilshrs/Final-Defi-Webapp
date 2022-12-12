@@ -37,7 +37,7 @@ module.exports = {
       throw { redirect: '/create-watchlist' };
     }
 
-    return({ tokenData: watchlist.tokens } );
+    return({ tokenData: watchlist.tokens, watchlistName: watchlist.name} );
 
     //const watchlistItems = await WatchList.find( {  } );
 
