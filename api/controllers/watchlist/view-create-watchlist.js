@@ -12,11 +12,11 @@ module.exports = {
     success: {
       viewTemplatePath: 'pages/watchlist/create-watchlist'
     }
-
   },
 
 
   fn: async function () {
+
 
     // Respond with view.
     return {};
