@@ -88,6 +88,7 @@ module.exports.routes = {
   'GET /livePrices': { action: 'token/find-all' },
   'GET /leaderboard': { action: 'leaderboard/view-leaderboard' },
   'GET /live-messages': { action: 'live-messages/view-live-messages' },
+  'GET /pie-chart': { action: 'pie-chart/view-pie-chart' },
 
   //Routes to watchlist
   'GET /create-watchlist': { action: 'watchlist/view-create-watchlist' },
@@ -98,6 +99,7 @@ module.exports.routes = {
   'GET /watchlist/add-token/:tokenId': { action: 'watchlist/add-token' },
   'GET /watchlist/remove-token/:tokenId' : { action: 'watchlist/remove-token' },
   'POST /watchlist/SearchToken/' : { action: 'watchlist/find-by-name' },
+
 
   //Routes to static pages
   'GET /our-team': { action: 'static-pages/view-our-team' },
