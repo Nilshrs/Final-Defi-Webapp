@@ -9,7 +9,7 @@ module.exports = {
 
   attributes: {
 
-    type: { type: 'string',  required: false, isIn: ['stock', 'crypto', 'etf', 'commodity'] },
+    type: { type: 'string',  required: false, isIn: ['stock', 'crypto', 'etf', 'commodity', 'N/A'] },
 
     name: { type: 'string', required: true },
 
