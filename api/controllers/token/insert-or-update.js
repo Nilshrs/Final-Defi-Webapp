@@ -56,6 +56,7 @@ module.exports = {
 
         let criteria = { symbol: token.id };
         let values = {
+          type: getTokenType(token.id),
           symbol: token.id,
           name: token.price.token,
           currency: token.price.currency,
@@ -78,3 +79,6 @@ module.exports = {
 
 
 };
+
+
+

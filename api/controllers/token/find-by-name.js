@@ -25,6 +25,7 @@ module.exports = {
     // All done.
     const tokens = await Token.find( { name: inputs.name } );
 
+
     if(tokens.length === 0){
       this.res.redirect('/livePrices');
       return;
