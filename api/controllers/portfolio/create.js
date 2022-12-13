@@ -32,6 +32,6 @@ module.exports = {
       console.log('SHIT');
     }
     //return with route
-    return ('/portfolio');
+    return ('/trans');
   }
 };
