@@ -1,6 +1,11 @@
-
-
 <main>
+    <div class="container mb-5">
+        <form action="/portfolio/searchToken" method="post">
+            <div class="form-outline">
+                <input name="name" type="text" type="search" class="form-control" placeholder="search" pattern="^[a-zA-Z]{1,10}$" required>
+            </div>
+        </form>
+    </div>
 
     <div class="container tbl-container">
         <div class="row tbl-fixed">
@@ -29,7 +34,7 @@
                                     <%= token.price; %>
                                 </td>
                                 <td>
-                                    <a href="/trans-02/<%=token.id%>"> Add </a>
+                                    <a class="text-decoration-none" style="color: greenyellow" href="/trans-02/<%=token.id%>"> Add </a>
                                 </td>
                             </tr>
                     <% }); }%>
