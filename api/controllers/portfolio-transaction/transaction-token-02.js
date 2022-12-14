@@ -31,12 +31,14 @@ module.exports = {
     const portfolio = await Portfolio.findOne( {owner : this.req.session.userId} );
     const transactions = await PortfolioTransaction.find( { portfolio: portfolio.id, token} );
 
+    const tokenType = this.req.session.trans.type;
+
     if(transactions[0]){
       const transData= await sails.helpers.getTokenAndAmount.with( { transactions } );
-      return { transData, tokenData};
+      return { transData, tokenData, tokenType};
     }
 
-    return { tokenData, transData: 0  };
+    return { tokenData, transData: 0, tokenType };
 
 
 

@@ -79,7 +79,7 @@ module.exports = {
 
     tokenData = tokenData.filter(token => !toDelete.has(token.id));
 
-    tokenData[0]['totalProfit'] = totalProfit;
+    tokenData[0]['totalProfit'] = Number(totalProfit.toFixed(2));
 
     return (tokenData);
   }

@@ -34,7 +34,7 @@ module.exports = {
     //TODO change that to view only the token with the categorie
     // eslint-disable-next-line no-undef
     const tokens = await Token.find( { type } );
-    return { tokens };
+    return { tokens, type };
   }
 
 
