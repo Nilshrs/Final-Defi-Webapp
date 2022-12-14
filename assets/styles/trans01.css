@@ -1,7 +1,8 @@
 .row #card-column{
 
   margin-bottom: 25px;
-  background: linear-gradient(-60deg,#8700ff 0, #ff1493 100%);
+  border-radius: 25px;
+  border: 2px solid white;
 }
 
 .container-sm {
