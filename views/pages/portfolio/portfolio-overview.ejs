@@ -13,9 +13,7 @@
             <div class="col-3 ">
                     <a href="/trans" class="text-reset btn ml-auto" id="defi-button-mobile" style="margin-right: 0">+/-</a>
                 </div>
-
             </div>
-
         </div>
 
 
@@ -40,7 +38,7 @@
                         <th>Value</th>
                         <th>Change</th>
                         <th>%</th>
-                        <th></th>
+                        <th>±</th>
                     </tr>
                     </thead>
 
@@ -73,7 +71,7 @@
                                         <%= token.profitInPercent; %>%
                                     </td>
                                     <td>
-                                        <a class="text-nowrap" href="/trans-02/<%=token.id%>">+/-</a>
+                                        <a class="text-decoration-none text-white" href="/trans-02/<%=token.id%>">±</a>
                                     </td>
                                 </tr>
                         <% }); }%>

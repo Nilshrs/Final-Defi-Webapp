@@ -21,15 +21,15 @@ module.exports = {
 
   },
 
-// This function takes an array of transactions and returns information about each transaction
-// grouped by token symbol.
+  // This function takes an array of transactions and returns information about each transaction
+  // grouped by token symbol.
   fn: async function ( {transactions} ) {
 
     // Create a new Map to store information about each token
     // eslint-disable-next-line no-undef
     const dataByTokenSymbol = new Map();
     // Create an array to store information about each token
-    const tokenData = [];
+    let tokenData = [];
 
     // Loop through the transactions
     for (const transaction of transactions) {
@@ -55,20 +55,26 @@ module.exports = {
         });
       }
     }
+
+    // eslint-disable-next-line no-undef
+    const toDelete = new Set();
     // Loop through the tokens and calculate their profit in USD and percent
-    tokenData.forEach( token => {
+    tokenData.forEach( (token, index) => {
       let tokenMap = dataByTokenSymbol.get(token.symbol);
 
       if(tokenMap.amount === 0) {
-        tokenData.pop(token);
+        toDelete.add(token.id);
       }else {
 
-      //console.log(tokenMap);
-      token['amount'] = tokenMap.amount;
-      token['currentValue'] = tokenMap.currentValue;
-      token['profitInUSD'] = Number((tokenMap.currentValue -tokenMap.buyValue).toFixed(2));
-      token['profitInPercent'] =Number( ((tokenMap.currentValue - tokenMap.buyValue) / tokenMap.currentValue * 100).toFixed(2));
-    } });
+        //console.log(tokenMap);
+        token['amount'] = tokenMap.amount;
+        token['currentValue'] = tokenMap.currentValue;
+        token['profitInUSD'] = Number((tokenMap.currentValue -tokenMap.buyValue).toFixed(2));
+        token['profitInPercent'] =Number( ((tokenMap.currentValue - tokenMap.buyValue) / tokenMap.currentValue * 100).toFixed(2));
+      } });
+
+    tokenData = tokenData.filter(token => !toDelete.has(token.id));
+    console.log(tokenData);
 
     //console.log(tokenData);
 
