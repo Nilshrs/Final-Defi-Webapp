@@ -4,9 +4,12 @@
         <div class="col-md-12">
             <p>Token Name: <%-tokenData.name%></p>
             <p>Token price: <%-tokenData.price %></p>
-            <% if( transData ) {%>
-            <p> You have <span style="color: #1ef552"><%-transData[0].amount%> </span> <%-tokenData.name%> Token with a value of <%-transData[0].currentValue%>$</p>
-            <% } %>
+            <div>
+                <% if( transData[0] ) {  %>
+                <p> You have <span style="color: #1ef552"><%-transData[0].amount%> </span> <%-tokenData.name%> Token with a value of <%-transData[0].currentValue%>$</p>
+                <% }; %>
+            </div>
+
         </div>
     </div>
     <div class="row">
