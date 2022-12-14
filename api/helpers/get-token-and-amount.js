@@ -71,8 +71,8 @@ module.exports = {
       }else {
 
         //console.log(tokenMap);
-        token['amount'] = tokenMap.amount;
-        token['currentValue'] = tokenMap.currentValue;
+        token['amount'] = Number(tokenMap.amount.toFixed(2));
+        token['currentValue'] = Number(tokenMap.currentValue.toFixed(2));
         token['profitInUSD'] = Number((tokenMap.currentValue -tokenMap.buyValue).toFixed(2));
         token['profitInPercent'] =Number( ((tokenMap.currentValue - tokenMap.buyValue) / tokenMap.currentValue * 100).toFixed(2));
       } });
