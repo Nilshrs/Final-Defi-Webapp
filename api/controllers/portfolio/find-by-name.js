@@ -40,7 +40,7 @@ module.exports = {
       throw { redirect: '/trans-01/' + type }
     }
 
-    return { tokens };
+    return { tokens, type};
 
   }
 };

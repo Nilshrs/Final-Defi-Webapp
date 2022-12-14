@@ -10,7 +10,7 @@ module.exports = {
   exits: {
 
     success: {
-      viewTemplatePath: 'pages/dynamicPages/our-team'
+      viewTemplatePath: 'pages/static-pages/our-team'
     }
 
   },
