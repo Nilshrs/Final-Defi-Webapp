@@ -6,7 +6,8 @@
         <h1>Add Token to Watchlist</h1>
     <form action="/watchlist/SearchToken" method="post">
         <div class="form-outline">
-            <input name="name" type="search" placeholder="Search" id="form1" class="form-control"/>
+            <!-- TODO fix empty string input -->
+            <input name="name" type="search" placeholder="Search" id="form1" class="form-control" pattern="^[a-zA-Z]{1,10}$" required/>
             <label class="form-label" for="form1"></label>
         </div>
     </form>

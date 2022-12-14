@@ -1,0 +1,9 @@
+.row #card-column{
+
+  margin-bottom: 25px;
+  background: linear-gradient(-60deg,#8700ff 0, #ff1493 100%);
+}
+
+.container-sm {
+  max-width: 90%;
+}
