@@ -58,9 +58,13 @@ module.exports = {
 
     // eslint-disable-next-line no-undef
     const toDelete = new Set();
+    let totalProfit = 0;
+
     // Loop through the tokens and calculate their profit in USD and percent
     tokenData.forEach( (token, index) => {
       let tokenMap = dataByTokenSymbol.get(token.symbol);
+
+      totalProfit += Number((tokenMap.currentValue -tokenMap.buyValue).toFixed(2));
 
       if(tokenMap.amount === 0) {
         toDelete.add(token.id);
@@ -75,7 +79,9 @@ module.exports = {
 
     tokenData = tokenData.filter(token => !toDelete.has(token.id));
 
-    return ( tokenData );
+    tokenData[0]['totalProfit'] = totalProfit;
+
+    return (tokenData);
   }
 };
 

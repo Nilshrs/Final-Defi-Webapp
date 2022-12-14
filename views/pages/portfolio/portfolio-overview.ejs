@@ -25,6 +25,21 @@
         </div>
     </div>
 
+<% if( tokenData[0].totalProfit ) { %>
+    <div class="container text-center font-weight-bold ">
+            <% if( tokenData[0].totalProfit >= 0 ) { %>
+                <p id="totalProfit"> Your Profit is <span style="color: green"><%- tokenData[0].totalProfit %></span> $</p>
+            <% } else if( tokenData[0].totalProfit < -99999.99 ) { %>
+                    <p id="totalProfit"> Oh, oh you lost <span style="color: red"><%- tokenData[0].totalProfit %></span> $  <br>
+                         Need Help ? <br> Here is the number for the National Suicide Prevention Lifeline: 1 800 273 </p>
+            <% } else { %>
+                <p id="totalProfit"> You already lost <span style="color: red"><%- tokenData[0].totalProfit %></span> $</p>
+            <% } %>
+    </div>
+<% }%>
+
+
+
 
 
     <div class="container tbl-container">
@@ -81,6 +96,7 @@
         </div>
     </div>
 </div>
+
     <!-- Needs to be there to be queried by function createChart() in portfolio-overview.page-js !-->
     <div id ="token" hidden="hidden" >
         <%= JSON.stringify(tokenData);  %>
@@ -102,7 +118,11 @@
   .table td:first-child {
     position: sticky;
     left: 0;
-  }
+  },
+  #totalProfit {
+    font-weight: bold;
+
+  },
 </style>
 
 
