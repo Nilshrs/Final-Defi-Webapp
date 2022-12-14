@@ -17,7 +17,13 @@
             <form action="/trans-03" method="post">
                 <div class="form-group">
                     <label for="amount">Amount:</label>
-                    <input type="number" class="form-control" id="amount" name="amount" placeholder="Enter amount" required>
+                    <% if(transData[0]) { %>
+                        <p>Negative numbers allwoed here</p>
+                        <input type="number" step=".01" class="form-control" id="amount" name="amount" placeholder="Enter amount" required min="<%- (-1) * (transData[0].amount) %>">
+                    <% } else { %>
+                        <p>No negative Numbers</p>
+                        <input type="number" step=".01" onclick="regex()" class="form-control" id="amount" name="amount" placeholder="Enter amount" required min="0" >
+                    <% }; %>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
