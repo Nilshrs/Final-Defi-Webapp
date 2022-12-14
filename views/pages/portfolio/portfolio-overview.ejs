@@ -9,8 +9,8 @@
             <div class="col-8 ">
                 <h1>Your Portfolio </h1>
             </div>
-            <div class="col-3 justify-content-end">
-                    <a href="/trans" class="text-reset btn ml-auto" id="defi-button-mobile" style="margin-right: 0">+ | -</a>
+            <div class="col-3 d-flex justify-content-end">
+                    <a href="/trans" class="text-reset btn ml-auto" id="defi-button-mobile" style="margin-right: 0">+|-</a>
             </div>
         </div>
     </div>
@@ -24,8 +24,8 @@
         </div>
     </div>
 
-<% if( tokenData[0].totalProfit ) { %>
-    <div class="container text-center font-weight-bold ">
+<% if( tokenData[0].totalProfit !== 'undefined' ) { %>
+    <div class="container text-center font-weight-bold my-sm-5 my-1 ">
             <% if( tokenData[0].totalProfit >= 0 ) { %>
                 <p id="totalProfit"> Your Profit is <span style="color: green"><%- tokenData[0].totalProfit %></span> $</p>
             <% } else if( tokenData[0].totalProfit < -99999.99 ) { %>
@@ -38,15 +38,13 @@
 <% }%>
 
 
-
-
-
     <div class="container tbl-container">
-        <div class="row tbl-fixed">
-            <div class="table">
+        <div class="row">
+            <div class="col-12">
+            <div class="table overflow-auto">
                 <table class="table table-striped table-dark">
                     <thead class="sticky-top">
-                    <tr class="info">
+                    <tr class="">
                         <th>Token</th>
                         <th>Amount</th>
                         <th>Value</th>
@@ -55,13 +53,11 @@
                         <th>±</th>
                     </tr>
                     </thead>
-
-
                     <tbody >
                         <% if (tokenData) { %>
                             <% tokenData.forEach( token => { %>
                                 <tr>
-                                    <td class="sticky">
+                                    <td style="color: palevioletred">
                                         <%= token.symbol; %>
                                     </td>
                                     <td>
@@ -93,6 +89,7 @@
                 </table>
             </div>
         </div>
+        </div>
     </div>
 </div>
 
@@ -117,11 +114,11 @@
   .table td:first-child {
     position: sticky;
     left: 0;
-  },
+  }
   #totalProfit {
     font-weight: bold;
 
-  },
+  }
 </style>
 
 

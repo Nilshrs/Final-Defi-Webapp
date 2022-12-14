@@ -2,24 +2,59 @@
 
 <main>
 
-    <div class="container tbl-container">
+
+    <div class="container tbl-container d-block d-sm-none">
         <div class="row tbl-fixed">
             <div class="table">
                 <table class="table table-striped table-dark">
                     <thead class="sticky-top">
-                    <tr class="info">
+                    <tr class="">
+                        <th>Token</th>
+                        <th>Price</th>
+                        <th> </th>
+                    </tr>
+                    </thead>
+                        <tbody >
+                        <% if (tokens) { %>
+                            <% tokens.forEach( token => { %>
+                                <tr>
+                                    <td >
+                                        <%= token.name; %> - <%= token.currency; %>
+                                    </td>
+                                    <td>
+                                        <%= token.price; %>
+                                    </td>
+                                    <td>
+                                        <a class="text-decoration-none" style="color: deeppink" href="/trans-02/<%=token.id%>">+</a>
+                                    </td>
+                                </tr>
+                        <% }); }%>
+                        </tbody>
+                    <tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Mobile Version -->
+    <div class="container tbl-container d-none d-sm-block ">
+        <div class="row tbl-fixed">
+            <div class="table">
+                <table class="table table-striped table-dark">
+                    <thead class="sticky-top">
+                    <tr class="">
                         <th>Token</th>
                         <th>Currency</th>
                         <th>Price</th>
-                        <th></th>
+                        <th> </th>
                     </tr>
                     </thead>
-
                     <tbody >
-                    <% if (tokens) { %>
+                    <%  if (tokens) { %>
                         <% tokens.forEach( token => { %>
                             <tr>
-                                <td>
+                                <td >
                                     <%= token.name; %>
                                 </td>
                                 <td>
@@ -29,7 +64,7 @@
                                     <%= token.price; %>
                                 </td>
                                 <td>
-                                    <a href="/trans-02/<%=token.id%>"> Add </a>
+                                    <a class="text-decoration-none" style="color: deeppink" href="/trans-02/<%=token.id%>">+</a>
                                 </td>
                             </tr>
                     <% }); }%>

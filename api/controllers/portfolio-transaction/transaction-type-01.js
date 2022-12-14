@@ -26,7 +26,6 @@ module.exports = {
     this.req.session.trans = {type};
 
 
-
     console.log(this.req.session);
 
     //this.req.session.trans.type = type;

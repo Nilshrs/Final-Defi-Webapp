@@ -1,11 +1,12 @@
 .tbl-container{
   max-height: fit-content;
-  margin-bottom: 10%;
+  margin-bottom: 14%;
 }
 .tbl-fixed{
-  overflow-y: scroll;
+  overflow-y: auto;
   height: fit-content;
   max-height: 90vh;
+
 
 }
 table {
@@ -13,6 +14,6 @@ table {
   border-collapse: separate;
 }
 table th {
-  position: sticky;
+;
 
 }

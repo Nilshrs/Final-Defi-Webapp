@@ -1,32 +1,33 @@
 <div class="container">
-    <h1>Token Transfer</h1>
+
+    <h1>Add Transaction:</h1>
     <div class="row">
         <div class="col-md-12">
-            <p>Token Name: <%-tokenData.name%></p>
-            <p>Token price: <%-tokenData.price %></p>
+            <p>Token:   <%-tokenData.name%> <br>
+            Price:    <%-tokenData.price %> $ </p>
             <div>
+                <% if( transData) { %>
                 <% if( transData[0] ) {  %>
-                <p> You have <span style="color: #1ef552"><%-transData[0].amount%> </span> <%-tokenData.name%> Token with a value of <%-transData[0].currentValue%>$</p>
-                <% }; %>
+                <p> You have <span style="color: #1ef552"><%-transData[0].amount%> </span> <%-tokenData.name%> with a value of <%-transData[0].currentValue%>$</p>
+                <% }}; %>
             </div>
 
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="form" >
             <form action="/trans-03" method="post">
                 <div class="form-group">
-                    <label for="amount">Amount:</label>
-                    <% if(transData[0]) { %>
-                        <p>Negative numbers allwoed here</p>
-                        <input type="number" step=".01" class="form-control" id="amount" name="amount" placeholder="Enter amount" required min="<%- (-1) * (transData[0].amount) %>">
-                    <% } else { %>
-                        <p>No negative Numbers</p>
-                        <input type="number" step=".01" onclick="regex()" class="form-control" id="amount" name="amount" placeholder="Enter amount" required min="0" >
-                    <% }; %>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                    <label class="col-sm-2 col-form-label" for="amount">Amount</label>
+                        <% if(transData[0]) { %>
+                            <input type="number" step=".01" class="form-control" id="amount" name="amount" placeholder="Enter amount" required min="<%- (-1) * (transData[0].amount) %>">
+                        <% } else { %>
+                            <input type="number" step=".01" onclick="regex()" class="form-control " id="amount" name="amount" placeholder="Enter amount" required min="0" >
+                        <% }; %>
+                    </div>
+                <button id="defi-button-mobile"type="submit" class="btn btn-primary mt-4">Submit</button>
             </form>
         </div>
     </div>
+</div>
 </div>

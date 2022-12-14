@@ -36,6 +36,7 @@ module.exports = {
     let portfolioValue =  await sails.helpers.getPortfolioValue.with( { transactions });
     portfolioValue = portfolioValue.toFixed(2);
 
+    console.log(tokenData)
     return { tokenData, portfolioValue };
   }
 };
