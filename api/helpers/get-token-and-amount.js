@@ -74,9 +74,6 @@ module.exports = {
       } });
 
     tokenData = tokenData.filter(token => !toDelete.has(token.id));
-    console.log(tokenData);
-
-    //console.log(tokenData);
 
     return ( tokenData );
   }
