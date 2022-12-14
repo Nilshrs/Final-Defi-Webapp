@@ -1,6 +1,13 @@
 
 
 <main>
+    <div class="container mb-5">
+        <form action="/portfolio/searchToken" method="post">
+            <div class="form-outline">
+                <input name="name" type="text" type="search" class="form-control" placeholder="search" pattern="^[a-zA-Z]{1,10}$" required>
+            </div>
+        </form>
+    </div>
 
 
     <div class="container tbl-container d-block d-sm-none">
@@ -47,14 +54,15 @@
                         <th>Token</th>
                         <th>Currency</th>
                         <th>Price</th>
-                        <th> </th>
+                        <th></th>
                     </tr>
                     </thead>
+
                     <tbody >
-                    <%  if (tokens) { %>
+                    <% if (tokens) { %>
                         <% tokens.forEach( token => { %>
                             <tr>
-                                <td >
+                                <td>
                                     <%= token.name; %>
                                 </td>
                                 <td>

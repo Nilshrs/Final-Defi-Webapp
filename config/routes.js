@@ -75,6 +75,7 @@ module.exports.routes = {
   'GET /portfolio' :        { action: 'portfolio/view-portfolio-overview' },
   'GET /create-portfolio':  { action: 'portfolio/view-create-portfolio' },
   'POST /create-portfolio': { action: 'portfolio/create'},
+  'POST /portfolio/searchToken': { action: 'portfolio/find-by-name' },
 
 
 
