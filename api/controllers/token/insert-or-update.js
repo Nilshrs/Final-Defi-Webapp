@@ -14,7 +14,7 @@ module.exports = {
 
   exits: {
     success:{
-      viewTemplatePath: 'pages/homepage'
+      responseType: 'redirect'
     }
 
   },
@@ -30,9 +30,6 @@ module.exports = {
     //npm install got@7.1.0 use this old version to use require...
     const got = require('got');
 
-
-
-
     //TODO use this code to be more readable
     /*try{
       const response = await got(tokenPricesURL, {json: true})
@@ -47,10 +44,13 @@ module.exports = {
       console.log(error);
     }*/
 
+    let updatedTokenCounter = 0;
+    const newToken = [];
+
     //TODO make an onther action
     await got(tokenPricesURL,{ json: true } ).then( async response => {
-      const tokens = response.body.data;
 
+      const tokens = response.body.data;
 
       for (const token of await tokens) {
 
@@ -65,15 +65,22 @@ module.exports = {
         // update token or insert token which is not in database
 
         //TODO exeption handling
-        await sails.helpers.tokenUpdateOrCreate( criteria, values );
-
+        const TokenValues = await sails.helpers.tokenUpdateOrCreate( criteria, values );
+        //console.log(TokenValues)
+        TokenValues !== 0  ? newToken.push(TokenValues) : updatedTokenCounter++;
 
       }
     }).catch( error => {
       console.log(error) ;
     });
-    // All done.
 
+    console.log("Updated Token: ", updatedTokenCounter )
+
+    if(newToken.length!==0) {
+      console.log("New Token: ", newToken)
+    }else {
+      console.log("No new token")
+    }
     function getTokenType(tokenSymbol){
       let lookUpType = {
         'TSLA-USD': 'stock',
@@ -219,6 +226,8 @@ module.exports = {
       }
       return lookUpType[tokenSymbol] ?? 'N/A'
     }
+
+    return 'back'
   }
 };
 

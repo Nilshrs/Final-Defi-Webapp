@@ -3,7 +3,7 @@ parasails.registerPage('portfolio-overview', {
   //  ║║║║║ ║ ║╠═╣║    ╚═╗ ║ ╠═╣ ║ ║╣
   //  ╩╝╚╝╩ ╩ ╩╩ ╩╩═╝  ╚═╝ ╩ ╩ ╩ ╩ ╚═╝
   data: {
-    tokenData: ''
+    tokenData:"",
     //portfolioValue: undefined
     //…
   },

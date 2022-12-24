@@ -25,19 +25,21 @@ module.exports = {
 
   fn: async function ( {criteria, values } ) {
 
-    await Token.findOne( criteria ).then( async (result) => {
-          if (result) {
-            console.log('Updated Price:' + values.symbol);
-            await Token.update(criteria, values);
-          } else {
-            console.log('inserted new Token: ' + values.symbol);
-            await Token.create(values);
-          }
+    const TokenValues  = await Token.findOne( criteria ).then( async (foundToken) => {
+      try {
+        if (foundToken) {
+          await Token.update(criteria, values);
+          return 0;
+        } else {
+          await Token.create(values);
+          return  values;
         }
-    )
-
+      }catch (e) {
+        console.log('Error with token', values.symbol);
+        console.log(e);
+      }}
+    );
+    return TokenValues;
   }
-
-
 };
 

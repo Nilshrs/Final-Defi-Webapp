@@ -24,20 +24,30 @@
         </div>
     </div>
 
-<% if( tokenData[0].totalProfit !== 'undefined' ) { %>
-    <div class="container text-center font-weight-bold my-sm-5 my-1 ">
-        <% if( tokenData[0].totalProfit == 0 ) { %>
-            <p> Update token prices to see profit/loss</p>
-            <% }else if( tokenData[0].totalProfit >= 0 ) { %>
-                <p id="totalProfit"> Your Profit is <span style="color: green"><%- tokenData[0].totalProfit %></span> $</p>
-            <% } else if( tokenData[0].totalProfit < -99999.99 ) { %>
-                    <p id="totalProfit"> Oh, oh you lost <span style="color: red"><%- tokenData[0].totalProfit %></span> $  <br>
-                         Need Help ? <br> Here is the number for the National Suicide Prevention Lifeline: 1 800 273 </p>
-            <% } else { %>
-                <p id="totalProfit"> You already lost <span style="color: red"><%- tokenData[0].totalProfit %></span> $</p>
-            <% }  %>
+
+<%if(tokenData[0].totalProfit !== 'undefined') { %>
+    <div class="container text-center font-weight-bold my-sm-5 my-1">
+
+        <%switch(tokenData[0].totalProfit) {
+            case 0: %>
+                    <p>Update token prices to see profit/loss</p>
+                    <% break;
+            case tokenData[0].totalProfit >= 0: %>
+                    <p id="totalProfit">Your Profit is <span style="color: green"><%- tokenData[0].totalProfit %></span> $</p>
+                    <% break;
+            case tokenData[0].totalProfit < -99999.99: %>
+                    <p id="totalProfit">Oh, oh you lost <span style="color: red"><%- tokenData[0].totalProfit %></span> $ <br> Need Help ?
+                    <br> Here is the number for the National Suicide Prevention Lifeline: 1 800 273 </p>
+                    <% break;
+            default: %>
+                    <p id="totalProfit">You already lost <span style="color: red"><%- tokenData[0].totalProfit %></span> $</p>
+                    <% break;
+        } %>
     </div>
-<% } %>
+<%
+}
+%>
+
 
 
 
