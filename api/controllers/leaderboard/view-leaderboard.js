@@ -8,19 +8,15 @@ module.exports = {
 
 
   exits: {
-
     success: {
-      viewTemplatePath: 'pages/leaderboard/view-leaderboard'
+      viewTemplatePath: 'pages/leaderboard/leaderboard'
     }
-
   },
 
 
   fn: async function () {
 
-    // Respond with view.
     return {};
-
   }
 
 

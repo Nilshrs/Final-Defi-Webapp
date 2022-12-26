@@ -102,6 +102,10 @@ module.exports.routes = {
   'POST /watchlist/SearchToken/' : { action: 'watchlist/find-by-name' },
 
 
+  //Routes to leaderboard
+  'GET /leaderboard/table': { action: 'leaderboard/table' },
+
+
   //Routes to static pages
   'GET /our-team': { action: 'static-pages/view-our-team' },
 
