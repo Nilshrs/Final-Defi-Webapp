@@ -18,14 +18,14 @@ module.exports = {
 
   fn: async function ( { cycle, type }) {
 
-    const newEMailMessager = await E-Mail-Message.create(
+    const newEMailMessager = await EMailMessage.create(
       {
         owner: this.session.userId,
         cycle,
         type
       } );
 
-    if(!newEMailMessager) { throw {erorr: "failed to create new E mail messager"}}
+    if(!newEMailMessager) { throw {erorr: 'failed to create new E mail messager'}}
 
     return;
 
