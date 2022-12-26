@@ -106,6 +106,11 @@ module.exports.routes = {
   'GET /leaderboard/table': { action: 'leaderboard/table' },
 
 
+  //Routes to email-messages
+  'POST /e-mail-messages/create': { action: 'e-mail-messages/create' },
+
+
+
   //Routes to static pages
   'GET /our-team': { action: 'static-pages/view-our-team' },
 
