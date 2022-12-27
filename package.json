@@ -26,6 +26,7 @@
     "grunt": "1.0.4",
     "htmlhint": "0.11.0",
     "lesshint": "6.3.6",
+    "prettier": "^2.8.1",
     "sails-hook-grunt": "^5.0.0"
   },
   "scripts": {

@@ -1,3 +1,4 @@
+<!-- v-clock to hide the element till vue in leaderbpard.page.js finished rendering the page id="leaderboard" so parasails can register the page -->
 <div id="leaderboard" v-cloak >
 
 <div class="container">
@@ -7,27 +8,32 @@
     <table class="table table-striped table-dark">
         <thead>
             <tr>
+                <!-- This table header cell will either say "THE BEST" or "THE WORST", depending on the value of the "sortedbyDCS" variable. -->
                 <th v-if="sortedbyDCS">THE BEST</th>
                 <th v-else>THE WORST</th>
                 <th>Username</th>
                 <th
                     class="sortBy"
-                    @click="sortData('portfolioData[0].totalProfit')"
+                    @click="sortData('totalProfit')"
                     > Profit $ &#8597;
                 </th>
                 <th
                     class="sortBy"
-                    @click="sortData('portfolioData[0].totalProfitInPercent')"
+                    @click="sortData('totalProfitInPercent')"
                     >Profit % &#8597;
                 </th>
             </tr>
         </thead>
         <tbody>
+        <!-- This is a data row for each item in the "leaderboardData" array. The "tr" element has a "v-for" directive and a "key" attribute, which are used to loop through the array and render a row for each item. The "index" variable is used to keep track of the current item's index in the array. -->
             <tr v-for="(data,index) in leaderboardData" :key="index">
+                <!--display the place ether dcs or asc depending how the data is sorted -->
                 <td v-bind:class="rowClass(index)"
                 >  <span v-if="sortedbyDCS"> {{index +1}} </span> <span v-else >{{leaderboardData.length - index}} </span>
                 </td>
                 <td> {{data.username}}</td>
+
+                <!-- display data green if >=0 else red shold not be done inline-->
                 <td
                     v-bind:style="{ color: data.portfolioData[0].totalProfit >= 0 ? 'green' : 'red' }"
                     > {{data.portfolioData[0].totalProfit }}$
@@ -39,10 +45,13 @@
             </tr>
         </tbody>
     </table>
-    <div v-if="loading" class="text-center">
-        <div class="spinner-border text-secondary " role="status">
+
+    <!-- Spinning animation as long as data is not loaded -->
+    <div v-if="loading" class="text-center" style="margin-top: 20%">
+        <div class="spinner-border  mb-3" role="status" style="width: 3rem; height: 3rem; color: deeppink">
             <span class="sr-only">Loading...</span>
         </div>
+        <p style="font-size: 12px; font-style: italic">Loading the data... </p>
     </div>
 </div>
 </div>
