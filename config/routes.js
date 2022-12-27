@@ -106,6 +106,8 @@ module.exports.routes = {
 
   //Routes to email-messages
   'POST /e-mail-messages/create': { action: 'e-mail-messages/create' },
+  'GET /e-mail-messages': { action: 'e-mail-messages/view-index-e-mail-message' },
+
 
   //Routes to Address
   'POST //address/create': { action: 'address/create' },

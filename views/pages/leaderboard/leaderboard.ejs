@@ -25,9 +25,9 @@
         <tbody>
             <tr v-for="(data,index) in leaderboardData" :key="index">
                 <td v-bind:class="rowClass(index)"
-                > {{index +1}}
+                >  <span v-if="sortedbyDCS"> {{index +1}} </span> <span v-else >{{leaderboardData.length - index}} </span>
                 </td>
-                <td> {{data.username }}</td>
+                <td> {{data.username}}</td>
                 <td
                     v-bind:style="{ color: data.portfolioData[0].totalProfit >= 0 ? 'green' : 'red' }"
                     > {{data.portfolioData[0].totalProfit }}$

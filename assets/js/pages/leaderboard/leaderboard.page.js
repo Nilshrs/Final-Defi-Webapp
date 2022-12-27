@@ -62,7 +62,7 @@ parasails.registerPage('leaderboard', {
     },
 
     changeSymbolFirstTableRow: function () {
-      const newSymbol = this.sortedbyDCS ? ['🏆', '🥈', '🥉'] : ['💩', '2', '3'];
+      const newSymbol = this.sortedbyDCS ? ['🏆', '🥈', '🥉'] : ['💩', this.sortedData.length -1 , this.sortedData.length - 2];
       const elements = document.querySelectorAll('.gold, .silver, .bronze');
 
       elements.forEach((element, index) => {

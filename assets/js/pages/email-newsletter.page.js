@@ -1,11 +1,19 @@
-parasails.registerPage('email-newsletter', {
+parasails.registerPage('indexEMailMessage', {
+
+  template: `
+    <p> Tsdkfnsdfkndsfknsdfksnfkdsfk</p>
+
+  `,
+
+  router: new VueRouter({
 
 
-  router: new VueRouter({}),
+
+  }),
 
   beforeMount: function () {
 
-    _.extend(this, SAILS_LOCALS)
+    //_.extend(this, SAILS_LOCALS)
 
   },
 });
