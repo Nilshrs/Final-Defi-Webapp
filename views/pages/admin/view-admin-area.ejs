@@ -1,0 +1,49 @@
+<h1>Welcome <span style="color: deeppink"><%= adminName %> </span> </h1>
+
+
+<form action="" method="post">
+    <div class="form-outline">
+        <!-- TODO fix empty string input -->
+        <input name="_csrf" value="<%= _csrf %>" type="search" placeholder="Search" id="form1" class="form-control"
+               pattern="^[a-zA-Z]{1,10}$" required/>
+        <label class="form-label" for="form1"></label>
+    </div>
+</form>
+
+<table class="table table-striped table-dark">
+    <thead class="sticky-top">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Admin Status</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% if (userData) { %>
+        <% userData.forEach((userData) => { %>
+            <tr>
+                <td>
+                    <%= userData.id  %>
+                </td>
+                <td>
+                    <%= userData.fullName %>
+                </td>
+                <td>
+                    <%= userData.emailAddress %>
+                </td>
+                <td>
+                    <%= userData.password%>
+                </td>
+                <td>
+                    <%= userData.isSuperAdmin %>
+                </td>
+                <td>
+                    <a href="" class="text-decoration-none" style="color: deeppink">❌</a>
+                </td>
+            </tr>
+    <% }); } %>
+    </tbody>
+</table>

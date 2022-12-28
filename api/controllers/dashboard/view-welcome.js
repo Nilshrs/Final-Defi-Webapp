@@ -21,9 +21,15 @@ module.exports = {
 
     const user = await User.findOne({id: this.req.session.userId});
 
+
+    if(this.req.me.isSuperAdmin){
+      this.res.redirect('/admin-view')
+      return {userName: user.fullName}
+    }
+
+
     return { userName: user.fullName};
 
   }
-
 
 };

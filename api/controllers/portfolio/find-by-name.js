@@ -37,7 +37,7 @@ module.exports = {
 
 
     if(tokens.length === 0){
-      throw { redirect: '/trans-01/' + type }
+      throw { redirect: 'back' }
     }
 
     return { tokens, type};

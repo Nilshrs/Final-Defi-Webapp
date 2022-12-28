@@ -113,6 +113,9 @@ module.exports.routes = {
   'POST //address/create': { action: 'address/create' },
 
 
+  //Routes to Admin Area
+  'GET /admin-view': { action: 'admin/view-admin-area' },
+  'DELETE /admin/delete-user': { action: 'admin/delete-user' },
 
 
 
