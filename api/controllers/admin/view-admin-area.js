@@ -30,7 +30,7 @@ module.exports = {
 
     // Respond with view.
 
-    return { userData, me, adminName: user.fullName };
+    return { userData, adminName: user.fullName };
 
   }
 

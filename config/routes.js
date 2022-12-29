@@ -115,7 +115,9 @@ module.exports.routes = {
 
   //Routes to Admin Area
   'GET /admin-view': { action: 'admin/view-admin-area' },
-  'DELETE /admin/delete-user': { action: 'admin/delete-user' },
+  'POST /admin/delete-user/:userId': { action: 'admin/delete-user' },
+  'POST /admin/user-find-by-name': { action: 'admin/user-find-by-name' },
+
 
 
 
