@@ -1,4 +1,4 @@
-<h1>Welcome <span style="color: deeppink"><%- adminName %> </span> </h1>
+<h1>Welcome <span style="color: deeppink"><%- userName %> </span> </h1>
 
 
 <form action="/admin/user-find-by-name" method="post">
@@ -6,6 +6,7 @@
         <!-- TODO fix empty string input -->
         <input  name="fullName" type="search" placeholder="Search" id="form1" class="form-control"
                pattern="^[a-zA-Z]{1,10}$" required/>
+        <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
         <label class="form-label" for="form1"></label>
     </div>
 </form>

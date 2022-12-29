@@ -17,12 +17,19 @@ module.exports = async function (req, res, proceed) {
     return res.unauthorized();
   }//•
 
-  // Then check that this user is a "super admin".
-  if (!req.me.isSuperAdmin) {
+  // Then check that this user is an "admin".
+
+  if(!req.me.isAdmin){
     return res.forbidden();
+  }
+
+  // Then check that this user is a "super admin".
+  if (req.me.isSuperAdmin) {
+    return proceed();
   }//•
 
-  // IWMIH, we've got ourselves a "super admin".
-  return proceed();
+
+
+
 
 };

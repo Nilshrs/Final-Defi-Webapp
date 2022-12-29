@@ -23,6 +23,11 @@ module.exports = {
     notFound: {
       description: 'No User with specified ID found',
       responseType: 'notFound'
+    },
+
+    redirect: {
+      responseType: 'redirect',
+      description: 'if user cannot be deleted then redirect to previous page'
     }
   },
 
@@ -32,13 +37,11 @@ module.exports = {
 
     console.log("Trying to find user by ID")
 
-    //checks users for admin status
-    const isAdmin = await User.findOne({id: userId})
+    const user = await User.findOne({id: this.req.session.userId});
+    const userToBeDeleted = await User.findOne({id: userId});
 
-    //If the deleted user is an admin itself, he can't be deleted by other admins but (Nils und Elias)
-    if (isAdmin.isSuperAdmin === true) {
-      return this.res.redirect('back');
-    } else {
+
+    if(user.isSuperAdmin){
       const userData = await User.destroyOne({id: userId});
 
       //just a check for me, if the controller works properly
@@ -47,10 +50,24 @@ module.exports = {
       } else {
         sails.log('The database does not have a user with `id: ' + userId);
       }
+    } else if(user.isAdmin){
+      //If the deleted user is an admin itself, he can't be deleted by other admins but (Nils und Elias)
+      if (userToBeDeleted.isAdmin === true || userToBeDeleted.isSuperAdmin) {
+        console.log("Admins are not allowed to delete other admins/super-Admins")
+        throw { redirect: 'back' };
+      } else {
+        const userData = await User.destroyOne({id: userId});
+
+        //just a check for me, if the controller works properly
+        if (userData) {
+          sails.log('Deleted user with `id: 4`.');
+        } else {
+          sails.log('The database does not have a user with `id: ' + userId);
+        }
+      }
     }
 
     return this.res.redirect('back');
-
 
   }
 

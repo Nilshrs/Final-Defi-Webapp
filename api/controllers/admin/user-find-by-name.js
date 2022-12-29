@@ -37,7 +37,7 @@ module.exports = {
     const user = await User.findOne({id: this.req.session.userId});
 
 
-    return { userData, adminName: user.fullName };
+    return { userData, userName: user.fullName };
 
   }
 
