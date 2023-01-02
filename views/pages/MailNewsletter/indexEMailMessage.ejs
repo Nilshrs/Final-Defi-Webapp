@@ -2,5 +2,14 @@
 
     <h1>This is a test</h1>
     <p>dkfnsd </p>
+    <div id="nav">
+        <router-link to="/">Home</router-link>
+        <router-link to="/test">Bibibi</router-link>
+    </div>
+    <!-- end desktop tabs -->
+    <!-- this is where your component will render in your view -->
+    <router-view></router-view>
+    <!-- End component render -->
 
 </div>
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>

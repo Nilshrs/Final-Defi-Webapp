@@ -1,21 +1,37 @@
 parasails.registerPage('indexEMailMessage', {
 
-  template: `
-    <p> Tsdkfnsdfkndsfknsdfksnfkdsfk</p>
+  data: {
 
-  `,
+  },
 
-  router: new VueRouter({
-
-
-
-  }),
+  template: ``,
 
   beforeMount: function () {
 
-    //_.extend(this, SAILS_LOCALS)
-
+    const routes= [
+      {
+        path: '/',
+        name: 'Home',
+        component: Vue.options.components.test,
+        props: {  },
+      },
+      {
+        path: '/test',
+        name: 'Test2',
+        component: Vue.options.components.test2,
+      }
+    ];
+    this.$router.addRoutes(routes);
   },
+
+  router: new VueRouter({
+    mode: 'history',
+    base: '/tab-page/'
+  }),
+
+  methods: {
+
+
+  }
+
 });
-
-

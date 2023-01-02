@@ -18,7 +18,7 @@ module.exports = {
     const userData = [];
     const portfolios = await Portfolio.find( {} );
 
-    //finds all the Portfoliodata and the coresponding username and saves it into userData
+    //finds all the Portfoliodata and the corresponding username and saves it into userData
     for (const portfolio of portfolios) {
       const user = await User.findOne( { id: portfolio.owner } );
       const transactions = await PortfolioTransaction.find( { portfolio: portfolio.id } );
