@@ -27,7 +27,7 @@ module.exports = {
 
     redirect: {
       responseType: 'redirect',
-      description: 'if user cannot be deleted then redirect to previous page'
+      description: 'if user cannot be deleted then redirect to previous page',
     }
   },
 

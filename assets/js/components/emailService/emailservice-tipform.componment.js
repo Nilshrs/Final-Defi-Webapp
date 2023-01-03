@@ -34,7 +34,6 @@ parasails.registerComponent('test2', {
     //…
   },
   beforeDestroy: function() {
-    //…
   },
 
   //  ╦╔╗╔╔╦╗╔═╗╦═╗╔═╗╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
