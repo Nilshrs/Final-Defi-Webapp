@@ -1,15 +1,22 @@
-<div id="indexEMailMessage" class="container" v-cloak >
 
-    <h1>This is a test</h1>
-    <p>dkfnsd </p>
-    <div id="nav">
-        <router-link to="/">Home</router-link>
-        <router-link to="/test">Bibibi</router-link>
+<div id="indexEMailMessage" v-cloak>
+    <div class="container">
+        <h1>Email Service</h1>
+
+        <p>Set up the your personalised email service!</p>
+        <p>type: {{type}}</p>
+        <p>cylce {{cycle}}</p>
+        <p>tipxxx {{tip}}</p>
+
+
+        <router-link to="/set-email-type">Start</router-link>
+
+        <!-- end desktop tabs -->
+        <!-- this is where your component will render in your view -->
+        <router-view @set-type="setEmailType" @set-cycle="setEmailCycle" @set-tip="setTip"></router-view>
+        <!-- End component render -->
     </div>
-    <!-- end desktop tabs -->
-    <!-- this is where your component will render in your view -->
-    <router-view></router-view>
-    <!-- End component render -->
-
 </div>
+
+
 <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
