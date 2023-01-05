@@ -114,18 +114,14 @@ module.exports.routes = {
 
 
   //Routes to Admin Area
-  'GET /admin-view': { action: 'admin/view-admin-area' },
+  'GET /admin/user-table': { action: 'admin/user-table-admin-area' },
+  'GET /admin/view': { action: 'admin/view-admin-area' },
   'POST /admin/delete-user/:userId': { action: 'admin/delete-user' },
   'POST /admin/user-find-by-name': { action: 'admin/user-find-by-name' },
 
 
-
-
   //Routes to static pages
   'GET /our-team': { action: 'static-pages/view-our-team' },
-
-
-
 
 
 };

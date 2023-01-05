@@ -31,13 +31,16 @@
                     <label class="col-sm-2 col-form-label" for="amount">Amount</label>
                         <% if(transData[0]) { %>
                             <input type="number" step=".01" class="form-control" id="amount" name="amount" placeholder="Enter amount" required min="<%- (-1) * (transData[0].amount) %>">
-                        <% } else { %>
+                            <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+
+                <% } else { %>
                             <input type="number" step=".01" onclick="regex()" class="form-control " id="amount" name="amount" placeholder="Enter amount" required min="0" >
-                        <% }; %>
+                            <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
+                    <% }; %>
                     </div>
                 <button id="defi-button-mobile"type="submit" class="btn btn-primary mt-4">Submit</button>
             </form>
         </div>
     </div>
 </div>
-</div>
+

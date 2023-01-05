@@ -14,7 +14,7 @@ module.exports = {
 
   exits: {
     success: {
-      viewTemplatePath: 'pages/admin/view-admin-area'
+      viewTemplatePath: 'pages/admin/view-admin-area.ejs'
     },
     redirect: {
       responseType: 'redirect',

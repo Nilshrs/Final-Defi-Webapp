@@ -23,8 +23,7 @@ module.exports = {
 
 
     if(this.req.me.isSuperAdmin || this.req.me.isAdmin){
-      this.res.redirect('/admin-view')
-      return {userName: user.fullName}
+      this.res.redirect('/admin/view')
     }
 
 

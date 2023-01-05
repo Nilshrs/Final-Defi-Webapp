@@ -7,6 +7,7 @@
         <div class="form-group col-md-6">
             <label for="name">Name:</label>
             <input type="text" name="name" placeholder="Name">
+            <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
             <button type="submit" class="btn-primary btn">Submit</button>
         </div>
     </form>

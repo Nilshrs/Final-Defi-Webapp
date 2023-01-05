@@ -18,6 +18,7 @@
         <form action="/portfolio/searchToken" method="post">
             <div class="form-outline">
                 <input name="name" type="text" type="search" class="form-control" placeholder="search" pattern="^[a-zA-Z]{1,10}$" required>
+                <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
             </div>
         </form>
     </div>
