@@ -14,6 +14,7 @@ module.exports = {
 
   },
 
+  // TODO is this coontroller relevant? @Elias
   fn: async function (inputs) {
     const userData = [];
     const portfolios = await Portfolio.find( {} );
