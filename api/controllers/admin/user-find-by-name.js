@@ -25,12 +25,13 @@ module.exports = {
 
   fn: async function (inputs) {
 
-    console.log("Trying to find user by name" + inputs.fullName)
+    console.log('Trying to find user by name' + inputs.fullName);
 
+    //TODO why full name if it is not the full name
     const userData = await User.find( { fullName: { startsWith: inputs.fullName } } );
 
     if(userData.length === 0){
-      sails.log("No user with specified name/letter " + inputs.fullName + " found")
+      sails.log('No user with specified name/letter ' + inputs.fullName + ' found')
       throw { redirect: 'back' }
     }
 

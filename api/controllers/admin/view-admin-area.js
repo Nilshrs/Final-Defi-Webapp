@@ -10,7 +10,7 @@ module.exports = {
   exits: {
 
     success: {
-      viewTemplatePath: 'pages/admin/view-admin-area.ejs'
+      viewTemplatePath: 'pages/admin/view-admin-area'
     }
 
   },
@@ -18,12 +18,9 @@ module.exports = {
 
   fn: async function () {
 
-
-    const user = await User.findOne( { id: this.req.session.userId } )
-
-    sails.log(user.fullName)
+    const admin = await User.findOne( { id: this.req.session.userId } )
     // Respond with view.
-    return { userName: user.fullName };
+    return { userName: admin.fullName };
 
   }
 

@@ -16,7 +16,7 @@ module.exports = {
 
   exits: {
     success: {
-      viewTemplatePath: 'pages/admin/view-admin-area.ejs',
+      viewTemplatePath: 'pages/admin/view-admin-area',
       responseType: 'redirect'
     },
 
@@ -27,7 +27,7 @@ module.exports = {
 
     redirect: {
       responseType: 'redirect',
-      description: 'if user cannot be deleted then redirect to previous page',
+      description: 'if user cannot be deleted then redirect to previous page'
     }
   },
 
@@ -42,7 +42,7 @@ module.exports = {
 
     //Check if user exists
     if(!userToBeDeleted){
-      throw {error: 'could not find user to be deleted'}
+      throw {error: 'could not find user to be deleted'};
     }
 
     // SuperAdmin = Admin, so admins cannot delete other admins and superAdmins
@@ -51,14 +51,17 @@ module.exports = {
     }
 
     //Just a check if the deletion worked
+    //TODO change to display error or redirect to error site
+    //TODO check if need for fetch
     const deletedUser = await User.destroyOne({id: userId});
     if (!deletedUser) {
-      throw{ error: "failed to delete user" }
+      throw{ error: 'failed to delete user' };
     }
-    return { redirect: 'back' }
+    return { redirect: 'back' };
 
-
-
+    return this.res.redirect('back');
 
   }
+
+
 };
