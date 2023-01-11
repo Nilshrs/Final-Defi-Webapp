@@ -24,7 +24,6 @@ module.exports = {
 
     const user = await User.findOne({id: this.req.session.userId});
 
-    // TODO are all superAdmins also admins if yes do we need the super admin check ?
     if(this.req.me.isSuperAdmin || this.req.me.isAdmin){
       throw 'adminSuccess';
     }

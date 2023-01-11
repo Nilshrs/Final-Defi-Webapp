@@ -44,6 +44,6 @@ module.exports.security = {
   *                                                                           *
   ****************************************************************************/
   //TODO ask prof
-  csrf: false
+  csrf: true
 
 };

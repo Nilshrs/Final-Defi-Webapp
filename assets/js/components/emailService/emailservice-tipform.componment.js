@@ -86,7 +86,6 @@ parasails.registerComponent('emailTip', {
     //…
   },
   beforeDestroy: function() {
-    //…
   },
 
 

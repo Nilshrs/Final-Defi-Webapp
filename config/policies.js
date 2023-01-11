@@ -10,6 +10,7 @@
 
 module.exports.policies = {
 
+  'admin/*':'is-admin',
   '*': 'is-logged-in',
 
   // Bypass the `is-logged-in` policy for:
@@ -22,6 +23,10 @@ module.exports.policies = {
   'legal/view-privacy': true,
   'deliver-contact-form-message': true,
   'static-pages/*': true,
-  'token/*': true
+  'token/*': true,
+  'pages/ToBeDeleted': true,
+
+
+
 
 };

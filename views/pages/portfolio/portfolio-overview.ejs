@@ -10,38 +10,39 @@
                 <h1>Your Portfolio </h1>
             </div>
             <div class="col-3 d-flex justify-content-end">
-                    <a href="/trans" class="text-reset btn ml-auto" id="defi-button-mobile" style="margin-right: 0">+|-</a>
+                <a href="/trans" class="text-reset btn ml-auto" id="defi-button-mobile" style="margin-right: 0">+|-</a>
             </div>
         </div>
     </div>
 
 
-
+</div>
+<div class="container my-auto " style="max-height: 500px; min-height: 100px;">
+    <div class="chartBox d-flex justify-content-center" style="height: 500px">
+        <canvas id="myChart" height="500px" aria-label="Hello ARIA World" role="img"></canvas>
     </div>
-    <div class="container my-auto " style="max-height: 500px; min-height: 100px;">
-        <div class = "chartBox d-flex justify-content-center" style="height: 500px">
-            <canvas id="myChart"  height="500px" aria-label="Hello ARIA World" role="img"></canvas>
-        </div>
-    </div>
+</div>
 
 
-<%if(tokenData[0].totalProfit !== 'undefined') { %>
+<% if(tokenData[0].totalProfit !== 'undefined') { %>
     <div class="container text-center font-weight-bold my-sm-5 my-1">
 
-        <%switch(tokenData[0].totalProfit) {
-            case 0: %>
-                    <p>Update token prices to see profit/loss</p>
-                    <% break;
-            case tokenData[0].totalProfit >= 0: %>
-                    <p id="totalProfit">Your Profit is <span style="color: green"><%- tokenData[0].totalProfit %></span> $</p>
-                    <% break;
-            case tokenData[0].totalProfit < -99999.99: %>
-                    <p id="totalProfit">Oh, oh you lost <span style="color: red"><%- tokenData[0].totalProfit %></span> $ <br> Need Help ?
-                    <br> Here is the number for the National Suicide Prevention Lifeline: 1 800 273 </p>
-                    <% break;
-            default: %>
-                    <p id="totalProfit">You already lost <span style="color: red"><%- tokenData[0].totalProfit %></span> $</p>
-                    <% break;
+        <% switch(tokenData[0].totalProfit) {
+        case 0: %>
+        <p>Update token prices to see profit/loss</p>
+        <% break;
+        case tokenData[0].totalProfit >= 0: %>
+        <p id="totalProfit">Your Profit is <span style="color: green"><%- tokenData[0].totalProfit %></span> $</p>
+        <% break;
+        case tokenData[0].totalProfit < -99999.99: %>
+        <p id="totalProfit">Oh, oh you lost <span style="color: red"><%- tokenData[0].totalProfit %></span> $ <br> Need
+            Help
+            ?
+            <br> Here is the number for the National Suicide Prevention Lifeline: 1 800 273 </p>
+        <% break;
+        default: %>
+        <p id="totalProfit">You already lost <span style="color: red"><%- tokenData[0].totalProfit %></span> $</p>
+        <% break;
         } %>
     </div>
 <%
@@ -49,11 +50,9 @@
 %>
 
 
-
-
-    <div class="container tbl-container">
-        <div class="row">
-            <div class="col-12">
+<div class="container tbl-container">
+    <div class="row">
+        <div class="col-12">
             <div class="table overflow-auto">
                 <table class="table table-striped table-dark">
                     <thead class="sticky-top">
@@ -66,61 +65,61 @@
                         <th>±</th>
                     </tr>
                     </thead>
-                    <tbody >
-                        <% if (tokenData) { %>
-                            <% tokenData.forEach( token => { %>
-                                <tr>
-                                    <td>
-                                        <%= token.symbol; %>
-                                    </td>
-                                    <td>
-                                        <%= token.amount; %>
-                                    </td>
-                                    <td>
-                                        <%= token.currentValue; %>$
-                                    </td>
-                                    <% if (token.profitInUSD > 0) { %>
-                                        <td style="color: green">
+                    <tbody>
+                    <% if (tokenData) { %>
+                        <% tokenData.forEach( token => { %>
+                            <tr>
+                                <td>
+                                    <%= token.symbol; %>
+                                </td>
+                                <td>
+                                    <%= token.amount; %>
+                                </td>
+                                <td>
+                                    <%= token.currentValue; %>$
+                                </td>
+                                <% if (token.profitInUSD > 0) { %>
+                                <td style="color: green">
                                     <% } else { %>
-                                        <td style ="color: red">
+                                <td style="color: red">
                                     <% } %>
-                                        <%- token.profitInUSD %>$
-                                    </td>
-                                    <% if (token.profitInPercent > 0) { %>
-                                    <td style="color: green">
-                                        <% } else { %>
-                                    <td style ="color: red">
-                                        <% } %>
-                                        <%= token.profitInPercent; %>%
-                                    </td>
-                                    <td>
-                                        <a class="text-decoration-none text-white" href="/trans-02/<%=token.id%>">±</a>
-                                    </td>
-                                </tr>
-                        <% }); }%>
-                        </tbody>
+                                    <%- token.profitInUSD %>$
+                                </td>
+                                <% if (token.profitInPercent > 0) { %>
+                                <td style="color: green">
+                                    <% } else { %>
+                                <td style="color: red">
+                                    <% } %>
+                                    <%= token.profitInPercent; %>%
+                                </td>
+                                <td>
+                                    <a class="text-decoration-none text-white" href="/trans-02/<%= token.id %>">±</a>
+                                </td>
+                            </tr>
+                    <% }); } %>
+                    </tbody>
                 </table>
             </div>
-        </div>
         </div>
     </div>
 </div>
 
-    <!-- Needs to be there to be queried by function createChart() in portfolio-overview.page-js !-->
-    <div id ="token" hidden="hidden" >
-        <%= JSON.stringify(tokenData);  %>
-    </div>
-    <div id="pV" hidden="hidden">
-        <%- portfolioValue%>$
-    </div>
+
+<!-- Needs to be there to be queried by function createChart() in portfolio-overview.page-js !-->
+<div id="token" hidden="hidden">
+    <%= JSON.stringify(tokenData); %>
+</div>
+<div id="pV" hidden="hidden">
+    <%- portfolioValue %>$
+</div>
 
 <script>
-  let token = '<%- JSON.stringify(tokenData) %>'  ;
+  let token = '<%- JSON.stringify(tokenData) %>';
   token = JSON.parse(token);
 
 </script>
 
-</div>
+
 
 <style>
   .table th:first-child,
@@ -128,6 +127,7 @@
     position: sticky;
     left: 0;
   }
+
   #totalProfit {
     font-weight: bold;
 
