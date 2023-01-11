@@ -11,6 +11,7 @@
 module.exports.policies = {
 
   'admin/*':'is-admin',
+
   '*': 'is-logged-in',
 
   // Bypass the `is-logged-in` policy for:
