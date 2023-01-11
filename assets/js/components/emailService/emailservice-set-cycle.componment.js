@@ -23,14 +23,14 @@ parasails.registerComponent('emailCycle', {
   //  ╩ ╩ ╩ ╩ ╩╩═╝
   template: `
     <div class="emailCycle">
-      <h2>Coose the email cycle</h2>
+      <h2>Choose the email cycle</h2>
 
 
     <form>
       <div class="form-group">
         <div class="form-check">
           <input type="radio" id="hourly" value="hourly" v-model.lazy="cycle" />
-          <label for="hourly"> Hourly </label>
+          <label for="hourly">hourly </label>
         </div>
         <div class="form-check">
           <input type="radio" id="daily" value="daily" v-model.lazy="cycle" />
@@ -46,16 +46,20 @@ parasails.registerComponent('emailCycle', {
         </div>
       </div>
 
-      <div v-if="cycle">
-        <router-link to="/set-email-tip" class="btn btn-secondary">Next</router-link>
+      <div v-if="cycle" class="mt-4">
+        <router-link to="/set-email-tip" id="defi-button-mobile">Next</router-link>
+
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+      <div v-else class="progress" >
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
 
+
     </form>
-
-
-
     </div>
-
 
   `,
 
@@ -73,9 +77,9 @@ parasails.registerComponent('emailCycle', {
     //…
   },
 
+  // will be called when the value of cycle change
   watch: {
     cycle(newValue){
-      console.log(newValue);
       this.$emit( 'set-cycle', newValue );
     }
   },
@@ -85,6 +89,8 @@ parasails.registerComponent('emailCycle', {
   //  ║║║║ ║ ║╣ ╠╦╝╠═╣║   ║ ║║ ║║║║╚═╗
   //  ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩╚═╝╝╚╝╚═╝
   methods: {
+
+
 
   }
 });

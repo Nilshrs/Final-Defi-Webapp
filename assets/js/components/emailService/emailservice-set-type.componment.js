@@ -12,9 +12,6 @@ parasails.registerComponent('emailType', {
   data: function (){
     return {
       type: null,
-      test: '',
-      errors: [],
-      //…
     };
   },
 
@@ -33,11 +30,11 @@ parasails.registerComponent('emailType', {
             <label for="general overview"> General overview </label>
           </div>
           <div class="form-check">
-            <input type="radio" id="general overview" value="strong price changes" v-model="type" />
+            <input type="radio" id="strong price changes" value="strong price changes" v-model="type" />
             <label for="strong price changes"> Price changes of token in portfolio (over 5%) </label>
           </div>
           <div class="form-check">
-            <input type="radio" id="general overview" value="portfolio price changes" v-model="type" />
+            <input type="radio" id="portfolio price changes" value="portfolio price changes" v-model="type" />
             <label for="portfolio price changes"> Portfolio value changes (over 5%)</label>
           </div>
           <div class="form-check">
@@ -46,23 +43,18 @@ parasails.registerComponent('emailType', {
           </div>
         </div>
 
-        <div v-if="type">
-          <router-link to="/set-email-cycle" class="btn btn-secondary">Next</router-link>
+        <div v-if="!type" class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"   aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
 
-        <!-- Use this or button
-        <input type="submit" value="Submit" >
-        <button type="submit" value="Submit" class="btn btn-secondary">Next</button>
-        <button v-on:click="childMethod">CLICK - 2</button>
+        <div v-if="type" class="mt-4">
+          <router-link to="/set-email-cycle" id="defi-button-mobile">Next</router-link>
 
-      <p v-if="errors.length">
-        <b>Please correct the following error(s):</b>
-      <ul>
-        <li v-for="error in errors">{{ error }}</li>
-      </ul>
-      </p>
+          <div class="progress" >
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
 
-        -->
       </form>
 
     </div>
@@ -81,10 +73,12 @@ parasails.registerComponent('emailType', {
     //…
   },
 
+
   watch: {
 
+    // In a Vue.js application, the $emit method is used to trigger an event on the current component instance.
+    // This is useful for communicating between components in a Vue.js application.
     type(value) {
-      console.log(value);
       this.$emit('set-type', value);
     },
 
@@ -94,25 +88,5 @@ parasails.registerComponent('emailType', {
   //  ║║║║ ║ ║╣ ╠╦╝╠═╣║   ║ ║║ ║║║║╚═╗
   //  ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩╚═╝╝╚╝╚═╝
   methods: {
-    childMethod: function() {
-      this.$emit('method', this.child_msg);
-    },
-
-    //dont need this fuction here cecause div to next componment is hidden
-    check: function (e){
-
-      console.log(this.type);
-
-      if(this.type) {
-        return true;
-      }
-
-      this.errors = [];
-
-      if (this.type !== "") {
-        this.errors.push('Type required.');
-      }
-      e.preventDefault();
-    }
   }
 });

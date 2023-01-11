@@ -1,22 +1,37 @@
 
-<div id="indexEMailMessage" v-cloak>
+<div id="indexEMailMessage"  v-cloak>
     <div class="container">
+        <div class="mx-auto p-4" style="max-width: 500px">
+
         <h1>Email Service</h1>
-
         <p>Set up the your personalised email service!</p>
-        <p>type: {{type}}</p>
-        <p>cylce {{cycle}}</p>
-        <p>tipxxx {{tip}}</p>
 
-
-        <router-link to="/set-email-type">Start</router-link>
+        <!--Link to the first component of the transactions -->
+        <router-link to="/set-email-type" id="defi-button-mobile">Start</router-link>
 
         <!-- end desktop tabs -->
         <!-- this is where your component will render in your view -->
-        <router-view @set-type="setEmailType" @set-cycle="setEmailCycle" @set-tip="setTip"></router-view>
+        <!-- Also there is the mapping of functions that get emmit to those in emailMessages parasails.page  -->
+            <router-view class="mt-5"
+                @set-type="setEmailType"
+                @set-cycle="setEmailCycle"
+                @set-tip="setTip"
+                @add-email-service="createEmailService">
+            </router-view>
         <!-- End component render -->
+
+        <!-- TODO delete of tested only for testing purposes there -->
+
+        <div class="mt-5">
+            <p style="margin-top: 100px"> Type: {{type}}</p>
+            <p>Cycle: {{cycle}}</p>
+            <p>WantsToTip: {{tip.wantsToTip}}</p>
+            <p>Amount: {{tip.tipAmount}}</p>
+            <p>Payment type: {{tip.paymentType}}</p>
+        </div>
+
+        </div>
     </div>
 </div>
-
 
 <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>

@@ -1,5 +1,5 @@
 
-parasails.registerComponent('testy', {
+parasails.registerComponent('stripepayment', {
   //  ╔═╗╦═╗╔═╗╔═╗╔═╗
   //  ╠═╝╠╦╝║ ║╠═╝╚═╗
   //  ╩  ╩╚═╚═╝╩  ╚═╝
@@ -12,7 +12,6 @@ parasails.registerComponent('testy', {
   //  ╩╝╚╝╩ ╩ ╩╩ ╩╩═╝  ╚═╝ ╩ ╩ ╩ ╩ ╚═╝
   data: function (){
     return {
-      child_msg: 'message from child'
       //…
     };
   },
@@ -21,9 +20,20 @@ parasails.registerComponent('testy', {
   //  ╠═╣ ║ ║║║║
   //  ╩ ╩ ╩ ╩ ╩╩═╝
   template: `
-    <div class="child">
-    <button v-on:click="childMethod">CLICK - child Method pass data from product component</button>
+    <div class="stike-payment">
+      <h2>Stipe payment...</h2>
+      <!-- should use the stripe api and generate a  link to stripe checkout -->
+      <p>Should be an external link to stipe payment, where the payment process is handelt </p>
+
+      <button v-on:click="addEmailService" id="defi-button-mobile">Submit email service</button>
+
+      <div class="progress mt-2">
+        <div class="progress-bar progress-bar-striped progress-bar-animated"   role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+
     </div>
+
+
   `,
 
   //  ╦  ╦╔═╗╔═╗╔═╗╦ ╦╔═╗╦  ╔═╗
@@ -43,8 +53,10 @@ parasails.registerComponent('testy', {
   //  ║║║║ ║ ║╣ ╠╦╝╠═╣║   ║ ║║ ║║║║╚═╗
   //  ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩╚═╝╝╚╝╚═╝
   methods: {
-    childMethod: function() {
-      this.$emit('child-method', this.child_msg);
+
+    addEmailService() {
+      this.$emit('add-email-service');
     }
+
   }
 });

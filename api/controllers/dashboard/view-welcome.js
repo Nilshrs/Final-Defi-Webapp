@@ -10,10 +10,13 @@ module.exports = {
   exits: {
 
     success: {
-      viewTemplatePath: 'pages/dashboard/welcome',
-      description: 'Display the welcome page for authenticated users.'
+      description: 'Display the welcome page for authenticated users.',
+      viewTemplatePath: 'pages/dashboard/welcome'
     },
-
+    adminSuccess: {
+      description: 'Redirect to admin area for authenticated admins',
+      redirect: '/admin-view'
+    }
   },
 
 
@@ -21,13 +24,10 @@ module.exports = {
 
     const user = await User.findOne({id: this.req.session.userId});
 
-
+    // TODO are all superAdmins also admins if yes do we need the super admin check ?
     if(this.req.me.isSuperAdmin || this.req.me.isAdmin){
-      this.res.redirect('/admin-view')
-      return {userName: user.fullName}
+      throw 'adminSuccess';
     }
-
-
     return { userName: user.fullName};
 
   }

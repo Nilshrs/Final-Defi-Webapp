@@ -11,9 +11,10 @@ module.exports = {
 
     owner: { model: 'user' },
     cycle: { type: 'string', isIn: ['hourly', 'daily', 'weekly', 'monthly'] },
-    type: { type: 'string', isIn: [ 'general overview', 'strong price changes', 'portfolio price changes'] }
+    type: { type: 'string', isIn: [ 'general overview', 'strong price changes', 'portfolio price changes', 'portfolio overview'] },
+    isTipping: { type: 'number' },
+    tipAmount: { type: 'number' }
 
 },
 
 };
-

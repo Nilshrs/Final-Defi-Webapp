@@ -8,28 +8,33 @@ module.exports = {
 
 
   inputs: {
-    cycle: { type: 'string', isIn: ['hourly', 'daily', 'weekly', 'monthly'] },
-    type: { type: 'string', isIn: [ 'general overview', 'strong price changes', 'portfolio price changes'] }
+    cycle: {type: 'string', isIn: ['hourly', 'daily', 'weekly', 'monthly']},
+    type: {type: 'string', isIn: ['general overview', 'strong price changes', 'portfolio price changes', 'portfolio overview']},
+    isTipping: { type: 'number' },
+    amount: { type: 'number' }
+
   },
 
-  exits: {
+  exits: {},
 
-  },
+  fn: async function ({cycle, type, isTipping, amount}) {
 
-  fn: async function ( { cycle, type }) {
+    console.log(isTipping);
 
+    // eslint-disable-next-line no-undef
     const newEMailMessager = await EMailMessage.create(
       {
-        owner: this.session.userId,
+        owner: this.req.session.userId,
         cycle,
-        type
-      } );
-
-    if(!newEMailMessager) { throw {erorr: 'failed to create new E mail messager'}}
-
-    return;
-
-  }
+        type,
+        isTipping,
+        amount
+      }).fetch();
 
 
-};
+    if (newEMailMessager.length === 0) {
+      console.log({erorr: 'failed to create new E mail messager'})
+    }
+      return;
+    }
+}

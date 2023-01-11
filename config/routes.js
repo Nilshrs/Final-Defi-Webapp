@@ -110,7 +110,7 @@ module.exports.routes = {
 
 
   //Routes to Address
-  'POST //address/create': { action: 'address/create' },
+  'POST /address/create': { action: 'address/create' },
 
 
   //Routes to Admin Area
