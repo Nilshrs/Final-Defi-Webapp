@@ -11,11 +11,11 @@ module.exports = {
 
     success: {
       description: 'Display the welcome page for authenticated users.',
-      viewTemplatePath: 'pages/dashboard/welcome'
+      viewTemplatePath: 'pages/dashboard/welcome',
     },
-    adminSuccess: {
+    redirect: {
       description: 'Redirect to admin area for authenticated admins',
-      redirect: '/admin-view'
+      responseType: 'redirect'
     }
   },
 
@@ -25,7 +25,7 @@ module.exports = {
     const user = await User.findOne({id: this.req.session.userId});
 
     if(this.req.me.isSuperAdmin || this.req.me.isAdmin){
-      throw 'adminSuccess';
+      throw { redirect: 'admin/view'}
     }
     return { userName: user.fullName};
 

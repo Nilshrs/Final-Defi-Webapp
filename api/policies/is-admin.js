@@ -9,8 +9,7 @@ module.exports = async function(req, res, proceed){
 
   // Then check that this user is an "admin".
   if (!req.me.isAdmin) {
-    res.redirect('back');
-    return res.forbidden;
+    return res.unauthorized();
 
   }//•
 

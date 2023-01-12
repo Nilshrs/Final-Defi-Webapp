@@ -47,6 +47,7 @@ module.exports = {
 
     // SuperAdmin = Admin, so admins cannot delete other admins and superAdmins
     if(!admin.isSuperAdmin && userToBeDeleted.isAdmin){
+      console.log("jahsgdjsdasjhdgasj")
       throw { redirect: 'back' }
     }
 
@@ -59,7 +60,6 @@ module.exports = {
     }
     return { redirect: 'back' };
 
-    return this.res.redirect('back');
 
   }
 
