@@ -15,13 +15,7 @@ module.exports = {
 
   },
 
-
-  fn: async function () {
-
-    // All done.
-    return;
-
-  }
-
+  //respond with view
+  fn: async function () {}
 
 };

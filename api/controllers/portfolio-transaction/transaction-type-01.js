@@ -16,24 +16,25 @@ module.exports = {
   exits: {
     success: {
       viewTemplatePath: 'pages/portfolio/trans02'
+    },
+    redirect: {
+      responseType: 'redirect',
+      description: 'if type unknown redirect to start of transaction'
     }
-
   },
 
 
   fn: async function ( { type } ) {
-
-    this.req.session.trans = {type};
-
-
-    console.log(this.req.session);
-
-    //this.req.session.trans.type = type;
-    //return await Token.find( { type: this.session.trans.type } );
-
-    //TODO change that to view only the token with the categorie
+    //find all token tokens with the type
     // eslint-disable-next-line no-undef
     const tokens = await Token.find( { type } );
+
+    // if there are no token with the type redirect to start of trans
+    if(tokens.length === 0){
+      throw { redirect: '/trans' };
+    }
+    //save the type to the session and view trans2
+    this.req.session.trans = {type};
     return { tokens, type };
   }
 

@@ -1,15 +1,10 @@
 parasails.registerPage('indexEMailMessage', {
 
-
-
-  // Data object for this page's component
+  // Data object for this page's component, will be manipulated using the child components
   data: {
-
     type: null,
     cycle: null,
     tip: { wantsToTip: 0 , tipAmount: 0, paymentType: null }
-
-
   },
 
   template: ``,
@@ -75,6 +70,7 @@ parasails.registerPage('indexEMailMessage', {
 
   methods: {
 
+    //TODO what is with the _cors token how do ?
     createEmailService: async function() {
       // Send a POST request to the '/e-mail-messages/create' endpoint
       await fetch('/e-mail-messages/create', {
@@ -88,7 +84,8 @@ parasails.registerPage('indexEMailMessage', {
           // Convert the wantsToTip property to a 1 or 0 for the backend
           isTipping: this.tip.wantsToTip === 'yes' ?  1 : 0,
           amount: this.tip.tipAmount,
-          paymentType: this.tip.paymentType
+          paymentType: this.tip.paymentType,
+          _csrf: window.SAILS_LOCALS._csrf
         }
         )
       })
@@ -98,13 +95,12 @@ parasails.registerPage('indexEMailMessage', {
             //Redirect to dashboard
             window.location.href = '/';
           }else {
+            //if response status is not 200 (ok) somothing is wrong show error and start again
             alert('Error did not create email service try again');
             //redirect to start of transactions
             this.$router.push('set-email-type');
-
           }
-          console.log(response);
-        } );
+        });
     },
 
     // setters get called when child component  emits function with the value

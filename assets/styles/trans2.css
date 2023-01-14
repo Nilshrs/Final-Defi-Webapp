@@ -1,8 +1,10 @@
 .progress {
   position: fixed;
   left: auto;
-  top: 500px;
+  top: 600px;
   width: 400px;
+}
 
-
+.progress-bar {
+  background-color: deeppink;
 }

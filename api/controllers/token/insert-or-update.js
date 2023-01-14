@@ -14,7 +14,7 @@ module.exports = {
 
   exits: {
     success:{
-      responseType: 'redirect'
+      description: 'successfully updated or created all tokens '
     }
 
   },
@@ -66,17 +66,16 @@ module.exports = {
 
         //TODO exeption handling
         const TokenValues = await sails.helpers.tokenUpdateOrCreate( criteria, values );
-        //console.log(TokenValues)
         TokenValues !== 0  ? newToken.push(TokenValues) : updatedTokenCounter++;
 
       }
     }).catch( error => {
-      console.log(error) ;
+      console.log({error}) ;
     });
 
     console.log("Updated Token: ", updatedTokenCounter )
 
-    if(newToken.length!==0) {
+    if(newToken.length !== 0) {
       console.log("New Token: ", newToken)
     }else {
       console.log("No new token")
@@ -224,12 +223,11 @@ module.exports = {
         'XCU-USD': 'stock',
         'BCO-USD': 'stock'
       }
+      /*eslint-disable */
+      /*eslint-enable */
       return lookUpType[tokenSymbol] ?? 'N/A'
-    }
+      /*eslint-enable */
 
-    return 'back'
+    }
   }
 };
-
-
-

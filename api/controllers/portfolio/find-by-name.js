@@ -28,16 +28,18 @@ module.exports = {
 
   fn: async function (inputs) {
 
-    console.log("Trying to find token by name for portfolio " + inputs.name);
+    //TODO is this needed, if no search on portfolio then delete?
+    console.log('Trying to find token by name for portfolio ' + inputs.name);
 
     const type = this.req.session.trans.type;
 
     // All done.
-    const tokens = await Token.find( { name: { startsWith: inputs.name }, type } )
+    // eslint-disable-next-line no-undef
+    const tokens = await Token.find( { name: { startsWith: inputs.name }, type } );
 
 
     if(tokens.length === 0){
-      throw { redirect: 'back' }
+      throw { redirect: 'back' };
     }
 
     return { tokens, type};

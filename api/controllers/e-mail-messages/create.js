@@ -33,8 +33,7 @@ module.exports = {
 
 
     if (newEMailMessager.length === 0) {
-      console.log({erorr: 'failed to create new E mail messager'})
+      console.log( {erorr: 'failed to create new E mail messager'});
     }
-      return;
-    }
-}
+  }
+};

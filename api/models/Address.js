@@ -9,6 +9,8 @@ module.exports = {
 
   attributes: {
 
+    //TODO we dont need the adresses, becaue stripe will do the checkout
+
     owner: { model: 'user'},
     street: { type: 'string', required: true },
     plz: { type: 'string', required: true },
@@ -32,4 +34,3 @@ module.exports = {
   },
 
 };
-

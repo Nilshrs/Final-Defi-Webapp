@@ -20,15 +20,15 @@ module.exports = {
 
     console.log('Trying to find tokens');
 
-  //TODO change to load out of DB
+
+    // eslint-disable-next-line no-undef
     const tokens = await Token.find(  );
 
     if( tokens.length === 0 ) {
       throw { invalid: {error: 'No token found' } };
-    }else {
-
-      this.res.view('pages/livePrices/allToken', { tokens: tokens });
     }
+    //TODO make this the success exit
+    this.res.view('pages/livePrices/allToken', { tokens: tokens });
   }
 
 

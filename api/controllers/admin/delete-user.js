@@ -16,7 +16,8 @@ module.exports = {
 
   exits: {
     success: {
-      viewTemplatePath: 'pages/admin/view-admin-area',
+      //TODO test if still works there shold be no viewTemplatePath
+      //viewTemplatePath: 'pages/admin/view-admin-area',
       responseType: 'redirect'
     },
 
@@ -34,12 +35,10 @@ module.exports = {
 
   fn: async function ({userId}) {
 
+    const admin = await User.findOne( { id: this.req.session.userId } );
+    const userToBeDeleted = await User.findOne( { id: userId } );
 
-    console.log("Trying to find user by ID")
-
-    const admin = await User.findOne({id: this.req.session.userId});
-    const userToBeDeleted = await User.findOne({id: userId});
-
+    //TODO better error message
     //Check if user exists
     if(!userToBeDeleted){
       throw {error: 'could not find user to be deleted'};
@@ -47,7 +46,7 @@ module.exports = {
 
     // SuperAdmin = Admin, so admins cannot delete other admins and superAdmins
     if(!admin.isSuperAdmin && userToBeDeleted.isAdmin){
-      throw { redirect: 'back' }
+      throw { redirect: 'back' };
     }
 
     //Just a check if the deletion worked
@@ -58,9 +57,6 @@ module.exports = {
       throw{ error: 'failed to delete user' };
     }
     return { redirect: 'back' };
-
-    return this.res.redirect('back');
-
   }
 
 

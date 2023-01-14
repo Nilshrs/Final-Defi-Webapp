@@ -23,6 +23,9 @@ parasails.registerComponent('emailCycle', {
   //  ╩ ╩ ╩ ╩ ╩╩═╝
   template: `
     <div class="emailCycle">
+
+    <router-link class="text-white " to="/set-email-type">❮</router-link>
+
       <h2>Choose the email cycle</h2>
 
 

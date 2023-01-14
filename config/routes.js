@@ -80,7 +80,7 @@ module.exports.routes = {
 
 
   //Token routes
-  'POST /create-or-update-token': { action: 'token/insert-or-update' },
+  'GET /create-or-update-token': { action: 'token/insert-or-update' },
   'POST /token/name': { action: 'token/find-by-name' },
 
 

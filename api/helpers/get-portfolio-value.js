@@ -1,15 +1,16 @@
 module.exports = {
 
 
-  friendlyName: 'Get portfolio value',
+  friendlyName: 'Calculate portfolio value',
 
 
-  description: '',
+  description: 'Calculates the current value of a portfolio based on the transactions.',
 
 
   inputs: {
 
-    transactions: { type: 'json' }
+    // Transactions array used to calculate the portfolio value
+    transactions: { type: 'json', required: true }
 
   },
 
@@ -17,7 +18,7 @@ module.exports = {
   exits: {
 
     success: {
-      outputFriendlyName: 'Portfolio value',
+      description: 'Calculated portfolio value',
     },
 
   },
@@ -25,12 +26,16 @@ module.exports = {
 
   fn: async function ( { transactions }) {
 
-    // Get portfolio value.
+    // Initialize variable to hold the portfolio value
     let portfolioValue = 0;
 
+    // Iterate over the transactions array
     for( const transaction of transactions ) {
+      // Find the token associated with the transaction
       // eslint-disable-next-line no-undef
       let token = await Token.findOne( { id: transaction.token } );
+
+      // add transaction value to portfolio value
       portfolioValue += transaction.amount * token.price;
     }
     // Send back the result through the success exit.
@@ -39,4 +44,3 @@ module.exports = {
 
 
 };
-

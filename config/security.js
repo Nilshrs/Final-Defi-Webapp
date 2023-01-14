@@ -43,7 +43,7 @@ module.exports.security = {
   * https://sailsjs.com/docs/concepts/security/csrf                           *
   *                                                                           *
   ****************************************************************************/
-  //TODO ask prof
+
   csrf: true
 
 };

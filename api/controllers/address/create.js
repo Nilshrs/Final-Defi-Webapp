@@ -1,3 +1,4 @@
+
 module.exports = {
 
 
@@ -18,10 +19,14 @@ module.exports = {
 
   },
 
+  //TODO maybe not needed stripe will handle it
   fn: async function ( { street, plz, town, country }) {
-    const userHasAddress= await Address.find( { owner: this.session.userId } );
-    if(userHasAddress) { throw {error: 'only one address per user allowed'}};
 
+    // eslint-disable-next-line no-undef
+    const userHasAddress= await Address.find( { owner: this.session.userId } );
+    if(userHasAddress) { throw {error: 'only one address per user allowed'};}
+
+    // eslint-disable-next-line no-undef
     const newAddress = await Address.create(
       { owner: this.session.userId,
         street,
@@ -30,8 +35,6 @@ module.exports = {
         country
       }
     ).fetch();
-    if(!newAddress) { throw {error: 'failed to create address'} }
-    return;
-
+    if(!newAddress) { throw {error: 'failed to create address'}; }
   }
 };

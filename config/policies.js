@@ -16,16 +16,20 @@ module.exports.policies = {
 
   // Bypass the `is-logged-in` policy for:
   'entrance/*': true,
+  'static-pages/*': true,
+
   'account/logout': true,
-  'view-homepage-or-redirect': true,
-  'view-faq': true,
-  'view-contact': true,
   'legal/view-terms': true,
   'legal/view-privacy': true,
   'deliver-contact-form-message': true,
-  'static-pages/*': true,
+
+
+  //TODO change this so only token price overview is allowed for all and delete not needed token actions
   'token/*': true,
-  'pages/ToBeDeleted': true,
+
+  //TODO check if still works
+  //'pages/ToBeDeleted': true,
+
 
 
 

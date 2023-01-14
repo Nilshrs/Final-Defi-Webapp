@@ -21,7 +21,9 @@ parasails.registerComponent('stripepayment', {
   //  ╩ ╩ ╩ ╩ ╩╩═╝
   template: `
     <div class="stike-payment">
-      <h2>Stipe payment...</h2>
+    <router-link class="text-white" to="/set-email-tip">❮</router-link>
+
+    <h2>Stipe payment...</h2>
       <!-- should use the stripe api and generate a  link to stripe checkout -->
       <p>Should be an external link to stipe payment, where the payment process is handelt </p>
 

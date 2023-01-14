@@ -10,10 +10,8 @@ module.exports = {
   attributes: {
 
 
-    name: { type: 'string', allowNull: false, required: true },
-
+    name: { type: 'string', allowNull: false, required: true  },
     owner: { model: 'user' },
 
   }
 };
-

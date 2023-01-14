@@ -16,7 +16,7 @@ module.exports = {
 
     success: {
       responseType: 'redirect',
-      //viewTemplatePath: 'pages/portfolio/portfolio-overview.ejs'
+      description: 'redirect to view portfolio'
     },
   },
 
@@ -28,22 +28,20 @@ module.exports = {
 
     // eslint-disable-next-line no-undef
     const portfolio = await Portfolio.findOne({owner: session.userId});
-    sails.log.debug('Portolfio:' + portfolio);
-    sails.log.debug('UserID:' + session.userId);
+
+    //TODO check if the selected token value would be negativ and if yes display a warning and let the user retry
+
+    //TODO maybe some error handeling if create fails
     // eslint-disable-next-line no-undef
-    const promise = await PortfolioTransaction.create({
+    await PortfolioTransaction.create({
       portfolio: portfolio.id,
       token: tokenId,
       amount: amount,
       value: trans.tokenData.price * amount
     }).fetch();
 
-    console.log(promise);
-
     return ('/portfolio');
 
-
-    //TODO check if the selected token value would be negativ and if yes display a warning and let the user retry
     /*
        const transactions = await PortfolioTransaction.find({portfolio: portfolio.id, token: tokenId})
        console.log(transactions)
@@ -67,4 +65,4 @@ module.exports = {
        }*/
 
   }
-}
+};

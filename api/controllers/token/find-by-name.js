@@ -23,6 +23,8 @@ module.exports = {
 
     console.log('Trying to find token by name ' + inputs.name);
     // All done.
+
+    // eslint-disable-next-line no-undef
     const tokens = await Token.find( { name: { startsWith: inputs.name }  } );
 
     if(tokens.length === 0){
@@ -30,6 +32,7 @@ module.exports = {
       return;
     }
 
+    //TODO make this the success exit
     this.res.view('pages/livePrices/index', { tokens: tokens });
   }
 };

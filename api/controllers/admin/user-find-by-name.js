@@ -31,8 +31,8 @@ module.exports = {
     const userData = await User.find( { fullName: { startsWith: inputs.fullName } } );
 
     if(userData.length === 0){
-      sails.log('No user with specified name/letter ' + inputs.fullName + ' found')
-      throw { redirect: 'back' }
+      sails.log('No user with specified name/letter ' + inputs.fullName + ' found');
+      throw { redirect: 'back' };
     }
 
     const user = await User.findOne({id: this.req.session.userId});

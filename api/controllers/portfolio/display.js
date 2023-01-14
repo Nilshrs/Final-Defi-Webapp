@@ -18,7 +18,7 @@ module.exports = {
     },
     redirect: {
       responseType: 'redirect',
-      description: 'Requesting user is has no portfolio, so redirect to the create portfolio page'
+      description: 'Requesting user '
     },
 
   },
@@ -26,9 +26,8 @@ module.exports = {
 
   fn: async function () {
 
-
-
-    // eslint-disable-next-line no-undef
+    //TODO i think this can be deletet
+    //eslint-disable-next-line no-undef
     const transactions = await PortfolioTransaction.find( { owner: this.req.session.userId } );
     // returns a array with objects consisting of token data and the value in the portfolio
     const token = await sails.helpers.getTokenAndAmount.with( { transactions } );

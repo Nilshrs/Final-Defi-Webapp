@@ -9,7 +9,7 @@ module.exports = {
 
   inputs: {
 
-    token: { type: 'number', required: true }
+    token: {type: 'number', required: true}
 
   },
 
@@ -22,38 +22,26 @@ module.exports = {
   },
 
 
-  fn: async function ( { token } ) {
+  fn: async function ({token}) {
 
     // eslint-disable-next-line no-undef
-    const tokenData = await Token.findOne( {id: token });
+    const tokenData = await Token.findOne({id: token});
+    //TODO check if empty if yes thow error
     this.req.session.trans['tokenData'] = tokenData;
-
-    const portfolio = await Portfolio.findOne( {owner : this.req.session.userId} );
-    const transactions = await PortfolioTransaction.find( { portfolio: portfolio.id, token} );
-
     const tokenType = this.req.session.trans.type;
 
-    if(transactions[0]){
-      const transData= await sails.helpers.getTokenAndAmount.with( { transactions } );
-      return { transData, tokenData, tokenType};
+    // eslint-disable-next-line no-undef
+    const portfolio = await Portfolio.findOne({owner: this.req.session.userId});
+    // eslint-disable-next-line no-undef
+    const transactions = await PortfolioTransaction.find({portfolio: portfolio.id, token});
+
+    // if user has no previous transaction with the selected token, return empty token data
+    if (!transactions[0]) {
+      return {tokenData, transData: 0, tokenType};
     }
 
-    return { tokenData, transData: 0, tokenType };
-
-
-
-    //let result= portfolioTokenData.filter(obj => obj.id === token);
-
-    //console.log(result.at(0).amount);
-
-
-
-    //console.log(this.req.session);
-
-
-
-
+    //find all the transaction data and send it to the view for form validation
+    const transData = await sails.helpers.getTokenAndAmount.with({transactions});
+    return {transData, tokenData, tokenType};
   }
-
-
 };

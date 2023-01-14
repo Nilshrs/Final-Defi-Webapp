@@ -23,12 +23,10 @@ module.exports = {
 
     // eslint-disable-next-line no-undef
     const porfolio = await Portfolio.findOne({ owner: this.req.session.userId });
-
+    //if no portfolio is found redirect user to create one
     if(!porfolio){
       throw {redirect: '/create-portfolio'};
     }
-
-    // Respond with view.
     return {};
 
   }

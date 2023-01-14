@@ -21,7 +21,8 @@ parasails.registerComponent('emailTip', {
   //  ╠═╣ ║ ║║║║
   //  ╩ ╩ ╩ ╩ ╩╩═╝
   template: `
-    <div class="tipform container">
+    <div class="tipform">
+    <router-link class="text-white" to="/set-email-cycle">❮</router-link>
 
     <h2>Do you want to tip? </h2>
     <p>This service is completely free but tips are welcome</p>
@@ -41,10 +42,10 @@ parasails.registerComponent('emailTip', {
 
     <div v-if="tip.wantsToTip === 'yes' " class="mt-2 mb-4">
       <div class="form-group">
-        <label id="tipAmount">Thanks :) how much? </label>
+        <label id="tipAmount">Thanks :) how much $ ? </label>
         <input id="tipAmount" placeholder="Amount" v-model.number="tip.tipAmount">
       </div>
-      <div class="mt-2 mb-4">
+      <div class="mt-2 mb-5">
         <label for="paymentType">Select payment type:</label>
 
         <select id="paymentType" class="form-select" v-model="tip.paymentType">
@@ -64,8 +65,7 @@ parasails.registerComponent('emailTip', {
       </div>
     </div>
 
-    <div v-if="tip.wantsToTip === 'no' || !tip.wantsToTip">
-      <p>Are you sure you dont want to tip ? </p>
+    <div class="mt-4" v-if="tip.wantsToTip === 'no' || !tip.wantsToTip">
       <button v-on:click="addEmailServiceWithNoTIp" id="defi-button-mobile">No Tip, submit it!</button>
     </div>
 
@@ -93,7 +93,7 @@ parasails.registerComponent('emailTip', {
   watch: {
 
     tip: {
-      handler(newValue){
+      handler(){
         this.$emit( 'set-tip', this.tip );
       },
       //deep watches recursively for changes in the tip object

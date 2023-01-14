@@ -1,20 +1,20 @@
 module.exports.cron = {
-  myFirstJob: {
-    schedule: '*/15 * * * *',
+  updateOrCrateTokenJob: {
+    // runs every 15 min
+    schedule: '*/1 * * * *',
     onTick: async function () {
-      console.log('Cron Job Token update or replace every 15 min');
-      //console.log(`Also, sails object is available as this, e.g. ${this.config.environment}`);
-
+      console.log('Cron Job:  Token update or replace runs every 15 min');
       const got = require('got');
+
+      //needed because of production / local environment
       const baseUrl = this.config.custom.baseUrl;
       const createOrUpdateUri = '/create-or-update-token';
+      const uriUpdateOrCreateAction = baseUrl + createOrUpdateUri;
 
       try {
-        await got.post(
-          baseUrl+createOrUpdateUri,
-          { json: true } );
-      }catch (e) {
-        console.log(e.response.body);
+        await got.get(uriUpdateOrCreateAction);
+      }catch (error){
+        console.log({error});
       }
     }
   }
