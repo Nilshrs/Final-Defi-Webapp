@@ -18,7 +18,6 @@ module.exports = async function (req, res, proceed) {
   }//•
 
   if(!req.me.isSuperAdmin){
-    res.redirect('back');
     return res.forbidden;
   }
 
