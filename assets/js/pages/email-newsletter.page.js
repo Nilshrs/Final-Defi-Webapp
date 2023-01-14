@@ -70,7 +70,6 @@ parasails.registerPage('indexEMailMessage', {
 
   methods: {
 
-    //TODO what is with the _cors token how do ?
     createEmailService: async function() {
       // Send a POST request to the '/e-mail-messages/create' endpoint
       await fetch('/e-mail-messages/create', {
@@ -90,16 +89,18 @@ parasails.registerPage('indexEMailMessage', {
         )
       })
         .then( response => {
-          if(response.status === 200) {
-            alert('Successfully created email service');
-            //Redirect to dashboard
-            window.location.href = '/';
-          }else {
-            //if response status is not 200 (ok) somothing is wrong show error and start again
+          if(response.status !==200){
+            //if response status is not 200 (ok) something is wrong show error and start again
             alert('Error did not create email service try again');
             //redirect to start of transactions
             this.$router.push('set-email-type');
+            return;
           }
+
+          alert('Successfully created email service');
+          //Redirect to dashboard
+          window.location.href = '/';
+
         });
     },
 

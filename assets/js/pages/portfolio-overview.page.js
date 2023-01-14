@@ -30,7 +30,7 @@ parasails.registerPage('portfolio-overview', {
      * @return none
      */
     createChart: function () {
-      //TODO could get this data using a http request
+      //TODO get this data using a http request
       //gets the token data from an element with id 'token'
       let tokenDataRaw = document.getElementById('token');
       // parses the token data as JSON

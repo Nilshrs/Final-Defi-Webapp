@@ -24,8 +24,6 @@ module.exports = {
   fn: async function (inputs) {
 
     //TODO can be deletet i think or only for free for admins in an manage token area ...
-
-
     console.log(inputs);
     console.log('Trying to deleate token with id ' + inputs.tokenId );
 

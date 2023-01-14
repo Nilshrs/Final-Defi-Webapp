@@ -1,7 +1,7 @@
 module.exports.cron = {
   updateOrCrateTokenJob: {
     // runs every 15 min
-    schedule: '*/1 * * * *',
+    schedule: '*/15 * * * *',
     onTick: async function () {
       console.log('Cron Job:  Token update or replace runs every 15 min');
       const got = require('got');
