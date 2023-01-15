@@ -4,8 +4,8 @@
 }
 .tbl-fixed{
   overflow-y: auto;
-  height: fit-content;
-  max-height: 90vh;
+  /*height: fit-content;*/
+  max-height: 75vh;
 
 
 }

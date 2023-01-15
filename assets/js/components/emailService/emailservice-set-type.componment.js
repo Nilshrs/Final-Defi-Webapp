@@ -27,20 +27,21 @@ parasails.registerComponent('emailType', {
         <div class="form-group">
           <div class="form-check">
             <input type="radio" id="general overview" value="general overview" v-model.lazy="type" />
-            <label for="general overview"> General overview </label>
-          </div>
-          <div class="form-check">
-            <input type="radio" id="strong price changes" value="strong price changes" v-model="type" />
-            <label for="strong price changes"> Price changes of token in portfolio (over 5%) </label>
-          </div>
-          <div class="form-check">
-            <input type="radio" id="portfolio price changes" value="portfolio price changes" v-model="type" />
-            <label for="portfolio price changes"> Portfolio value changes (over 5%)</label>
+            <label for="general overview">General overview </label>
           </div>
           <div class="form-check">
             <input type="radio" id="portfolio overview" value="portfolio overview" v-model="type" />
             <label for="portfolio overview">Portfolio overview</label>
           </div>
+          <div class="form-check">
+            <input type="radio" id="strong price changes" value="strong price changes" v-model="type" />
+            <label for="strong price changes">Portfolio Token price changes >5%</label>
+          </div>
+          <div class="form-check">
+            <input type="radio" id="portfolio price changes" value="portfolio price changes" v-model="type" />
+            <label for="portfolio price changes">Portfolio value change >5%</label>
+          </div>
+
         </div>
 
         <div v-if="!type" class="progress">

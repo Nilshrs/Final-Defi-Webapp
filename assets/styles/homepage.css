@@ -20,4 +20,7 @@
 
 body{
   font-family: "Roboto Light", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

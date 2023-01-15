@@ -2,8 +2,21 @@
   position: fixed;
   left: auto;
   top: 600px;
-  width: 400px;
+  width: 500px;
 }
+
+
+@media screen and (max-width: 500px) {
+  .progress {
+    position: fixed;
+    left: auto;
+    top: 600px;
+    width: 300px;
+    margin: 0 20px;
+
+  }
+}
+
 
 .progress-bar {
   background-color: deeppink;

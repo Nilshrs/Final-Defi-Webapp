@@ -15,6 +15,8 @@ module.exports.cron = {
         await got.get(uriUpdateOrCreateAction);
       }catch (error){
         console.log({error});
+
+
       }
     }
   }
