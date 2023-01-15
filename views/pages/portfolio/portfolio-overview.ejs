@@ -24,6 +24,7 @@
 </div>
 
 
+<!--TODO show totalprofitinPercent next to totalProfit.. with < %tokenData[0].totalProfitInPercent % > -->
 <% if(tokenData[0].totalProfit !== 'undefined') { %>
     <div class="container text-center font-weight-bold my-sm-5 my-1">
 
@@ -41,7 +42,7 @@
             <br> Here is the number for the National Suicide Prevention Lifeline: 1 800 273 </p>
         <% break;
         default: %>
-        <p id="totalProfit">You already lost <span style="color: red"><%- tokenData[0].totalProfit %></span> $</p>
+        <p id="totalProfit">You already lost <span style="color: red"><%- tokenData[0].totalProfit%> </span> $</p>
         <% break;
         } %>
     </div>
@@ -133,6 +134,3 @@
 
   }
 </style>
-
-
-

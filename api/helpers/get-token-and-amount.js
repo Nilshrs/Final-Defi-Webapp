@@ -94,6 +94,7 @@ module.exports = {
         token['profitInUSD'] = Number(
           (tokenMap.currentValue - tokenMap.buyValue).toFixed(2)
         );
+        //TODO check if the calculation is correct...
         token['profitInPercent'] = Number(
           (
             ((tokenMap.currentValue - tokenMap.buyValue) / tokenMap.currentValue) * 100

@@ -48,7 +48,8 @@ module.exports = {
       throw { redirectToCreateTrans: '/trans' };
     }
 
-    // Call helper function to get token data
+
+    //Call helper function to get token data
     const tokenData = await sails.helpers.getTokenAndAmount.with( { transactions } );
     // Call helper function to calculate the value of the portfolio
     let portfolioValue =  await sails.helpers.getPortfolioValue.with( { transactions });
