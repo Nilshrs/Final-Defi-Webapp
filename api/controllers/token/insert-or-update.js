@@ -60,7 +60,8 @@ module.exports = {
           symbol: token.id,
           name: token.price.token,
           currency: token.price.currency,
-          price: Math.round(token.price.aggregated.amount * 100) / 100
+          //TODO check if works
+          price: Number(token.price.aggregated.amount).toFixed(4)
         };
         // update token or insert token which is not in database
 
@@ -80,6 +81,7 @@ module.exports = {
     }else {
       console.log("No new token")
     }
+
     function getTokenType(tokenSymbol){
       let lookUpType = {
         'TSLA-USD': 'stock',
@@ -213,13 +215,13 @@ module.exports = {
         'BCH-USD': 'crypto',
         'XPL-USD': 'stock',
         'CORN-USD': 'etf',
-        'USDC-USD': 'stock',
-        'DFI-USD': 'stock',
+        'USDC-USD': 'crypto',
+        'DFI-USD': 'crypto',
         'SGD-USD': 'crypto',
         'EUR-USD': 'stock',
         'XAU-USD': 'etf',
         'XAG-USD': 'commodity',
-        'USDT-USD': 'stock',
+        'USDT-USD': 'crypto',
         'XCU-USD': 'stock',
         'BCO-USD': 'stock'
       }

@@ -14,7 +14,7 @@ module.exports = {
 
   },
 
-  // TODO is this coontroller relevant? @Elias
+  // TODO is this coontroller relevant? @Elias   YES...
   fn: async function () {
     const userData = [];
     // eslint-disable-next-line no-undef
@@ -34,7 +34,6 @@ module.exports = {
 
       const tokenData = await sails.helpers.getTokenAndAmount.with( { transactions } );
       let portfolioValue =  await sails.helpers.getPortfolioValue.with( { transactions } );
-      portfolioValue = Number(portfolioValue.toFixed(2));
 
       userData.push( {
         username: user.fullName,

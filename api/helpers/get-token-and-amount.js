@@ -78,9 +78,7 @@ module.exports = {
       currentValue += tokenMap.currentValue;
       totalProfitInPercent += Number(
         (
-          ((tokenMap.currentValue - tokenMap.buyValue) /
-            tokenMap.currentValue) *
-          100
+          ((tokenMap.currentValue - tokenMap.buyValue) / tokenMap.currentValue) * 100
         ).toFixed(2)
       );
 
@@ -106,14 +104,12 @@ module.exports = {
     // remove the tokens with amount 0 from the tokenData array
     tokenData = tokenData.filter((token) => !toDelete.has(token.id));
 
-    // save total profit of this portfolio to the tokenData
-    console.log(totalProfit);
 
     totalProfit = Number(totalProfit.toFixed(2));
 
     //TODO test if needed i think not
     if (tokenData[0]) {
-      tokenData[0]['totalProfit'] = totalProfit;
+      tokenData[0]['totalProfit'] = +totalProfit;
       tokenData[0]['totalProfitInPercent'] = +((currentValue - totalInvest) / totalInvest).toFixed(2);
     }
     // Return the array of tokens with all the calculation done.

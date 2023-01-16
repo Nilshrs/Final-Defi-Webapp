@@ -2,7 +2,6 @@
 
 
 <div id="portfolio-overview" v-cloak>
-
     <div class="container mb-3">
         <a class="text-white " href="/welcome">❮</a>
         <div class="row">
@@ -14,35 +13,29 @@
             </div>
         </div>
     </div>
-
-
 </div>
+
 <div class="container my-auto " style="max-height: 500px; min-height: 100px;">
     <div class="chartBox d-flex justify-content-center" style="height: 500px">
         <canvas id="myChart" height="500px" aria-label="Hello ARIA World" role="img"></canvas>
     </div>
 </div>
 
-
-<!--TODO show totalprofitinPercent next to totalProfit.. with < %tokenData[0].totalProfitInPercent % > -->
 <% if(tokenData[0].totalProfit !== 'undefined') { %>
     <div class="container text-center font-weight-bold my-sm-5 my-1">
-
-        <% switch(tokenData[0].totalProfit) {
-        case 0: %>
-        <p>Update token prices to see profit/loss</p>
+        <% switch(true) {
+        case (tokenData[0].totalProfit === 0): %>
+        <p>Your profit is 0 wait for price changes</p>
         <% break;
-        case tokenData[0].totalProfit >= 0: %>
-        <p id="totalProfit">Your Profit is <span style="color: green"><%- tokenData[0].totalProfit %></span> $</p>
+        case (tokenData[0].totalProfit > 0): %>
+        <p id="totalProfit">Your Profit is <span style="color: green"><%- tokenData[0].totalProfit %></span> $ | <%-tokenData[0].totalProfitInPercent %>%</p>
         <% break;
-        case tokenData[0].totalProfit < -99999.99: %>
-        <p id="totalProfit">Oh, oh you lost <span style="color: red"><%- tokenData[0].totalProfit %></span> $ <br> Need
-            Help
-            ?
-            <br> Here is the number for the National Suicide Prevention Lifeline: 1 800 273 </p>
+        case (tokenData[0].tokenData < 0): %>
+        <p id="totalProfit">You already lost <span style="color: #ff0000"><%- tokenData[0].totalProfit%>$ | <%-tokenData[0].totalProfitInPercent %>% </span> $</p>
         <% break;
-        default: %>
-        <p id="totalProfit">You already lost <span style="color: red"><%- tokenData[0].totalProfit%> </span> $</p>
+        case (tokenData[0].totalProfit < -99999.99): %>
+        <p id="totalProfit">Oh, oh you lost <span style="color: red"><%- tokenData[0].totalProfit %></span> $ | <%-tokenData[0].totalProfitInPercent %>% <br> Need
+            Help ? <br> Here is the number for the National Suicide Prevention Lifeline: 1 800 273 </p>
         <% break;
         } %>
     </div>
@@ -105,13 +98,13 @@
 </div>
 
 
+<!--make a class for this table and put this code in a css file also make a class for the green and red styles -->
 <style>
   .table th:first-child,
   .table td:first-child {
     position: sticky;
     left: 0;
   }
-
   #totalProfit {
     font-weight: bold;
   }

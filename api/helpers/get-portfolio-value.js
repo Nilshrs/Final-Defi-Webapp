@@ -38,8 +38,7 @@ module.exports = {
       // add transaction value to portfolio value
       portfolioValue += transaction.amount * token.price;
     }
-    // Send back the result through the success exit.
-    return portfolioValue;
+    return Number(portfolioValue).toFixed(2);
   }
 
 
