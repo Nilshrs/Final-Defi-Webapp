@@ -474,7 +474,7 @@ parasails.registerPage('leaderboard', {
       this.changeSymbolFirstTableRow();
     },
 
-    // get the leaderboad data from http request
+    // get the leaderboard data from http request
     getPortfolioData: async function () {
       let portfolioData;
       await fetch('/leaderboard/table')

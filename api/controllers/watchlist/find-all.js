@@ -27,7 +27,8 @@ module.exports = {
 
   fn: async function () {
 
-    // eslint-disable-next-line no-undef
+    //TODO change naming of this function
+    //eslint-disable-next-line no-undef
     const watchlist = await WatchList.findOne( { owner: this.req.session.userId} ).populate('tokens');
 
 

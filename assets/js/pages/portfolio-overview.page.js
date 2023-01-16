@@ -24,27 +24,27 @@ parasails.registerPage('portfolio-overview', {
   //  ║║║║ ║ ║╣ ╠╦╝╠═╣║   ║ ║║ ║║║║╚═╗
   //  ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩╚═╝╝╚╝╚═╝
   methods: {
-
     /**
      * createChart - creates a doughnut chart using the Chart.js library to visualize a portfolio's token data
      * @return none
      */
     createChart: function () {
-      //TODO get this data using a http request
+
+      //get sever rendered data form SAILS_LOCALS because of exposeLocalsToBrowser() in ejs
+      const token = window.SAILS_LOCALS.tokenData;
+      const portfolioValue = window.SAILS_LOCALS.portfolioValue;
+      /*
       //gets the token data from an element with id 'token'
       let tokenDataRaw = document.getElementById('token');
       // parses the token data as JSON
       let token = JSON.parse(tokenDataRaw.innerText);
-
-      const portfolioValue =document.getElementById('pV').innerText;
+       const portfolioValue =document.getElementById('pV').innerText;*/
 
       //defining various properties for the chart
-      //TODO put them into the data object
       const labels = [];
       const usdValue = [];
       const tokenAmount = [];
       const label = 'USD value';
-
 
       //iterating over the token data
       token.forEach((token) => {
@@ -52,7 +52,6 @@ parasails.registerPage('portfolio-overview', {
         usdValue.push(token.currentValue);
         tokenAmount.push(token.amount);
       });
-
 
       // create data object for the chart
       const data = {
