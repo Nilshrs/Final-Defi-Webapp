@@ -31,7 +31,6 @@ module.exports = {
         //continue with the next portfolio
         continue;
       }
-
       const tokenData = await sails.helpers.getTokenAndAmount.with( { transactions } );
       let portfolioValue =  await sails.helpers.getPortfolioValue.with( { transactions } );
 

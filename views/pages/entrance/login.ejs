@@ -18,15 +18,14 @@
         </div>
         <cloud-error v-if="cloudError==='badCombo'">The credentials you entered are not associated with an account. Please check your email and/or password and try again.</cloud-error>
         <cloud-error v-else-if="cloudError"></cloud-error>
-        <div class="form-group">
-          <ajax-button :syncing="syncing" class="btn-dark btn-lg btn-block">Sign in</ajax-button>
-            <button  class="btn-dark btn-lg btn " onclick="location.href='/signup'">Create Account</button>
+        <div class="form-group my-4">
+          <ajax-button :syncing="syncing" id="defi-button-mobile" class="mx-2">Sign in</ajax-button>
+            <button  id="defi-button-mobile" onclick="location.href='/signup'">Create Account</button>
 
         </div>
       </ajax-form>
-        <p class="text-center"> <a class="text-nowrap noHover " href="/password/forgot">Forgot your password?</a> </p>
+        <p class="text-center"> <a class="text-nowrap text-white " href="/password/forgot">Forgot your password?</a> </p>
     </div>
   </div>
 </div>
 <%- /* Expose locals as `window.SAILS_LOCALS` :: */ exposeLocalsToBrowser() %>
-

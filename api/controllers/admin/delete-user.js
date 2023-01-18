@@ -9,7 +9,7 @@ module.exports = {
 
   inputs: {
 
-    userId: {type: 'number', required: true}
+    userId: { type: 'number', required: true}
 
   },
 
@@ -35,13 +35,15 @@ module.exports = {
 
   fn: async function ({userId}) {
 
+
     const admin = await User.findOne( { id: this.req.session.userId } );
     const userToBeDeleted = await User.findOne( { id: userId } );
+
 
     //TODO better error message
     //Check if user exists
     if(!userToBeDeleted){
-      throw {error: 'could not find user to be deleted'};
+      throw { error: 'could not find user to be deleted'};
     }
 
     // SuperAdmin = Admin, so admins cannot delete other admins and superAdmins
@@ -49,14 +51,19 @@ module.exports = {
       throw { redirect: 'back' };
     }
 
-    //Just a check if the deletion worked
+
+    //TODO delete also all the corresponding portfolios/ watchlist and token trans (because cascadeOnDestroy doesent work,)
+
     //TODO change to display error or redirect to error site
     //TODO check if need for fetch
-    const deletedUser = await User.destroyOne({id: userId});
+    const deletedUser =  await User.destroyOne({id: userId});
+
+    //Just a check if the deletion worked
     if (!deletedUser) {
       throw{ error: 'failed to delete user' };
     }
-    return { redirect: 'back' };
+
+    return 'back';
   }
 
 
