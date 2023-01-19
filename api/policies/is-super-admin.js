@@ -9,6 +9,7 @@
  *   https://sailsjs.com/docs/concepts/policies/access-control-and-permissions
  */
 module.exports = async function (req, res, proceed) {
+  console.log("is-super-Admin")
 
   // First, check whether the request comes from a logged-in user.
   // > For more about where `req.me` comes from, check out this app's
@@ -18,7 +19,7 @@ module.exports = async function (req, res, proceed) {
   }//•
 
   if(!req.me.isSuperAdmin){
-    return res.forbidden;
+    return res.forbidden();
   }
 
   return proceed();
