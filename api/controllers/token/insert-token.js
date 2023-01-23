@@ -32,7 +32,8 @@ module.exports = {
 
     console.log('Token with value ' + inputs + ' will be inserted');
 
-    const record  = await Token.create({
+    // eslint-disable-next-line no-undef
+    const createdToken  = await Token.create({
       name: inputs.name,
       type: inputs.type,
       symbol: inputs.symbol,
@@ -40,11 +41,12 @@ module.exports = {
       price: inputs.price
     }).fetch();
 
-    if ( record.length === 0 ) {
+    if (!createdToken) {
       throw {invalid: {error:  'Failed to create Token '}};
-    } else { console.log( 'It worked ' + record.data );}
 
-    return record;
+    } else { console.log( 'It worked ' + createdToken.data );}
+
+    return createdToken;
   }
 
 };

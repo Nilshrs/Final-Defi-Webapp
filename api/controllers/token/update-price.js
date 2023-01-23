@@ -20,6 +20,7 @@ module.exports = {
 
   fn: async function (inputs) {
 
+    // eslint-disable-next-line no-undef
     let updatedToken = await Token.updateOne( { symbol: inputs.symbol } ).set( { price: inputs.price });
 
     if(updatedToken) {

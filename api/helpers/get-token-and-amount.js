@@ -105,7 +105,7 @@ module.exports = {
     tokenData = tokenData.filter((token) => !toDelete.has(token.id));
 
 
-    totalProfit = Number(totalProfit.toFixed(2));
+    totalProfit = Number(totalProfit).toFixed(2);
 
     //TODO test if needed i think not
     if (tokenData[0]) {

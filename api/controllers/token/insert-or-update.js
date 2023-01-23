@@ -15,6 +15,9 @@ module.exports = {
   exits: {
     success:{
       description: 'successfully updated or created all tokens '
+    },
+    noTokenFound: {
+      description: 'did not find any token'
     }
 
   },
@@ -23,56 +26,42 @@ module.exports = {
   fn: async function () {
 
     console.log('Running code from action token/insert-or-update.js ');
-
-    // code to insert or update token when visiting homepage
     const tokenPricesURL = 'https://ocean.defichain.com/v0/mainnet/prices?size=150';
 
-    //npm install got@7.1.0 use this old version to use require...
+    // Tried "Got" because we wanted to try a different HTTP request library for Node.js
+    // used got@7.1.0 because newer versions don't work with require
     const got = require('got');
-
-    //TODO use this code to be more readable
-    /*try{
-      const response = await got(tokenPricesURL, {json: true})
-
-      let tokenData = response.body.data
-
-      tokenData =  await sails.helpers.filterTokenData.with({ tokenData });
-
-      //const tokens = response.body.data
-
-    }catch (error) {
-      console.log(error);
-    }*/
-
+    let latestTokenData = '';
     let updatedTokenCounter = 0;
     const newToken = [];
 
-    //TODO make an onther action
-    await got(tokenPricesURL,{ json: true } ).then( async response => {
-
-      const tokens = response.body.data;
-
-      for (const token of await tokens) {
-
-        let criteria = { symbol: token.id };
-        let values = {
-          type: getTokenType(token.id),
-          symbol: token.id,
-          name: token.price.token,
-          currency: token.price.currency,
-          //TODO check if works
-          price: Number(token.price.aggregated.amount).toFixed(4)
-        };
-        // update token or insert token which is not in database
-
-        //TODO exeption handling
-        const TokenValues = await sails.helpers.tokenUpdateOrCreate( criteria, values );
-        TokenValues !== 0  ? newToken.push(TokenValues) : updatedTokenCounter++;
-
-      }
-    }).catch( error => {
+    //Get the latest token data from Defichain ocean api
+    try {
+      const response  = await got(tokenPricesURL, {json: true})
+      latestTokenData = response.body.data;
+    } catch(error) {
       console.log({error}) ;
-    });
+    }
+
+    if(latestTokenData.length === 0) {
+      throw 'noTokenFound';
+    }
+
+    for (const token of latestTokenData) {
+
+      let criteria = { symbol: token.id };
+      let values = {
+        type: getTokenType(token.id),
+        symbol: token.id,
+        name: token.price.token,
+        currency: token.price.currency,
+        price: Number(token.price.aggregated.amount).toFixed(4)
+      };
+
+      // update token or insert new token when token not in database
+      const TokenValues = await sails.helpers.tokenUpdateOrCreate(criteria, values);
+      TokenValues !== 0 ? newToken.push(TokenValues) : updatedTokenCounter++;
+    }
 
     console.log("Updated Token: ", updatedTokenCounter )
 
@@ -82,6 +71,7 @@ module.exports = {
       console.log("No new token")
     }
 
+    //returns the corresponding type of the token
     function getTokenType(tokenSymbol){
       let lookUpType = {
         'TSLA-USD': 'stock',
