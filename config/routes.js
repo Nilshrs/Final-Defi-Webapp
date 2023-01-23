@@ -85,7 +85,6 @@ module.exports.routes = {
 
 
   //Routes to dynamic pages
-  // TODO livePrices route not working
   'GET /livePrices': { action: 'token/find-all' },
   'GET /live-messages': { action: 'live-messages/view-live-messages' },
   'GET /pie-chart': { action: 'pie-chart/view-pie-chart' },

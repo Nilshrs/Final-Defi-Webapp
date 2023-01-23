@@ -25,7 +25,7 @@ module.exports = {
     const user = await User.findOne({id: this.req.session.userId});
 
     if(this.req.me.isSuperAdmin || this.req.me.isAdmin){
-      throw { redirect: 'admin/view'}
+      throw { redirect: 'admin/view'};
     }
     return { userName: user.fullName};
 
