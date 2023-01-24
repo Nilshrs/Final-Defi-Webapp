@@ -71,23 +71,17 @@ module.exports.routes = {
 
 
   //Portfolio routes
-  // TODO portfolio route not working
   'GET /portfolio' :        { action: 'portfolio/view-portfolio-overview' },
   'GET /create-portfolio':  { action: 'portfolio/view-create-portfolio' },
   'POST /create-portfolio': { action: 'portfolio/create'},
   'POST /portfolio/searchToken': { action: 'portfolio/find-by-name' },
 
-
-
   //Token routes
   'GET /create-or-update-token': { action: 'token/insert-or-update' },
-  'POST /token/name': { action: 'token/find-by-name' },
 
-
-  //Routes to dynamic pages
+  //Routes for live Prices
   'GET /livePrices': { action: 'token/find-all' },
-  'GET /live-messages': { action: 'live-messages/view-live-messages' },
-  'GET /pie-chart': { action: 'pie-chart/view-pie-chart' },
+  'POST /token/name': { action: 'token/find-by-name' },
 
   //Routes to watchlist
   'GET /create-watchlist': { action: 'watchlist/view-create-watchlist' },
@@ -106,10 +100,6 @@ module.exports.routes = {
   //Routes to email-messages
   'POST /e-mail-messages/create': { action: 'e-mail-messages/create' },
   'GET /e-mail-messages': { action: 'e-mail-messages/view-index-e-mail-message' },
-
-
-  //Routes to Address
-  'POST /address/create': { action: 'address/create' },
 
 
   //Routes to Admin Area
