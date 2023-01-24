@@ -39,14 +39,11 @@ module.exports = {
           // eslint-disable-next-line no-undef
           await Token.create(values);
         }
-
         //if token updated return 0 if crated the values for a better log
         return foundToken ? 0 : values;
+
       } catch (error) {
-        console.log(
-          'Error happened while trying to update or create token:',
-          values.symbol
-        );
+        console.log( 'Error happened while trying to update or create token:', values.symbol );
         console.log({ error });
       }
     });

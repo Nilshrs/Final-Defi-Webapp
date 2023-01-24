@@ -23,10 +23,8 @@ module.exports = {
 
   },
 
-
   fn: async function ( { transactions }) {
 
-    // Initialize variable to hold the portfolio value
     let portfolioValue = 0;
 
     // Iterate over the transactions array

@@ -1,13 +1,13 @@
 
 
 <div class="container my-auto">
+    <a class="text-white " href="/welcome">❮</a>
     <h1>Welcome <span style="color: deeppink"><%- userName %> </span> </h1>
 
 <form action="/admin/user-find-by-name" method="post">
     <div class="form-outline">
-        <!-- TODO fix empty string input -->
         <input  name="fullName" type="search" placeholder="Search" id="form1" class="form-control"
-               pattern="^[a-zA-Z]{1,10}$" required/>
+               pattern="^[a-zA-Z]{1,50}$" required/>
         <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
         <label class="form-label" for="form1"></label>
     </div>

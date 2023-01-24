@@ -28,16 +28,20 @@ module.exports = {
     // Create a new Map to store information about each token
     // eslint-disable-next-line no-undef
     const dataByTokenSymbol = new Map();
-    // Create an array to store information about each token
     let tokenData = [];
+    let totalProfit = 0;
+    let totalProfitInPercent = 0;
+    let totalInvest = 0;
+    let currentValue = 0;
 
-    // Loop through the transactions
+    // for deletion
+    // eslint-disable-next-line no-undef
+    const tokenWithoutAmount = new Set();
+
     for (const transaction of transactions) {
       // Find the token associated with the current transaction
       // eslint-disable-next-line no-undef
       let token = await Token.findOne({id: transaction.token});
-      //console.log(token);
-      // Calculate the current value and buy value for the token
       let currentValue = token.price * transaction.amount;
       let buyValue = transaction.value;
 
@@ -60,54 +64,45 @@ module.exports = {
       }
     }
 
-    // eslint-disable-next-line no-undef
-    const toDelete = new Set();
-    let totalProfit = 0;
-    let totalProfitInPercent = 0;
-    let totalInvest = 0;
-    let currentValue = 0;
-
     // Loop through the tokens and calculate their profit in USD and percent
     tokenData.forEach((token) => {
-      let tokenMap = dataByTokenSymbol.get(token.symbol);
+      let totalTokenData = dataByTokenSymbol.get(token.symbol);
 
-      totalProfit += Number(
-        (tokenMap.currentValue - tokenMap.buyValue).toFixed(2)
-      );
-      totalInvest += tokenMap.buyValue;
-      currentValue += tokenMap.currentValue;
+      totalProfit += Number( (totalTokenData.currentValue - totalTokenData.buyValue).toFixed(2) );
+      totalInvest += totalTokenData.buyValue;
+      currentValue += totalTokenData.currentValue;
       totalProfitInPercent += Number(
         (
-          ((tokenMap.currentValue - tokenMap.buyValue) / tokenMap.currentValue) * 100
+          ((totalTokenData.currentValue - totalTokenData.buyValue) / totalTokenData.currentValue) * 100
         ).toFixed(2)
       );
 
-      if (tokenMap.amount === 0) {
-        toDelete.add(token.id);
+
+      //only token with amount >0 should be visible so add  all others to map for later deletion
+      if (totalTokenData.amount === 0) {
+        tokenWithoutAmount.add(token.id);
       } else {
 
         // add the token amount, currentValue and profit to the token
-        token['amount'] = Number(tokenMap.amount.toFixed(2));
-        token['currentValue'] = Number(tokenMap.currentValue.toFixed(2));
+        token['amount'] = Number(totalTokenData.amount.toFixed(2));
+        token['currentValue'] = Number(totalTokenData.currentValue.toFixed(2));
         token['profitInUSD'] = Number(
-          (tokenMap.currentValue - tokenMap.buyValue).toFixed(2)
+          (totalTokenData.currentValue - totalTokenData.buyValue).toFixed(2)
         );
-        //TODO check if the calculation is correct...
         token['profitInPercent'] = Number(
-          (
-            ((tokenMap.currentValue - tokenMap.buyValue) / tokenMap.currentValue) * 100
-          ).toFixed(2)
+            (( (totalTokenData.currentValue - totalTokenData.buyValue) / totalTokenData.currentValue) * 100 )
+          .toFixed(2)
         );
       }
     });
 
     // remove the tokens with amount 0 from the tokenData array
-    tokenData = tokenData.filter((token) => !toDelete.has(token.id));
+    tokenData = tokenData.filter((token) => !tokenWithoutAmount.has(token.id));
 
 
     totalProfit = Number(totalProfit).toFixed(2);
 
-    //TODO test if needed i think not
+    //if there tokens to be displayed
     if (tokenData[0]) {
       tokenData[0]['totalProfit'] = +totalProfit;
       tokenData[0]['totalProfitInPercent'] = +((currentValue - totalInvest) / totalInvest).toFixed(2);
