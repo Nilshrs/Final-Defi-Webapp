@@ -2,11 +2,11 @@
 
 <div class="container my-auto">
     <a class="text-white " href="/welcome">❮</a>
-    <h1>Welcome <span style="color: deeppink"><%- userName %> </span> </h1>
+    <h1>User Overview </h1>
 
 <form action="/admin/user-find-by-name" method="post">
     <div class="form-outline">
-        <input  name="fullName" type="search" placeholder="Search" id="form1" class="form-control"
+        <input  name="namePrefix" type="search" placeholder="Start of name or full name" id="form1" class="form-control"
                pattern="^[a-zA-Z]{1,50}$" required/>
         <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
         <label class="form-label" for="form1"></label>
@@ -49,11 +49,21 @@
                                     <%= user.isSuperAdmin %>
                                 </td>
                                 <td>
+                                    <% if(!admin.isSuperAdmin && user.isAdmin) { %>
+
+                                    <a onclick=" return alert( 'You are not allowed to delete an Admin only Super Admins can do that!');" class="btn btn-delete bg-secondary">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                        </svg>
+                                    </a>
+
+                                    <% } else { %>
                                     <a href="/admin/delete-user/<%= user.id %> " onclick=" return confirm('Do you really want to delete user <%= user.fullName %>');" class="btn btn-delete bg-danger">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                                             <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
                                         </svg>
                                     </a>
+                                    <% } %>
                                 </td>
                             </tr>
                     <% }); } %>

@@ -6,7 +6,6 @@
         <h1>Add Token to Watchlist</h1>
     <form action="/watchlist/SearchToken" method="post">
         <div class="form-outline">
-            <!-- TODO fix empty string input -->
             <input name="name" type="search" placeholder="Search" id="form1" class="form-control" pattern="^[a-zA-Z]{1,10}$" required/>
             <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
             <label class="form-label" for="form1"></label>
@@ -40,7 +39,7 @@
                     <%= token.price %>
                 </td>
                 <td>
-                    <a href='/watchlist/add-token/<%= token.id %> ' class="text-decoration-none"> ➕ </a>
+                    <a href='/watchlist/add-token/<%= token.id %> ' class="text-decoration-none"> <b style="color: deeppink">+</b> </a>
                 </td>
             </tr>
         <% }); }%>
@@ -49,6 +48,3 @@
         </div>
     </div>
 </div>
-
-
-

@@ -16,8 +16,7 @@ module.exports = {
 
   exits: {
     success: {
-      //TODO test if still works there shold be no viewTemplatePath
-      //viewTemplatePath: 'pages/admin/view-admin-area',
+      description: 'redirect admin to admin dashboard',
       responseType: 'redirect'
     },
 
@@ -39,8 +38,6 @@ module.exports = {
     const admin = await User.findOne( { id: this.req.session.userId } );
     const userToBeDeleted = await User.findOne( { id: userId } );
 
-
-    //TODO better error message
     //Check if user exists
     if(!userToBeDeleted){
       throw { error: 'could not find user to be deleted'};
@@ -54,14 +51,13 @@ module.exports = {
 
     //TODO delete also all the corresponding portfolios/ watchlist and token trans (because cascadeOnDestroy doesent work,)
 
-    //TODO change to display error or redirect to error site
-    //TODO check if need for fetch
-    const deletedUser =  await User.destroyOne({id: userId});
+    const deletedUser =  await User.destroyOne({id: userId}).fetch();
 
     //Just a check if the deletion worked
     if (!deletedUser) {
       throw{ error: 'failed to delete user' };
     }
+    console.log('Deleted user: ',deletedUser.fullName );
 
     return 'back';
   }

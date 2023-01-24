@@ -29,7 +29,7 @@ module.exports = {
     });
 
     // Respond with view.
-    return { userData, userName: user.fullName };
+    return { userData, userName: user.fullName, admin: user };
 
   }
 

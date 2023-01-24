@@ -8,13 +8,13 @@ module.exports = {
 
 
   inputs: {
-    fullName: { type: 'string', required: true}
+    namePrefix: { type: 'string', required: true}
   },
 
 
   exits: {
     success: {
-      viewTemplatePath: 'pages/admin/view-admin-area.ejs'
+      viewTemplatePath: 'pages/admin/user-table-admin-area.ejs'
     },
     redirect: {
       responseType: 'redirect',
@@ -23,22 +23,21 @@ module.exports = {
   },
 
 
-  fn: async function (inputs) {
+  fn: async function ( { namePrefix } ) {
 
-    console.log('Trying to find user by name' + inputs.fullName);
+    console.log('Trying to find user by name' + namePrefix);
 
-    //TODO why full name if it is not the full name
-    const userData = await User.find( { fullName: { startsWith: inputs.fullName } } );
+    const userData = await User.find( { fullName: { startsWith: namePrefix } } );
 
     if(userData.length === 0){
-      sails.log('No user with specified name/letter ' + inputs.fullName + ' found');
+      sails.log('No user with specified name/letter ' + namePrefix + ' found');
       throw { redirect: 'back' };
     }
 
     const user = await User.findOne({id: this.req.session.userId});
 
 
-    return { userData, userName: user.fullName };
+    return { userData, admin: user };
 
   }
 
