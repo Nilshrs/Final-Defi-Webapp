@@ -27,5 +27,6 @@ module.exports.policies = {
   'token/find-all': true,
   'token/find-by-name': true,
   'token/find-by-id': true,
+  'token/create-or-update-token': true
 
 };

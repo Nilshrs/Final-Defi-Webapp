@@ -101,6 +101,11 @@ body {
   left: 0px;
   bottom: 0px;
 }
+@media screen and (max-width: 993px) {
+  #footerDesktop {
+    display: none;
+  }
+}
 @media (max-width: 800px) {
   [purpose='page-wrap'] {
     padding-bottom: 75px;

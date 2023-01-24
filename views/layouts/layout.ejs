@@ -7,9 +7,6 @@
 <head>
     <title>DeFiChain Portfolio Tracker</title>
 
-
-    <!-- TODO bei der Handy version sieht man ein sign out button komisch wenn man runterscrolled -->
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 
     <% /* Viewport tag for sensible mobile support */ %>
@@ -166,19 +163,15 @@
     </div>
 <% } %>
 
-<div class="d-flex flex-column" style="margin-bottom: 10vh">
+<div class="d-flex flex-column" style="; margin-bottom: 20vh">
     <%- body %>
 </div>
 
-<footer class="text-center text-white mt-auto" style="background-color: #000000;">
+<footer class="text-center text-white" style="background-color: #000000; margin-top: 20vh">
 
-    <% if(me) { %>
-        <small class="nav-item d-inline-block"><a class="nav-link text-info px-1 px-sm-3" href="/logout">Sign
-                out</a></small>
-    <% } %>
 
-    <div class="row fixed-bottom bg-black">
-        <div class="container-sm d-md-none" role="button">
+    <div id="footerMobileAndTablet" class="row fixed-bottom bg-black">
+        <div class="container-sm d-lg-none" role="button">
             <div class="row ">
                 <!-- Live Prices /Markets -->
                 <div class="col">
@@ -212,8 +205,8 @@
                     </div>
                 </div>
                 <!-- Portfolio -->
-                <div class="col">
-                    <div class="p-3 text-white">
+                <div class="col" >
+                    <div class="p-3 text-white " >
                         <svg onclick="location.href='/portfolio'" style="color: white" width="30" height="30"
                              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                             <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
@@ -228,9 +221,10 @@
         <!-- Desktop + Ipad Footer -->
 
 
-        <div class=" text-center d-none d-sm-block  p-3" style="background-color: black;">
+        <div id="footerDesktop" class=" text-center p-3" style="background-color: black;">
             <p class="lead">© 2022 Copyright: DeFiChain Portfolio Tracker </p>
         </div>
+
     </div>
 </footer>
 
