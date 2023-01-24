@@ -86,9 +86,10 @@ module.exports.routes = {
   //Routes to watchlist
   'GET /create-watchlist': { action: 'watchlist/view-create-watchlist' },
   'POST /watchlist/create-watchlist': { action: 'watchlist/create-watchlist'},
-  'GET /watchlist/all': { action: 'watchlist/find-all'},
+
+
   'GET /watchlist/add' : { action: 'watchlist/display-token-with-add-button'},
-  'GET /watchlist': { action: 'watchlist/find-all'},
+  'GET /watchlist': { action: 'watchlist/view-watchlist'},
   'GET /watchlist/add-token/:tokenId': { action: 'watchlist/add-token' },
   'GET /watchlist/remove-token/:tokenId' : { action: 'watchlist/remove-token' },
   'POST /watchlist/SearchToken/' : { action: 'watchlist/find-by-name' },

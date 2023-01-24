@@ -15,7 +15,7 @@ module.exports = {
   exits: {
 
     success: {
-      viewTemplatePath: 'pages/watchlist/all-Items'
+      viewTemplatePath: 'pages/watchlist/watchlist'
     },
     redirect: {
       responseType: 'redirect',
@@ -27,7 +27,7 @@ module.exports = {
 
   fn: async function () {
 
-    //TODO change naming of this function
+
     //eslint-disable-next-line no-undef
     const watchlist = await WatchList.findOne( { owner: this.req.session.userId} ).populate('tokens');
 
