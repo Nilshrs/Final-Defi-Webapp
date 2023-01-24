@@ -23,15 +23,9 @@ module.exports.policies = {
   'legal/view-privacy': true,
   'deliver-contact-form-message': true,
 
-
-  //TODO change this so only token price overview is allowed for all and delete not needed token actions
-  'token/*': true,
-
-  //TODO check if still works
-  //'pages/ToBeDeleted': true,
-
-
-
-
+  'token/find': true,
+  'token/find-all': true,
+  'token/find-by-name': true,
+  'token/find-by-id': true,
 
 };
