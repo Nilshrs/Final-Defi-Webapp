@@ -14,7 +14,7 @@ module.exports = {
 
   },
 
-  // TODO is this coontroller relevant? @Elias   YES...
+
   fn: async function () {
     const userData = [];
     // eslint-disable-next-line no-undef

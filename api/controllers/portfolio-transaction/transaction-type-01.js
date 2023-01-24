@@ -4,7 +4,7 @@ module.exports = {
   friendlyName: '01 transaction type',
 
 
-  description: '',
+  description: 'First set of transaction return token which have the selected type',
 
 
   inputs: {

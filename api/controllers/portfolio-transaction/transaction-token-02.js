@@ -4,7 +4,8 @@ module.exports = {
   friendlyName: '02 transaction token',
 
 
-  description: '',
+  description: 'Second step, action to look if portfolio has already some transactions with the selected token,' +
+      ' if yes: return the amount of the selected portfolio for validation ',
 
 
   inputs: {
@@ -24,12 +25,14 @@ module.exports = {
 
   fn: async function ({token}) {
 
-    // eslint-disable-next-line no-undef
-    const tokenData = await Token.findOne({id: token});
-    //TODO check if empty if yes thow error
-    this.req.session.trans['tokenData'] = tokenData;
     const tokenType = this.req.session.trans.type;
 
+    // eslint-disable-next-line no-undef
+    const tokenData = await Token.findOne({id: token});
+    if(!tokenData) {
+      throw { error: 'token not found' };
+    }
+    this.req.session.trans['tokenData'] = tokenData;
     // eslint-disable-next-line no-undef
     const portfolio = await Portfolio.findOne({owner: this.req.session.userId});
     // eslint-disable-next-line no-undef

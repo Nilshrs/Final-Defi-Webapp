@@ -30,7 +30,6 @@ module.exports = {
     }).fetch();
 
 
-    // todo maybe add some kind of error message to diesplay to the user
     if(!watchlist){
       console.log('Failed to create watchlist');
       return ('/welcome');
