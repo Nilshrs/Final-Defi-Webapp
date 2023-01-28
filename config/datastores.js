@@ -51,13 +51,13 @@ module.exports.datastores = {
     // adapter: 'sails-mysql',
     // url: 'mysql://user:password@host:port/database',
 
-    adapter: 'sails-mysql',
-    user:'user2_test',
-    password: 'e116100',
-    port:'33061',
-    host: '193.196.53.194',
-    database: 'defichain_test'
-
+   adapter: 'sails-mysql',
+   user:'user2_test',
+   password: 'e116100',
+   port:'33061',
+   host: '193.196.53.194',
+   database: 'defichain_test'
+//
 
   },
 

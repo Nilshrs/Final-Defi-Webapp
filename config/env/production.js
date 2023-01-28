@@ -97,7 +97,7 @@ module.exports = {
     * choose to keep this enabled.)                                            *
     *                                                                          *
     ***************************************************************************/
-    // cascadeOnDestroy: false,
+     cascadeOnDestroy: true,
 
   },
 
@@ -143,11 +143,11 @@ module.exports = {
     * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
     *                                                                          *
     ***************************************************************************/
-    cors: {
+    /*cors: {
       allowOrigins: [
         'https://defichain-portfoliotracker.onrender.com',
      ]
-    },
+    },*/
 
   },
 
