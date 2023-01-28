@@ -29,8 +29,6 @@ module.exports = {
     const trans = this.req.session.trans;
     const tokenId = trans.tokenData.id;
 
-    console.log("trans Amount: " + trans.amountInPortfolio)
-    console.log(" Amount: " + amount)
 
     //check on the server side if total amount would be negative, if yes put something in the msg so an alert is shown on the view
     if( (trans.amountInPortfolio + amount) < 0 ) {

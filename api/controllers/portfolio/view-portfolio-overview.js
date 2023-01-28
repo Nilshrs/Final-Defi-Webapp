@@ -46,6 +46,13 @@ module.exports = {
     const tokenData = await sails.helpers.getTokenAndAmount.with( { transactions } );
     let portfolioValue =  await sails.helpers.getPortfolioValue.with( { transactions });
 
+
+    // If portfolioValue is zero, user removed all token so let him first create a new transaction
+    if( portfolioValue === 0.00 || portfolioValue === '0.OO' ){
+      console.log('=> has no Token in portfolio');
+      throw { redirectToCreateTrans: '/trans' };
+    }
+
     return { tokenData, portfolioValue };
   }
 };
