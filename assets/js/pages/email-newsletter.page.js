@@ -11,7 +11,7 @@ parasails.registerPage('indexEMailMessage', {
 
   //The Vue Router is a library for building Single Page Applications (SPAs) with Vue.js
   //it is used for client side rendering
-  //its not an external package it comes with a standart  sails web app
+  //its not an external package it comes with a standard sails web app
   // It allows you to define routes for your application, which map to components that will be displayed when the route is accessed.
 
   // The  mode is history so the URl gets manipulated and changed to be more intuitive for users.

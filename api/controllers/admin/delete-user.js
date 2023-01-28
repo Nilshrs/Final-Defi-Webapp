@@ -34,7 +34,6 @@ module.exports = {
 
   fn: async function ({userId}) {
 
-
     const admin = await User.findOne( { id: this.req.session.userId } );
     const userToBeDeleted = await User.findOne( { id: userId } );
 
@@ -43,21 +42,19 @@ module.exports = {
       throw { error: 'could not find user to be deleted'};
     }
 
-    // SuperAdmin = Admin, so admins cannot delete other admins and superAdmins
+    // Admins cannot delete other Admins, only SuperAdmins are allowed to do that
     if(!admin.isSuperAdmin && userToBeDeleted.isAdmin){
       throw { redirect: 'back' };
     }
 
-
-    //TODO delete also all the corresponding portfolios/ watchlist and token trans (because cascadeOnDestroy doesent work,)
-
-    const deletedUser =  await User.destroyOne({id: userId}).fetch();
+    //Implemented cascading delete so every thing this user has created will be deleted too
+    const deletedUser =  await User.destroyOne({id: userId});
 
     //Just a check if the deletion worked
     if (!deletedUser) {
       throw{ error: 'failed to delete user' };
     }
-    console.log('Deleted user: ',deletedUser.fullName );
+    console.log('Successfully deleted user with ID;: ' + deletedUser.id + ' Name: ',deletedUser.fullName );
 
     return 'back';
   }

@@ -173,5 +173,22 @@ without necessarily having a billing card.`
 
   },
 
+  //When User gets deleted delete all corresponding data of this user
+  beforeDestroy: async function (criteria, proceed) {
+    const userId = criteria.where.id;
+    // eslint-disable-next-line no-undef
+    let portfolio = await Portfolio.destroyOne( { owner: userId } );
+
+    if(portfolio){
+      // eslint-disable-next-line no-undef
+      await PortfolioTransaction.destroy( { portfolio: portfolio.id } );
+    }
+    // eslint-disable-next-line no-undef
+    await EMailMessage.destroy( { owner: userId } );
+    // eslint-disable-next-line no-undef
+    await WatchList.destroyOne( { owner: userId } );
+    return proceed();
+  }
+
 
 };
