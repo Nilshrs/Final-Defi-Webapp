@@ -28,6 +28,9 @@ module.exports = {
     const tokenType = this.req.session.trans.type;
     this.req.session.trans.amountInPortfolio = 0;
 
+    //flush msg, needed for error message in trans 03, because of dire ct access from portfolio token (±-Button)
+    this.req.session.message = 0;
+
     // eslint-disable-next-line no-undef
     const tokenData = await Token.findOne({id: token});
     if(!tokenData) {

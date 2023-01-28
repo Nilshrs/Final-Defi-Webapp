@@ -29,8 +29,11 @@ module.exports = {
     const trans = this.req.session.trans;
     const tokenId = trans.tokenData.id;
 
+    console.log("trans Amount: " + trans.amountInPortfolio)
+    console.log(" Amount: " + amount)
+
     //check on the server side if total amount would be negative, if yes put something in the msg so an alert is shown on the view
-    if( (amount - trans.amountInPortfolio) < 0 ) {
+    if( (trans.amountInPortfolio + amount) < 0 ) {
       console.log('==> Error, Token amount in portfolio would be negative, not allowed');
       this.req.session.message = 'Error total amount in portfolio cant be negative';
       throw { tokenAmountNegative: `/trans-02/${tokenId}` };
