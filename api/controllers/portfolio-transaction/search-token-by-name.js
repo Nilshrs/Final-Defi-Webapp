@@ -28,7 +28,6 @@ module.exports = {
 
   fn: async function (inputs) {
 
-    //TODO is this needed, if no search on portfolio then delete?
     console.log('Trying to find token by name for portfolio ' + inputs.name);
 
     const type = this.req.session.trans.type;

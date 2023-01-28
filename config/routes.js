@@ -13,6 +13,8 @@ module.exports.routes = {
   //  ╦ ╦╔═╗╔╗ ╔═╗╔═╗╔═╗╔═╗╔═╗
   //  ║║║║╣ ╠╩╗╠═╝╠═╣║ ╦║╣ ╚═╗
   //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
+
+  //Sails routes:
   'GET /':                   { action: 'static-pages/view-homepage-or-redirect' },
   'GET /welcome/:unused?':   { action: 'dashboard/view-welcome' },
 
@@ -33,18 +35,8 @@ module.exports.routes = {
   'GET /account/password':   { action: 'account/view-edit-password' },
   'GET /account/profile':    { action: 'account/view-edit-profile' },
 
-
-  //  ╔╦╗╦╔═╗╔═╗  ╦═╗╔═╗╔╦╗╦╦═╗╔═╗╔═╗╔╦╗╔═╗   ┬   ╔╦╗╔═╗╦ ╦╔╗╔╦  ╔═╗╔═╗╔╦╗╔═╗
-  //  ║║║║╚═╗║    ╠╦╝║╣  ║║║╠╦╝║╣ ║   ║ ╚═╗  ┌┼─   ║║║ ║║║║║║║║  ║ ║╠═╣ ║║╚═╗
-  //  ╩ ╩╩╚═╝╚═╝  ╩╚═╚═╝═╩╝╩╩╚═╚═╝╚═╝ ╩ ╚═╝  └┘   ═╩╝╚═╝╚╩╝╝╚╝╩═╝╚═╝╩ ╩═╩╝╚═╝
   '/terms':                   '/legal/terms',
   '/logout':                  '/api/v1/account/logout',
-
-
-  //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
-  //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
-  //  ╚╩╝╚═╝╚═╝╩ ╩╚═╝╚═╝╩ ╩╚═╝
-  // …
 
 
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
@@ -63,18 +55,17 @@ module.exports.routes = {
   'POST  /api/v1/deliver-contact-form-message':          { action: 'deliver-contact-form-message' },
   'POST  /api/v1/observe-my-session':                 { action: 'observe-my-session', hasSocketFeatures: true },
 
-  // UC Transaction routes:
+  //Transaction 01 routes:
   'GET /trans':             { action: 'portfolio-transaction/view-trans-01' },
   'GET /trans-01/:type':    { action: 'portfolio-transaction/transaction-type-01' },
+  'POST /trans-01/token-search': { action: 'portfolio-transaction/search-token-by-name' },
   'GET /trans-02/:token':   { action: 'portfolio-transaction/transaction-token-02' },
   'POST /trans-03':         { action: 'portfolio-transaction/transaction-amount-03' },
-
 
   //Portfolio routes
   'GET /portfolio' :        { action: 'portfolio/view-portfolio-overview' },
   'GET /create-portfolio':  { action: 'portfolio/view-create-portfolio' },
   'POST /create-portfolio': { action: 'portfolio/create'},
-  'POST /portfolio/searchToken': { action: 'portfolio/find-by-name' },
 
   //Token routes
   'GET /create-or-update-token': { action: 'token/insert-or-update' },
@@ -83,13 +74,11 @@ module.exports.routes = {
   'GET /livePrices': { action: 'token/find-all' },
   'POST /token/name': { action: 'token/find-by-name' },
 
-  //Routes to watchlist
+  //Routes for watchlist
   'GET /create-watchlist': { action: 'watchlist/view-create-watchlist' },
   'POST /watchlist/create-watchlist': { action: 'watchlist/create-watchlist'},
-
-
-  'GET /watchlist/add' : { action: 'watchlist/display-token-with-add-button'},
   'GET /watchlist': { action: 'watchlist/view-watchlist'},
+  'GET /watchlist/add' : { action: 'watchlist/display-token-with-add-button'},
   'GET /watchlist/add-token/:tokenId': { action: 'watchlist/add-token' },
   'GET /watchlist/remove-token/:tokenId' : { action: 'watchlist/remove-token' },
   'POST /watchlist/SearchToken/' : { action: 'watchlist/find-by-name' },
@@ -109,9 +98,6 @@ module.exports.routes = {
   'GET /admin/delete-user/:userId': { action: 'admin/delete-user' },
   'POST /admin/user-find-by-name': { action: 'admin/user-find-by-name' },
 
-
   //Routes to static pages
   'GET /our-team': { action: 'static-pages/view-our-team' },
-
-
 };

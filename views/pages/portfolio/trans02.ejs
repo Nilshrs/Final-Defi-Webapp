@@ -15,9 +15,9 @@
             <h1> All <%-type%> token: </h1>
 
         </div>
-        <form action="/portfolio/searchToken" method="post">
+        <form action="/trans-01/token-search" method="post">
             <div class="form-outline">
-                <input name="name" type="text" type="search" class="form-control" placeholder="search" pattern="^[a-zA-Z]{1,10}$" required>
+                <input name="name" type="text" type="search" class="form-control" placeholder="search" pattern="^[a-zA-Z]{1,30}$" required>
                 <input type="hidden" name="_csrf" value="<%= _csrf %>"/>
             </div>
         </form>
