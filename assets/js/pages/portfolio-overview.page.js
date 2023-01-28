@@ -60,26 +60,26 @@ parasails.registerPage('portfolio-overview', {
           label,
           data: usdValue,
           backgroundColor: [
-            'rgb(246,82,138,0.5)',
-            'rgb(222,102,173,0.5)',
-            'rgb(239,124,245,0.5)',
-            'rgb(183,102,222,0.5)',
-            'rgb(170,115,250,0.5)',
-            'rgb(121,88,245,0.5)',
-            'rgb(64,69,150,0.5)',
-            'rgb(31,31,94,0.5)',
-            'rgb(28,28,75,0.5)',
+            'rgba(255,0,173,0.7)',
+            'rgba(236,110,167,0.7)',
+            'rgba(195,97,201,0.7)',
+            'rgba(111,25,154,0.7)',
+            'rgba(128,50,232,0.7)',
+            'rgba(78,26,243,0.7)',
+            'rgba(0,5,150,0.7)',
+            'rgba(25,125,169,0.7)',
+            'rgba(153,153,245,0.7)',
           ],
           borderColor: [
-            'rgb(246,82,138,0.5)',
-            'rgb(222,102,173,0.5)',
-            'rgb(239,124,245,0.5)',
-            'rgb(183,102,222,0.5)',
-            'rgb(170,115,250,0.5)',
-            'rgb(121,88,245,0.5)',
-            'rgb(64,69,150,0.5)',
-            'rgb(31,31,94,0.5)',
-            'rgb(28,28,75,0.5)',
+            'rgba(255,0,173,0.7)',
+            'rgba(236,110,167,0.7)',
+            'rgba(195,97,201,0.7)',
+            'rgba(111,25,154,0.7)',
+            'rgba(128,50,232,0.7)',
+            'rgba(78,26,243,0.7)',
+            'rgba(0,5,150,0.7)',
+            'rgba(25,125,169,0.7)',
+            'rgba(153,153,245,0.7)',
           ],
           borderWidth: 1,
           responsive: true,
@@ -111,7 +111,7 @@ parasails.registerPage('portfolio-overview', {
           ctx.fillStyle = 'white';
 
           //add center text to chart
-          ctx.fillText(portfolioValue, x, y);
+          ctx.fillText(portfolioValue+'$', x, y);
         }
       };
 
