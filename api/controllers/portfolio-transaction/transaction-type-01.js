@@ -35,6 +35,10 @@ module.exports = {
     }
     //save the type to the session and view trans2
     this.req.session.trans = {type};
+
+    //flush msg, needed for error message in trans 03 ;
+    this.req.session.message = 0;
+
     return { tokens, type };
   }
 

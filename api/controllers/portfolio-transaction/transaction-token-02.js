@@ -26,6 +26,7 @@ module.exports = {
   fn: async function ({token}) {
 
     const tokenType = this.req.session.trans.type;
+    this.req.session.trans.amountInPortfolio = 0;
 
     // eslint-disable-next-line no-undef
     const tokenData = await Token.findOne({id: token});
@@ -35,6 +36,10 @@ module.exports = {
     this.req.session.trans['tokenData'] = tokenData;
     // eslint-disable-next-line no-undef
     const portfolio = await Portfolio.findOne({owner: this.req.session.userId});
+
+    //needed later for trans creation
+    this.req.session.trans.portfolioId = portfolio.id;
+
     // eslint-disable-next-line no-undef
     const transactions = await PortfolioTransaction.find({portfolio: portfolio.id, token});
 
@@ -45,6 +50,10 @@ module.exports = {
 
     //find all the transaction data and send it to the view for form validation
     const transData = await sails.helpers.getTokenAndAmount.with({transactions});
+
+    //save it also in the session for server side validation in trans 03
+    this.req.session.trans.amountInPortfolio = transData[0].amount;
+
     return {transData, tokenData, tokenType};
   }
 };

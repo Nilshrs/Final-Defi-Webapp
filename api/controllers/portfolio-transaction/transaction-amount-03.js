@@ -18,51 +18,36 @@ module.exports = {
       responseType: 'redirect',
       description: 'redirect to view portfolio'
     },
+    tokenAmountNegative: {
+      responseType: 'redirect',
+      description: 'redirect to trans 2'
+    },
   },
 
   fn: async function ( { amount } ) {
 
-    const session = this.req.session;
     const trans = this.req.session.trans;
     const tokenId = trans.tokenData.id;
 
-    // eslint-disable-next-line no-undef
-    const portfolio = await Portfolio.findOne({owner: session.userId});
+    //check on the server side if total amount would be negative, if yes put something in the msg so an alert is shown on the view
+    if( (amount - trans.amountInPortfolio) < 0 ) {
+      console.log('==> Error, Token amount in portfolio would be negative, not allowed');
+      this.req.session.message = 'Error total amount in portfolio cant be negative';
+      throw { tokenAmountNegative: `/trans-02/${tokenId}` };
+    }
 
-    //TODO check if the selected token value would be negativ and if yes display a warning and let the user retry
+    //reset msg so no alert will be shown
+    this.req.session.message = 0;
 
-    //TODO maybe some error handeling if create fails
+    //Create the transaction:
     // eslint-disable-next-line no-undef
     await PortfolioTransaction.create({
-      portfolio: portfolio.id,
+      portfolio: trans.portfolioId,
       token: tokenId,
       amount: amount,
       value: trans.tokenData.price * amount
-    }).fetch();
+    });
 
     return ('/portfolio');
-
-    /*
-       const transactions = await PortfolioTransaction.find({portfolio: portfolio.id, token: tokenId})
-       console.log(transactions)
-
-
-       let currentAmount = 0;
-       for (const transaction of transactions) {
-         currentAmount += transaction.amount
-
-         if (currentAmount - amount < 0) return "is in minus"
-         else {
-           const promise = await PortfolioTransaction.create({
-             portfolio: portfolio.id,
-             token: tokenId,
-             amount: amount,
-             price: tokenPrice
-           }).fetch()
-
-           if (promise.length === 0) throw error
-         }
-       }*/
-
   }
 };
